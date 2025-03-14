@@ -8,21 +8,21 @@ Add your author information for historical reference and professional context, a
 
 
 ### Authors:
- - 2020-01-10: Calvin Tyndall (calvin@chapterthreellc.com)
+ - 2025-03-14: Mel Wong (mel.wong@jud.ca.gov)
 
 ### Project Info:
- [repo]: https://github.com/chapter-three/jcc-srl
+ [repo]: https://github.com/JudicialCouncilOfCalifornia/jcc-srl
  [host]: https://pantheon.io
  [ci]: https://circleci.com
- [backend]: https://drupal.org/8
- [frontend]: https://drupal.org/project/jcc_base
+ [backend]: https://drupal.org/about/9
+ [frontend]: https://github.com/JudicialCouncilOfCalifornia/jcc-srl/tree/master/web/themes/custom/atrium
  [parallelpdf]: ParallelPantheon.pdf
 
  - Working Repo: [Github][repo]
  - Hosting: [Pantheon][host]
- - CI/CD: [CircleCI][ci] - [![Chapter Three](https://circleci.com/gh/chapter-three/jcc-srl/tree/master.svg?style=svg)](https://circleci.com/gh/chapter-three/jcc-srl/tree/master)
- - Backend: [Drupal 8][backend]
- - Frontend: [Drupal 8 Theme - JCCBase][frontend] subtheme(s).
+ - CI/CD: [CircleCI][ci] - https://app.circleci.com/pipelines/github/JudicialCouncilOfCalifornia/jcc-srl
+ - Backend: [Drupal 9][backend]
+ - Frontend: [Drupal 9 Theme - Atrium][frontend] subtheme(s).
 
 ### Contents
 

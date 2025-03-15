@@ -107,7 +107,7 @@ terminus drush -- jcc-srl.<env> cache-rebuild
 
 Add a link to the corresponding column in [`jcc_forms.csv`](jcc_forms.csv), then follow the steps in [How to publish updates to forms](#how-to-publish-updates-to-forms). The current language columns are: **Arabic, Cambodian, Chinese, Chinese Traditional, Farsi, Hmong, Korean, Punjabi, Russian, Spanish, Tagalog, and Vietnamese**.
 
-### How to add form descriptions 
+### How to add form descriptions
 
 In [`jcc_forms.csv`](jcc_forms.csv), add a one-sentence description to the column labeled **Plain language description (1-2 sentences)**, then follow the steps in [How to publish updates to forms](#how-to-publish-updates-to-forms).
 
@@ -129,10 +129,6 @@ The **Form Category ID** and **Form Category Label** columns are required. If yo
 2. **Add a new column** to [`jcc_forms.csv`](jcc_forms.csv) where people will edit this new field
 3. **Update [the jcc_form migration](../../../../config/config-default/migrate_plus.migration.jcc_form.yml)** so that it maps data from the new column to the new field
 4. **Update [the form info twig template](../../../themes/custom/atrium/templates/media/media--jcc-form--full.html.twig) and [the form info stylesheet](../../../themes/custom/atrium/src/sass/components/media/_jcc-forms-full.scss)** so that it renders the information in the new field somewhere on the page (see [the atrium docs](../../../themes/custom/atrium#3-atrium-installation) for how to build the stylesheet)
-
-See https://github.com/chapter-three/jcc-srl/pull/245 for a simple example where the form guide links were re-styled and re-labeled.
-
-See https://github.com/chapter-three/jcc-srl/pull/248 for a more complex example. The first four commits add a new field for thumbnail images (and a new migration), and the next three commits add a new field for form-filling instructions and a corresponding link in the form info page.
 
 ### How to change the way form search results are sorted
 

@@ -26,7 +26,7 @@ class SaveAsMedia extends XlsxCellBase {
   public function import($entity, $field_name, $value, $mapped_fields, $data_array, $worksheet_index) {
     if ($entity->hasField($field_name)) {
       $filename = $value . '.jpg';
-      $url = 'https://github.com/chapter-three/jcc-srl-courthouse-maps/raw/master/' . $filename;
+      $url = 'https://github.com/JudicialCouncilOfCalifornia/jcc-srl-courthouse-maps/raw/master/' . $filename;
       $directory = 'public://courthouse/map';
       $destination = $directory . '/' . $filename;
       $mapping = \Drupal::database()->select('xlsx_entity_mapping', 'm')

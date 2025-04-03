@@ -38,7 +38,7 @@ for name in "$@" ; do
   # fi
 
   git config --global user.email "$GIT_EMAIL"
-  git config --global user.name "Ch3-P0"
+  git config --global user.name "JCC-Webdev"
 
   echo -e "\nClone artifact.\n"
   mkdir -p data

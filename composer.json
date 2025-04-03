@@ -1,5 +1,5 @@
 {
-    "name": "chapter-three/jcc-srl",
+    "name": "judicialcouncil/jcc-srl",
     "description": "Judicial Council of California Self-Represented Litigant portal - Drupal 8",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -165,6 +165,7 @@
         "drupal/rebuild_cache_access": "^1.7",
         "drupal/recaptcha": "^3.0",
         "drupal/redirect": "^1.3",
+        "drupal/redis": "^1.9",
         "drupal/restui": "^1.20",
         "drupal/role_delegation": "^1.0",
         "drupal/scheduler": "^1.3",

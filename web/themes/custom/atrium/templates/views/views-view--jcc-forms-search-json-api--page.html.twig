@@ -44,6 +44,18 @@
       {% endblock %}
     {% endif %}
 
+    {% set instruct %}
+      <p>Use Adobe Reader. <a href="/pdf-working-court-forms-1" target="_blank">See instructions</a>.</p>
+    {% endset %}
+    {% include '@molecules/blocks/alert/alert.twig' with {
+      alert: {
+        type: 'warning',
+        icon: true,
+        heading: 'Don\'t fill forms in your browser!',
+        text: instruct,
+      }
+    } %}
+
     {% block content %}
       {% if query and search_results %}
         {% if category_info %}
@@ -62,19 +74,6 @@
             }
           } %}
         {% endif %}
-
-        {% set instruct %}
-          <p>Use Adobe Reader. <a href="/pdf-working-court-forms-1" target="_blank">See instructions</a>.</p>
-        {% endset %}
-
-        {% include '@molecules/blocks/alert/alert.twig' with {
-          alert: {
-            type: 'warning',
-            icon: true,
-            heading: 'Don\'t fill forms in your browser!',
-            text: instruct,
-          }
-        } %}
 
         {% set forms = [] %}
         {% for form in search_results %}

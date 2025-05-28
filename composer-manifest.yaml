@@ -133,7 +133,7 @@ packages:
     drupal/stage_file_proxy: 1.2.0
     drupal/svg_image: 1.16.0
     drupal/tmgmt: 1.15.0
-    drupal/tmgmt_memsource: 1.22.0
+    drupal/tmgmt_memsource: 1.24.0
     drupal/token: 1.10.0
     drupal/tooltip: 1.1.2
     drupal/twig_tweak: 2.9.0

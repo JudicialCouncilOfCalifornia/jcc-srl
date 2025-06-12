@@ -10,8 +10,8 @@
   "appeals": {
     "id": "appeals",
     "title": "Appeals",
-    "url": "https://www.courts.ca.gov/selfhelp-appeals.htm",
-    "formsUrl": "https://www.courts.ca.gov/8545.htm",
+    "url": "https://selfhelp.courts.ca.gov/appeals",
+    "formsUrl": "https://selfhelp.courts.ca.gov/appeals/forms",
     "query": "appeals",
     "promote": true
   },

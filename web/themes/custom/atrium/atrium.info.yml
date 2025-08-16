@@ -87,6 +87,7 @@ libraries-override:
 
 ckeditor_stylesheets:
   - assets/css/atrium.style.css
+  - ckeditor/ckeditor_styles.css
   - ../../../libraries/courtyard-artifact/1.x/public/css/styles-srl.min.css
 
 components:

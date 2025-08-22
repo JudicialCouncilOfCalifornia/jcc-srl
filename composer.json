@@ -204,6 +204,7 @@
         "league/csv": "^9.6",
         "oomphinc/composer-installers-extender": "^2.0",
         "phpoffice/phpspreadsheet": "^1.14",
+        "solarium/solarium": "^6.3.3",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f8a8457a39deab31a7dbd62f37da9b0",
+    "content-hash": "2b4d4947d0617447bb7ce9f8e0b7335a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8017,30 +8017,30 @@
         },
         {
             "name": "drupal/search_api_solr",
-            "version": "4.3.0",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_solr.git",
-                "reference": "4.3.0"
+                "reference": "4.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_solr-4.3.0.zip",
-                "reference": "4.3.0",
-                "shasum": "222e14f9ab49efb519e3a78674606880a2b07416"
+                "url": "https://ftp.drupal.org/files/projects/search_api_solr-4.3.1.zip",
+                "reference": "4.3.1",
+                "shasum": "002061b1160df5da5d13eea6f3a4c50f8008b157"
             },
             "require": {
                 "composer-runtime-api": ">=2.0",
                 "composer/semver": "^1.0|^3.0",
                 "consolidation/annotated-command": "^2.12|^4.1",
                 "drupal/core": "^9.3 || ^10.0",
-                "drupal/search_api": "~1.29",
+                "drupal/search_api": "~1.30",
                 "ext-dom": "*",
                 "ext-json": "*",
                 "ext-simplexml": "*",
                 "laminas/laminas-stdlib": "^3.2",
                 "maennchen/zipstream-php": "^2.2.1|^3.0.2",
-                "solarium/solarium": "^6.3.0"
+                "solarium/solarium": "^6.3.3"
             },
             "conflict": {
                 "drupal/acquia_search_solr": "<1.0.0-beta8",
@@ -8066,8 +8066,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.3.0",
-                    "datestamp": "1696589367",
+                    "version": "4.3.1",
+                    "datestamp": "1699641521",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10312,64 +10312,6 @@
             "time": "2023-04-17T16:00:37+00:00"
         },
         {
-            "name": "halaxa/json-machine",
-            "version": "1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/halaxa/json-machine.git",
-                "reference": "514025c5ebbdb8a058745b573b4a1e81d685802c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/halaxa/json-machine/zipball/514025c5ebbdb8a058745b573b4a1e81d685802c",
-                "reference": "514025c5ebbdb8a058745b573b4a1e81d685802c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "ext-json": "*",
-                "friendsofphp/php-cs-fixer": "^3.0",
-                "phpunit/phpunit": "^8.0"
-            },
-            "suggest": {
-                "ext-json": "To run JSON Machine out of the box without custom decoders.",
-                "guzzlehttp/guzzle": "To run example with GuzzleHttp"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "JsonMachine\\": "src/"
-                },
-                "exclude-from-classmap": [
-                    "src/autoloader.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Filip Halaxa",
-                    "email": "filip@halaxa.cz"
-                }
-            ],
-            "description": "Efficient, easy-to-use and fast JSON pull parser",
-            "support": {
-                "issues": "https://github.com/halaxa/json-machine/issues",
-                "source": "https://github.com/halaxa/json-machine/tree/1.1.3"
-            },
-            "funding": [
-                {
-                    "url": "https://ko-fi.com/G2G57KTE4",
-                    "type": "other"
-                }
-            ],
-            "time": "2022-10-12T11:40:33+00:00"
-        },
-        {
             "name": "harvesthq/chosen",
             "version": "1.8.7",
             "dist": {
@@ -12546,22 +12488,21 @@
         },
         {
             "name": "solarium/solarium",
-            "version": "6.3.0",
+            "version": "6.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/solariumphp/solarium.git",
-                "reference": "26295386d896d01937a4ec21436581aac86a3e9a"
+                "reference": "b785b8bacb4a5a46a4cf18f5080ead41c6c3c1e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/solariumphp/solarium/zipball/26295386d896d01937a4ec21436581aac86a3e9a",
-                "reference": "26295386d896d01937a4ec21436581aac86a3e9a",
+                "url": "https://api.github.com/repos/solariumphp/solarium/zipball/b785b8bacb4a5a46a4cf18f5080ead41c6c3c1e2",
+                "reference": "b785b8bacb4a5a46a4cf18f5080ead41c6c3c1e2",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": ">=2.0",
                 "ext-json": "*",
-                "halaxa/json-machine": "^1.1",
                 "php": "^7.3 || ^8.0",
                 "psr/event-dispatcher": "^1.0",
                 "psr/http-client": "^1.0",
@@ -12570,15 +12511,15 @@
             },
             "require-dev": {
                 "escapestudios/symfony2-coding-standard": "^3.11",
-                "ext-curl": "*",
                 "ext-iconv": "*",
-                "nyholm/psr7": "^1.8",
-                "php-http/guzzle7-adapter": "^1.0",
+                "guzzlehttp/guzzle": "^7.2",
+                "nyholm/psr7": "^1.2",
+                "php-http/guzzle7-adapter": "^0.1",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^1.0",
                 "phpstan/phpstan-deprecation-rules": "^1.0",
                 "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.6",
+                "phpunit/phpunit": "^9.5",
                 "roave/security-advisories": "dev-master",
                 "symfony/event-dispatcher": "^4.3 || ^5.0 || ^6.0"
             },
@@ -12607,9 +12548,9 @@
             ],
             "support": {
                 "issues": "https://github.com/solariumphp/solarium/issues",
-                "source": "https://github.com/solariumphp/solarium/tree/6.3.0"
+                "source": "https://github.com/solariumphp/solarium/tree/6.x"
             },
-            "time": "2023-06-13T07:45:42+00:00"
+            "time": "2022-12-16T19:18:52+00:00"
         },
         {
             "name": "stack/builder",

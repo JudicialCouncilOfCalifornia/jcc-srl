@@ -306,6 +306,9 @@
             },
             "drupal/linkit": {
                 "Add Webform matcher to fix link creation autocomplete": "https://www.drupal.org/files/issues/2022-07-06/2946234-30.patch"
+            },
+            "drupal/search_api": {
+                "SQL duplicate entry warnings still occurring after v1.30": "https://www.drupal.org/files/issues/2023-11-23/sqlstate-duplicate-entry-warning-when-theres-a-49-symbols-word-3402938-4.patch"
             }
         },
         "installer-paths": {

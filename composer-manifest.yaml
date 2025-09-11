@@ -114,6 +114,7 @@ packages:
     drupal/redirect: 1.7.0
     drupal/redis: 1.9.0
     drupal/restui: 1.20.0
+    drupal/robotstxt: 1.6.0
     drupal/role_delegation: 1.2.0
     drupal/scheduler: 1.4.0
     drupal/scheduler_content_moderation_integration: 1.4.0

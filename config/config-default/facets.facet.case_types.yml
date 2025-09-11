@@ -11,6 +11,8 @@ id: case_types
 name: 'Case types'
 weight: 0
 min_count: 1
+missing: false
+missing_label: others
 url_alias: case_types
 facet_source_id: 'search_api:views_page__solr_search__page_1'
 field_identifier: field_case_types

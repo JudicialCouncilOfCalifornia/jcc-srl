@@ -2,3 +2,4 @@ key.key.*
 recaptcha.settings.yml
 tmgmt.translator.*
 tmgmt_memsource.settings.yml
+robotstxt.settings.yml

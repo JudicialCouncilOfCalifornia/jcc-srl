@@ -64,4 +64,5 @@ Disallow: /index.php/user/logout
 Disallow: /index.php/media/oembed
 Disallow: /index.php/*/media/oembed
 Disallow: /*f%5B0%5D*
-Disallow: /search*page=*
+Disallow: /search*search=*
+Disallow: /search*search_api_fulltext=*

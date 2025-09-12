@@ -2,6 +2,7 @@
 
 namespace Drupal\xlsx\Plugin\xlsx\cell;
 
+use Drupal\Core\File\FileSystemInterface;
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
 use Drupal\xlsx\Plugin\XlsxCellBase;
@@ -39,7 +40,7 @@ class SaveAsMedia extends XlsxCellBase {
         return ['target_id' => $mapping->entity_id];
       }
       else {
-        \Drupal::service('file_system')->prepareDirectory($directory, FILE_CREATE_DIRECTORY);
+        \Drupal::service('file_system')->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY);
         if ($file = system_retrieve_file($url, $destination, TRUE)) {
           $media = Media::create([
             'bundle' => 'image',

@@ -167,6 +167,7 @@
         "drupal/redirect": "^1.3",
         "drupal/redis": "^1.9",
         "drupal/restui": "^1.20",
+        "drupal/robotstxt": "^1.6",
         "drupal/role_delegation": "^1.0",
         "drupal/scheduler": "^1.3",
         "drupal/scheduler_content_moderation_integration": "^1.3",
@@ -266,11 +267,6 @@
             "find ./web/ -type d -name .git | xargs rm -rf",
             "find .git/ -type d -name hooks | xargs rm -rf"
         ],
-        "post-drupal-scaffold-cmd": [
-            "patch -p1 < patches/robot.patch",
-            "patch -p1 < patches/robots-13.patch",
-            "patch -p1 < patches/robots-14.patch"
-        ],
         "build-assets": [
             "@prepare-for-pantheon",
             "composer install --optimize-autoloader --no-dev"
@@ -306,6 +302,9 @@
             },
             "drupal/linkit": {
                 "Add Webform matcher to fix link creation autocomplete": "https://www.drupal.org/files/issues/2022-07-06/2946234-30.patch"
+            },
+            "drupal/search_api": {
+                "SQL duplicate entry warnings still occurring after v1.30": "https://www.drupal.org/files/issues/2023-11-23/sqlstate-duplicate-entry-warning-when-theres-a-49-symbols-word-3402938-4.patch"
             }
         },
         "installer-paths": {
@@ -337,7 +336,8 @@
                 "web-root": "web/"
             },
             "file-mapping": {
-                "[project-root]/.editorconfig": false
+                "[project-root]/.editorconfig": false,
+                "[web-root]/robots.txt": false
             }
         }
     }

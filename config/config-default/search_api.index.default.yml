@@ -8,6 +8,7 @@ dependencies:
   module:
     - node
     - search_api
+    - search_api_solr
 id: default
 name: Default
 description: ''
@@ -26,17 +27,20 @@ field_settings:
     type: text
     configuration:
       roles:
-        editor: editor
+        - editor
       view_mode:
         'entity:node':
           basic: full
+          court: ''
+          courthouse: ''
           handbook: full
+          overview: ''
           srl_howto: full
           srl_howto_instruction: full
           srl_onramp: full
           srl_wayfinder: full
   status:
-    label: null
+    label: status
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
@@ -55,7 +59,7 @@ field_settings:
       module:
         - node
   uid:
-    label: null
+    label: uid
     datasource_id: 'entity:node'
     property_path: uid
     type: integer
@@ -84,15 +88,19 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
   content_access:
     weights:
       preprocess_query: -50
+  custom_value: {  }
+  entity_type: {  }
   highlight:
     weights:
       postprocess_query: 0
     prefix: '<strong>'
     suffix: '</strong>'
     excerpt: true
+    excerpt_always: false
     excerpt_length: 256
     exclude_fields: {  }
     highlight: always
@@ -142,6 +150,7 @@ processor_settings:
       - title
   language_with_fallback: {  }
   rendered_item: {  }
+  solr_date_range: {  }
   stemmer:
     weights:
       preprocess_index: 0
@@ -206,6 +215,7 @@ processor_settings:
       - rendered_item
       - title
     spaces: ''
+    ignored: ._-
     overlap_cjk: 1
     minimum_word_size: '2'
 tracker_settings:

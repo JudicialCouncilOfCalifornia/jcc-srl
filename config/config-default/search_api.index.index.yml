@@ -3,24 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.media.field_description
+    - field.storage.media.field_number
     - field.storage.node.field_actions
-    - field.storage.node.field_blocks
+    - field.storage.node.body
     - field.storage.node.field_brow
     - field.storage.node.field_case_type
     - field.storage.node.field_case_types
     - field.storage.node.field_column_content_right
+    - field.storage.node.field_header
     - field.storage.node.field_column_first
     - field.storage.node.field_column_second
-    - field.storage.node.field_description
-    - field.storage.media.field_description
-    - field.storage.node.field_forms
-    - field.storage.node.field_header
     - field.storage.node.field_howto_tabs
     - field.storage.node.field_howto_tabs_title
     - field.storage.node.field_lead
-    - field.storage.media.field_number
     - field.storage.node.field_paragraphs
+    - field.storage.node.field_forms
+    - field.storage.node.field_blocks
+    - field.storage.node.field_description
     - field.storage.node.field_switchboard_subtitle
     - field.storage.node.field_switchboard_title
     - field.storage.node.field_watchers
@@ -294,6 +294,8 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
+  custom_value: {  }
   entity_type: {  }
   language_with_fallback: {  }
   rendered_item: {  }

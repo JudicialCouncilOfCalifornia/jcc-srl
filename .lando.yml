@@ -5,7 +5,7 @@
 name: jcc
 
 # drupal8 | drupal7 | wordpress
-recipe: drupal8
+recipe: drupal9
 
 config:
   # default: web | lightning: docroot
@@ -15,13 +15,22 @@ config:
 
   database: mariadb
 
-  composer_version: "2"
+  composer_version: '2'
 
   # Optionally activate xdebug
   #
   # If you are having trouble getting xdebug to work please see:
   # https://docs.devwithlando.io/services/php.html#using-xdebug
   #xdebug: true
+
+services:
+  database:
+    type: mariadb:10.6
+    creds:
+      user: drupal8
+      password: drupal8
+      database: drupal8
+#    portforward: 3306
 
 # Custom Lando commands
 tooling:

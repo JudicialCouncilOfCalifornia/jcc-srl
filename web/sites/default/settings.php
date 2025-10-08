@@ -261,3 +261,31 @@ if (defined(
     ],
   ];
 }
+
+
+$databases['default']['default'] = [
+  'driver' => 'mysql',
+  'database' => 'drupal8',
+  'username' => 'drupal8',
+  'password' => 'drupal8',
+  'host' => 'database',
+  'port' => 3306,
+];
+//
+//$databases['default']['default'] = [
+//  'database' => 'drupal9',
+//  'username' => 'drupal9',
+//  'password' => 'drupal9',
+//  'host' => 'database',
+//  'driver' => 'mysql',
+//];
+
+//
+//$databases['default']['default'] = [
+//  'driver' => 'mysql',
+//  'database' => 'drupal8',
+//  'username' => 'drupal8',
+//  'password' => 'drupal8',
+//  'host' => 'database.lndo.site',
+//  'port' => 3306,
+//];

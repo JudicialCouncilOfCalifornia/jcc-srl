@@ -28,6 +28,7 @@ node_modules
 *.code-workspace
 .DS_Store
 .lando.local.yml
+.vs
 
 # Ignore .env files as they are personal
 /.env

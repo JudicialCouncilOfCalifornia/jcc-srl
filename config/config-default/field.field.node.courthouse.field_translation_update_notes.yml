@@ -26,7 +26,7 @@ label: 'Translation update notes'
 description: ''
 required: false
 translatable: true
-default_value: {  }
+default_value: [{value: uptodate}]
 default_value_callback: ''
 settings: {  }
 field_type: text_long

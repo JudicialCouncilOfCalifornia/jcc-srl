@@ -23,6 +23,8 @@ settings:
             - Superscript
             - Subscript
             - '-'
+            - Format
+            - '-'
             - RemoveFormat
         -
           name: Linking
@@ -39,17 +41,17 @@ settings:
           items:
             - Blockquote
             - DrupalImage
-            - Table
-            - HorizontalRule
-        -
-          name: 'Block Formatting'
-          items:
-            - Format
         -
           name: Tools
           items:
             - ShowBlocks
+            - Table
+            - HorizontalRule
             - Source
+        -
+          name: 'Quality Assurance'
+          items:
+            - A11ychecker
   plugins:
     drupallink:
       linkit_enabled: true

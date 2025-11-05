@@ -19,6 +19,10 @@ settings:
           items:
             - Bold
             - Italic
+            - Underline
+            - Strike
+            - Superscript
+            - Subscript
             - '-'
             - JustifyLeft
             - JustifyCenter
@@ -27,10 +31,18 @@ settings:
             - '-'
             - Outdent
             - Indent
-            - HorizontalRule
-            - Table
+            - '-'
+            - Format
+            - Styles
+            - '-'
+            - RemoveFormat
         -
-          name: Linking
+          name: Clipboard
+          items:
+            - Undo
+            - Redo
+        -
+          name: Links
           items:
             - DrupalLink
             - DrupalUnlink
@@ -42,32 +54,26 @@ settings:
             - BulletedList
             - NumberedList
         -
-          name: Templates
-          items:
-            - Templates
-        -
           name: Media
           items:
             - file
-            - DrupalMediaLibrary
             - Blockquote
-        -
-          name: 'Block Formatting'
-          items:
-            - Format
-        -
-          name: Styles
-          items:
-            - Styles
+            - DrupalMediaLibrary
         -
           name: Tools
           items:
+            - Templates
             - insert_view_adv
-            - Source
-            - RemoveFormat
             - PasteFromWord
             - ShowBlocks
+            - HorizontalRule
+            - Table
+            - Source
             - Maximize
+        -
+          name: 'Quality Assurance'
+          items:
+            - A11ychecker
   plugins:
     drupallink:
       linkit_enabled: true

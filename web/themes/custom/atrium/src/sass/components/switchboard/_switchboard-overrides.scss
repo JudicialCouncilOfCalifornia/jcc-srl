@@ -1,0 +1,7 @@
+// bugfix srl-859 switchboard image hide override
+@media (max-width: 800px) {
+  .jcc-switchboard__body:has(> .align-left.media-library--image > img) {
+    display: none !important;
+  }
+}
+

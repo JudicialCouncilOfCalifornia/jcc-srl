@@ -261,3 +261,26 @@ if (defined(
     ],
   ];
 }
+
+
+
+
+$databases['default']['default'] = [
+  'driver' => 'mysql',
+  'database' => 'drupal8',
+  'username' => 'drupal8',
+  'password' => 'drupal8',
+  'host' => 'database',
+  'port' => '3306',
+  'prefix' => '',
+];
+
+
+$settings['trusted_host_patterns'] = ['^jcc\.lndo\.site$',];
+$base_url = 'https://jcc.lndo.site';
+
+
+// Ensure Drush CLI knows what host to bootstrap to when run from CLI.
+if (PHP_SAPI === 'cli' && empty($_SERVER['HTTP_HOST'])) {
+  $_SERVER['HTTP_HOST'] = 'jcc.lndo.site';
+}

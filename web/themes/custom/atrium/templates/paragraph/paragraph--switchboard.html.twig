@@ -1,5 +1,9 @@
 {{ attach_library('atrium/switchboard_overrides') }}
 
+{% set rendered_body = paragraph.field_body|view|render %}
+{% set has_image = rendered_body matches('/<img[^>]*>/') %}
+
+<div class="paragraph-switchboard-wrapper{% if has_image %} has-image{% endif %}">
 {# To get a correct langcode, use a field that is translated since this paragraph
 is not translated itself (see https://www.drupal.org/node/2735121) #}
 {% set lang_code = paragraph.field_body.langcode %}
@@ -61,3 +65,6 @@ is not translated itself (see https://www.drupal.org/node/2735121) #}
     }
   } only %}
 {% endif %}
+
+</div>
+

@@ -1,6 +1,6 @@
+/* Hide only the switchboard body when an image exists */
 @media (max-width: 800px) {
-  .jcc-switchboard__body {
+  .paragraph-switchboard-wrapper.has-image .jcc-switchboard__body {
     display: none !important;
   }
 }
-

@@ -1,193 +1,195 @@
 packages:
     ajgl/breakpoint-twig-extension: 0.3.5
     asm89/stack-cors: 1.3.0
-    caxy/php-htmldiff: v0.1.14
+    caxy/php-htmldiff: v0.1.17
     chi-teck/drupal-code-generator: 1.33.1
     ckeditor-plugin/templates: 4.13.1
     components/highlightjs: 9.7.0
     composer/installers: v1.12.0
+    composer/pcre: 3.3.2
     composer/semver: 3.3.2
-    consolidation/annotated-command: 4.9.1
+    consolidation/annotated-command: 4.10.4
     consolidation/config: 1.2.1
     consolidation/filter-via-dot-access-data: 1.0.0
     consolidation/log: 2.1.1
-    consolidation/output-formatters: 4.3.1
-    consolidation/robo: 2.2.2
-    consolidation/self-update: 1.2.0
-    consolidation/site-alias: 3.1.5
-    consolidation/site-process: 4.2.0
-    container-interop/container-interop: 1.2.0
-    cweagans/composer-patches: 1.7.2
+    consolidation/output-formatters: 4.7.0
+    consolidation/robo: 3.0.12
+    consolidation/self-update: 2.2.0
+    consolidation/site-alias: 3.1.7
+    consolidation/site-process: 4.2.1
+    cweagans/composer-patches: 1.7.3
     d3/d3: v3.5.17
     dflydev/dot-access-data: v1.1.0
     doctrine/annotations: 1.13.3
     doctrine/cache: 1.13.0
     doctrine/collections: 1.8.0
     doctrine/common: 2.13.3
-    doctrine/deprecations: 1.1.3
+    doctrine/deprecations: 1.1.5
     doctrine/event-manager: 1.2.0
     doctrine/inflector: 1.4.4
     doctrine/lexer: 1.2.3
     doctrine/persistence: 1.3.8
     doctrine/reflection: 1.2.4
-    drupal/access_unpublished: 1.4.0
+    drupal/access_unpublished: 1.9.0
     drupal/admin_toolbar: 2.5.0
     drupal/adminimal_admin_toolbar: 1.11.0
     drupal/adminimal_theme: 1.7.0
     drupal/advagg: 6.0.0-alpha1
     drupal/allowed_formats: 1.5.0
-    drupal/anchor_link: 1.9.0
-    drupal/autosave_form: 1.3.0
-    drupal/block_field: 1.0.0-rc2
-    drupal/captcha: 1.3.0
+    drupal/anchor_link: 1.11.0
+    drupal/autosave_form: 1.10.0
+    drupal/block_field: 1.0.0-rc5
+    drupal/captcha: 2.0.9
     drupal/chosen: 2.10.0
     drupal/chosen_lib: 2.10.0
     drupal/ckeditor: 1.0.2
-    drupal/ckeditor_templates: 1.2.0
+    drupal/ckeditor_templates: 1.4.0
     drupal/components: 2.4.0
-    drupal/config_filter: 1.9.0
-    drupal/config_ignore: 2.3.0
+    drupal/config_filter: 1.13.0
+    drupal/config_ignore: 2.4.0
     drupal/config_split: 1.10.0
     drupal/core: 9.5.11
     drupal/core-composer-scaffold: 9.5.11
     drupal/core-project-message: 9.5.11
     drupal/core-recommended: 9.5.11
-    drupal/core-vendor-hardening: 9.5.8
-    drupal/crop: 2.2.0
-    drupal/csv_serialization: 2.1.0
-    drupal/ctools: 3.7.0
-    drupal/datalayer: 1.0.0-beta2
+    drupal/core-vendor-hardening: 9.5.11
+    drupal/crop: 2.5.0
+    drupal/csv_serialization: 3.0.1
+    drupal/ctools: 4.1.0
+    drupal/datalayer: 1.0.0
     drupal/default_content: 1.0.0-alpha9
-    drupal/devel: 4.1.5
+    drupal/devel: 4.2.1
     drupal/diff: 1.6.0
-    drupal/dropzonejs: 2.6.0
+    drupal/dropzonejs: 2.11.0
     drupal/editor_advanced_link: 1.9.0
-    drupal/embed: 1.5.0
-    drupal/entity_browser: 2.9.0
-    drupal/entity_browser_entity_form: 2.7.0
-    drupal/entity_clone: 1.0.0-beta6
-    drupal/entity_embed: 1.2.0
-    drupal/entity_reference_revisions: 1.9.0
-    drupal/environment_indicator: 4.0.6
+    drupal/embed: 1.9.0
+    drupal/entity_browser: 2.10.0
+    drupal/entity_browser_entity_form: 2.10.0
+    drupal/entity_clone: 1.0.0-beta7
+    drupal/entity_embed: 1.6.0
+    drupal/entity_reference_revisions: 1.12.0
+    drupal/environment_indicator: 4.0.25
     drupal/extlink: 1.7.0
     drupal/facets: 2.0.7
     drupal/field_defaults: 1.3.0
-    drupal/field_group: 3.2.0
-    drupal/fillpdf: 5.0.0
-    drupal/fixed_block_content: 1.1.0
-    drupal/flag: 4.0.0-beta3
+    drupal/field_group: 3.6.0
+    drupal/fillpdf: 5.1.1
+    drupal/fixed_block_content: 1.4.0
+    drupal/flag: 4.0.0-beta5
     drupal/focal_point: 1.5.0
     drupal/google_tag: 1.8.0
-    drupal/honeypot: 2.1.1
-    drupal/inline_entity_form: 1.0.0-rc11
-    drupal/insert_view_adv: 'dev-2.0.x:5d3dd71fa9d3f878eacd93452873b29fc808d857'
-    drupal/jquery_ui: 1.6.0
-    drupal/jquery_ui_autocomplete: 2.0.0
-    drupal/jquery_ui_checkboxradio: 2.0.0
-    drupal/jquery_ui_menu: 2.0.0
-    drupal/jsonapi_extras: 3.23.0
-    drupal/key: 1.15.0
+    drupal/hal: 1.0.3
+    drupal/honeypot: 2.1.4
+    drupal/inline_entity_form: 1.0.0-rc17
+    drupal/insert_view_adv: 'dev-2.0.x:7dfd937882b0c2b295f8fbf969bd94aa52f88d58'
+    drupal/jquery_ui: 1.8.0
+    drupal/jquery_ui_autocomplete: 2.1.0
+    drupal/jquery_ui_checkboxradio: 2.1.0
+    drupal/jquery_ui_menu: 2.1.0
+    drupal/jsonapi_extras: 3.27.0
+    drupal/key: 1.20.0
     drupal/linkit: 5.0.0-beta13
-    drupal/log_stdout: 1.3.0
+    drupal/log_stdout: 1.5.0
     drupal/login_emailusername: 1.2.0
-    drupal/maillog: 'dev-1.x:053d0b4a53aea4f848be75b02fc8974bb7b053b3'
-    drupal/mailsystem: 4.3.0
+    drupal/maillog: 'dev-1.x:abbd4443dc6e58091bed2bd22eb113ca1b5961a3'
+    drupal/mailsystem: 4.5.0
     drupal/markup: 1.0.0-beta5
     drupal/maxlength: 1.0.0-rc1
-    drupal/media_entity_browser: 2.0.0-alpha3
-    drupal/menu_item_extras: 2.17.0
-    drupal/metatag: 1.19.0
+    drupal/media_entity_browser: 2.0.0
+    drupal/menu_item_extras: 2.19.0
+    drupal/metatag: 1.26.0
     drupal/migrate_plus: 5.3.0
-    drupal/migrate_source_csv: 3.5.0
-    drupal/migrate_tools: 6.0.4
-    drupal/mimemail: 1.0.0-alpha4
-    drupal/module_filter: 3.2.0
+    drupal/migrate_source_csv: 3.7.0
+    drupal/migrate_tools: 6.1.2
+    drupal/mimemail: 1.0.0-alpha6
+    drupal/module_filter: 3.4.0
     drupal/pantheon_advanced_page_cache: 2.3.1
-    drupal/paragraphs: 1.14.0
-    drupal/pathauto: 1.10.0
+    drupal/paragraphs: 1.17.0
+    drupal/pathauto: 1.13.0
     drupal/quicklink: 1.3.0
-    drupal/r4032login: 2.2.0
-    drupal/rabbit_hole: 1.0.0-beta10
-    drupal/range: 1.3.0
-    drupal/rebuild_cache_access: 1.7.0
-    drupal/recaptcha: 3.0.0
-    drupal/redirect: 1.7.0
-    drupal/redis: 1.9.0
-    drupal/restui: 1.20.0
+    drupal/r4032login: 2.2.3
+    drupal/rabbit_hole: 1.0.0
+    drupal/range: 1.6.0
+    drupal/rebuild_cache_access: 1.11.0
+    drupal/recaptcha: 3.2.0
+    drupal/redirect: 1.11.0
+    drupal/redis: 1.11.0
+    drupal/restui: 1.22.0
     drupal/robotstxt: 1.6.0
     drupal/role_delegation: 1.2.0
-    drupal/scheduler: 1.4.0
+    drupal/scheduler: 1.6.0
     drupal/scheduler_content_moderation_integration: 1.4.0
-    drupal/search404: 2.0.0
+    drupal/search404: 2.1.2
     drupal/search_api: 1.30.0
-    drupal/search_api_autocomplete: 1.7.0
-    drupal/search_api_exclude: 2.0.2
+    drupal/search_api_autocomplete: 1.9.0
+    drupal/search_api_exclude: 2.0.3
     drupal/search_api_exclude_entity: 2.0.0
     drupal/search_api_pantheon: 8.2.2
     drupal/search_api_solr: 4.3.1
     drupal/search_kint: 'dev-1.x:ef50a53718e1c9a29b030a36f0646bf3d5ac9c0b'
     drupal/sendgrid_integration: 1.7.0
     drupal/seven: 1.0.0
-    drupal/simple_block: 1.3.0
+    drupal/simple_block: 1.7.0
     drupal/simple_sitemap: 3.11.0
     drupal/smart_trim: 1.3.0
-    drupal/stage_file_proxy: 1.2.0
+    drupal/stage_file_proxy: 1.5.0
     drupal/svg_image: 1.16.0
     drupal/tmgmt: 1.15.0
-    drupal/tmgmt_memsource: 1.24.0
-    drupal/token: 1.10.0
+    drupal/tmgmt_memsource: 1.26.0
+    drupal/token: 1.16.0
     drupal/tooltip: 1.1.2
-    drupal/twig_tweak: 2.9.0
-    drupal/twig_xdebug: 1.2.0
+    drupal/twig_tweak: 2.10.0
+    drupal/twig_xdebug: 1.4.0
     drupal/views_aggregator: 1.0.0-beta3
-    drupal/views_ajax_history: 1.7.0
-    drupal/views_bulk_edit: 2.6.0
-    drupal/views_bulk_operations: 4.1.3
-    drupal/views_data_export: 1.1.0
-    drupal/webform: 6.2.2
-    drupal/webform_rest: 4.0.1
+    drupal/views_ajax_history: 1.8.0
+    drupal/views_bulk_edit: 2.9.0
+    drupal/views_bulk_operations: 4.2.7
+    drupal/views_data_export: 1.8.0
+    drupal/webform: 6.2.6
+    drupal/webform_rest: 4.1.0
     drupal/webform_translation_permissions: 1.1.0
-    drupal/workbench: 1.3.0
-    drupal/xmlsitemap: 1.2.0
-    drush/drush: 10.3.6
-    e0ipso/shaper: 1.2.4
+    drupal/workbench: 1.6.0
+    drupal/xmlsitemap: 1.5.0
+    drush/drush: 10.6.2
+    e0ipso/shaper: 1.2.7
     egulias/email-validator: 3.2.6
-    enshrined/svg-sanitize: 0.15.4
+    enlightn/security-checker: v1.11.0
+    enshrined/svg-sanitize: 0.22.0
     enyo/dropzone: 5.5.0
-    ezyang/htmlpurifier: v4.14.0
+    ezyang/htmlpurifier: v4.19.0
     fastglass/sendgrid: 1.0.12
-    google/recaptcha: 1.2.4
+    google/recaptcha: 1.3.1
     grasmash/expander: 1.0.0
     grasmash/yaml-expander: 1.4.0
     guzzlehttp/guzzle: 6.5.8
     guzzlehttp/promises: 1.5.3
     guzzlehttp/psr7: 1.9.1
     harvesthq/chosen: 1.8.7
-    html2text/html2text: 4.3.1
+    html2text/html2text: 4.3.2
     http-interop/http-factory-guzzle: 1.2.0
-    joachim-n/composer-manifest: 1.1.4
-    judicialcouncil/courtyard-artifact: 0.1.437
-    justinrainbow/json-schema: 5.2.12
-    kint-php/kint: 4.2.3
-    laminas/laminas-escaper: 2.13.0
-    laminas/laminas-feed: 2.22.0
-    laminas/laminas-stdlib: 3.19.0
-    league/container: 2.5.0
-    league/csv: 9.8.0
-    longwave/laminas-diactoros: 2.14.2
-    maennchen/zipstream-php: 2.2.6
-    markbaker/complex: 3.0.1
-    markbaker/matrix: 3.0.0
+    joachim-n/composer-manifest: 1.1.7
+    judicialcouncil/courtyard-artifact: 0.1.451
+    justinrainbow/json-schema: 6.6.1
+    kint-php/kint: 5.1.1
+    laminas/laminas-escaper: 2.17.0
+    laminas/laminas-feed: 2.25.0
+    laminas/laminas-stdlib: 3.20.0
+    league/container: 3.4.1
+    league/csv: 9.27.1
+    longwave/laminas-diactoros: 2.14.3
+    maennchen/zipstream-php: 3.1.1
+    marc-mabe/php-enum: v4.7.2
+    markbaker/complex: 3.0.2
+    markbaker/matrix: 3.0.1
     masterminds/html5: 2.7.6
     mkalkbrenner/php-htmldiff-advanced: 0.0.8
-    myclabs/php-enum: 1.8.4
-    nikic/php-parser: v4.15.5
+    nikic/php-parser: v4.19.4
     oomphinc/composer-installers-extender: 2.0.1
     pear/archive_tar: 1.4.14
     pear/console_getopt: v1.4.3
-    pear/pear-core-minimal: v1.10.14
+    pear/pear-core-minimal: v1.10.16
     pear/pear_exception: v1.0.2
-    phpoffice/phpspreadsheet: 1.23.0
+    phpoffice/phpspreadsheet: 1.30.1
     psr/cache: 1.0.1
     psr/container: 1.1.2
     psr/event-dispatcher: 1.0.0
@@ -195,8 +197,8 @@ packages:
     psr/http-factory: 1.0.2
     psr/http-message: 1.0.1
     psr/log: 1.1.4
-    psr/simple-cache: 1.0.1
-    psy/psysh: v0.11.5
+    psr/simple-cache: 3.0.0
+    psy/psysh: v0.10.12
     ralouphie/getallheaders: 3.0.3
     sendgrid/smtpapi: 0.7.0
     solarium/solarium: '6.x-dev:b785b8bacb4a5a46a4cf18f5080ead41c6c3c1e2'
@@ -205,13 +207,13 @@ packages:
     symfony/console: v4.4.49
     symfony/debug: v4.4.44
     symfony/dependency-injection: v4.4.49
-    symfony/deprecation-contracts: v2.5.2
+    symfony/deprecation-contracts: v2.5.4
     symfony/error-handler: v4.4.44
     symfony/event-dispatcher: v4.4.44
     symfony/event-dispatcher-contracts: v1.1.13
     symfony/filesystem: v4.4.42
-    symfony/finder: v5.4.35
-    symfony/http-client-contracts: v2.5.2
+    symfony/finder: v5.4.45
+    symfony/http-client-contracts: v2.5.5
     symfony/http-foundation: v4.4.49
     symfony/http-kernel: v4.4.51
     symfony/mime: v5.4.13
@@ -220,24 +222,24 @@ packages:
     symfony/polyfill-intl-idn: v1.27.0
     symfony/polyfill-intl-normalizer: v1.27.0
     symfony/polyfill-mbstring: v1.27.0
-    symfony/polyfill-php72: v1.29.0
-    symfony/polyfill-php73: v1.29.0
+    symfony/polyfill-php72: v1.31.0
+    symfony/polyfill-php73: v1.33.0
     symfony/polyfill-php80: v1.27.0
     symfony/process: v4.4.44
     symfony/psr-http-message-bridge: v2.1.4
     symfony/routing: v4.4.44
     symfony/serializer: v4.4.47
-    symfony/service-contracts: v2.5.2
+    symfony/service-contracts: v2.5.4
     symfony/translation: v4.4.47
-    symfony/translation-contracts: v2.5.2
+    symfony/translation-contracts: v2.5.4
     symfony/validator: v4.4.48
-    symfony/var-dumper: v5.4.35
+    symfony/var-dumper: v5.4.48
     symfony/yaml: v4.4.45
     tubalmartin/cssmin: v4.1.1
     twig/twig: v2.15.6
-    typo3/phar-stream-wrapper: v3.1.7
+    typo3/phar-stream-wrapper: v3.1.8
     vlucas/phpdotenv: v2.6.9
-    webflo/drupal-finder: 1.2.2
-    webmozart/assert: 1.11.0
+    webflo/drupal-finder: 1.3.1
+    webmozart/assert: 1.12.1
     webmozart/path-util: 2.3.0
     zaporylie/composer-drupal-optimizations: 1.2.0

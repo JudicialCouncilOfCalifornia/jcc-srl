@@ -37,7 +37,8 @@ is not translated itself (see https://www.drupal.org/node/2735121) #}
       title: tile.field_statement|view,
       url: tile.field_link.0.url.toString(),
       embellishment: tile.field_tile_type.value,
-      body: body
+      body: body,
+      aria_label: tile.field_link.0.options.attributes['aria-label'],
     }]) %}
 
   {% endfor %}

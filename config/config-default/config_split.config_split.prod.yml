@@ -6,15 +6,16 @@ id: prod
 label: Production
 description: 'Intended for Pantheon ''develop'' and ''live'' environments.'
 weight: 1
+stackable: false
+no_patching: false
+storage: folder
 folder: ../config/config-prod
 module:
   mailsystem: 0
   mimemail: 0
   sendgrid_integration: 0
 theme: {  }
-blacklist:
+complete_list:
   - mailsystem.settings
   - system.mail
-graylist: {  }
-graylist_dependents: true
-graylist_skip_equal: true
+partial_list: {  }

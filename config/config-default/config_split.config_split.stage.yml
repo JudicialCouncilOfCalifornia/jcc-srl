@@ -6,15 +6,16 @@ id: stage
 label: Stage
 description: 'Intended for Pantheon multidev and local environments'
 weight: 1
+stackable: false
+no_patching: false
+storage: folder
 folder: ../config/config-stage
 module:
   maillog: 0
   mailsystem: 0
   mimemail: 0
 theme: {  }
-blacklist:
+complete_list:
   - mailsystem.settings
   - system.mail
-graylist: {  }
-graylist_dependents: true
-graylist_skip_equal: true
+partial_list: {  }

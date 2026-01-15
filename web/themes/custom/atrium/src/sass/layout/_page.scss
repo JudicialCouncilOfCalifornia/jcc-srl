@@ -101,6 +101,10 @@ footer {
   }
 }
 
+.ed11y-element {
+  z-index: 999999;
+}
+
 @media print {
   .jcc-feedback.block,
   .block.jcc-chat,

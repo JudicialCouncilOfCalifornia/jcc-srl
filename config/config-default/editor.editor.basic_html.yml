@@ -19,18 +19,17 @@ settings:
           items:
             - Bold
             - Italic
-            - '-'
             - JustifyLeft
             - JustifyCenter
             - JustifyRight
             - JustifyBlock
-            - '-'
             - Outdent
             - Indent
-            - HorizontalRule
-            - Table
+            - RemoveFormat
+            - Format
+            - Styles
         -
-          name: Linking
+          name: Links
           items:
             - DrupalLink
             - DrupalUnlink
@@ -42,31 +41,21 @@ settings:
             - BulletedList
             - NumberedList
         -
-          name: Templates
+          name: Embed
           items:
-            - Templates
-        -
-          name: Media
-          items:
+            - Blockquote
+            - Table
+            - HorizontalRule
             - file
             - DrupalMediaLibrary
-            - Blockquote
-        -
-          name: 'Block Formatting'
-          items:
-            - Format
-        -
-          name: Styles
-          items:
-            - Styles
+            - Templates
+            - ShowBlocks
+            - insert_view_adv
         -
           name: Tools
           items:
-            - insert_view_adv
-            - Source
-            - RemoveFormat
             - PasteFromWord
-            - ShowBlocks
+            - Source
             - Maximize
   plugins:
     drupallink:

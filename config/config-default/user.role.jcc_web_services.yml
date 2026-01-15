@@ -28,6 +28,7 @@ dependencies:
     - content_translation
     - contextual
     - dropzonejs
+    - editoria11y
     - entity_browser
     - entity_clone
     - environment_indicator
@@ -214,6 +215,8 @@ permissions:
   - 'export xlsx'
   - 'import xlsx'
   - 'link to any page'
+  - 'manage editoria11y results'
+  - 'mark as ok in editoria11y'
   - 'rebuild cache access'
   - 'revert all revisions'
   - 'revert basic revisions'
@@ -244,6 +247,7 @@ permissions:
   - 'view any unpublished content'
   - 'view any webform submission'
   - 'view basic revisions'
+  - 'view editoria11y checker'
   - 'view handbook revisions'
   - 'view latest version'
   - 'view own unpublished content'

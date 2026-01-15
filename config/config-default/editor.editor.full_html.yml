@@ -22,10 +22,9 @@ settings:
             - Strike
             - Superscript
             - Subscript
-            - '-'
             - RemoveFormat
         -
-          name: Linking
+          name: Links
           items:
             - DrupalLink
             - DrupalUnlink
@@ -35,20 +34,16 @@ settings:
             - BulletedList
             - NumberedList
         -
-          name: Media
+          name: Embed
           items:
             - Blockquote
-            - DrupalImage
             - Table
             - HorizontalRule
-        -
-          name: 'Block Formatting'
-          items:
-            - Format
+            - DrupalImage
+            - ShowBlocks
         -
           name: Tools
           items:
-            - ShowBlocks
             - Source
   plugins:
     drupallink:

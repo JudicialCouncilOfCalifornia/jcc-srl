@@ -24,6 +24,7 @@ dependencies:
     - block_content
     - config_translation
     - content_translation
+    - editoria11y
     - field_ui
     - file
     - language
@@ -106,6 +107,7 @@ permissions:
   - 'edit own srl_howto_instruction content'
   - 'edit own srl_onramp content'
   - 'edit own srl_wayfinder content'
+  - 'mark as ok in editoria11y'
   - 'rebuild cache access'
   - 'revert all revisions'
   - 'revert basic revisions'
@@ -145,6 +147,7 @@ permissions:
   - 'view basic revisions'
   - 'view court revisions'
   - 'view courthouse revisions'
+  - 'view editoria11y checker'
   - 'view handbook revisions'
   - 'view overview revisions'
   - 'view srl_howto revisions'

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8ffc6c0edebbecabecb863cc902bb28",
+    "content-hash": "31a9c7273a0ced889e4ea4bcbffb5c1e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4114,26 +4114,30 @@
         },
         {
             "name": "drupal/editor_advanced_link",
-            "version": "1.9.0",
+            "version": "2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/editor_advanced_link.git",
-                "reference": "8.x-1.9"
+                "reference": "2.2.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/editor_advanced_link-8.x-1.9.zip",
-                "reference": "8.x-1.9",
-                "shasum": "ee40ec8c8c7b14c69de3de6a5275959dc32455c4"
+                "url": "https://ftp.drupal.org/files/projects/editor_advanced_link-2.2.4.zip",
+                "reference": "2.2.4",
+                "shasum": "cd0db397827f2e21ec8a68211e8a153463a6c89b"
             },
             "require": {
-                "drupal/core": "^8 || ^9"
+                "drupal/core": "^9.2 || ^10"
+            },
+            "require-dev": {
+                "drupal/ckeditor": "*",
+                "phpro/grumphp": "^2.0"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.9",
-                    "datestamp": "1624032562",
+                    "version": "2.2.4",
+                    "datestamp": "1688040059",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4146,11 +4150,15 @@
             ],
             "authors": [
                 {
-                    "name": "DuaelFr",
+                    "name": "duaelfr",
                     "homepage": "https://www.drupal.org/user/931394"
+                },
+                {
+                    "name": "vladimiraus",
+                    "homepage": "https://www.drupal.org/user/673120"
                 }
             ],
-            "description": "Add title, target etc. attributes to Text Editor's link dialog if the text format allows them.",
+            "description": "Editor Advanced link",
             "homepage": "https://www.drupal.org/project/editor_advanced_link",
             "support": {
                 "source": "https://git.drupalcode.org/project/editor_advanced_link"
@@ -5845,37 +5853,90 @@
             }
         },
         {
-            "name": "drupal/linkit",
-            "version": "5.0.0-beta13",
+            "name": "drupal/link_attributes",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
-                "url": "https://git.drupalcode.org/project/linkit.git",
-                "reference": "8.x-5.0-beta13"
+                "url": "https://git.drupalcode.org/project/link_attributes.git",
+                "reference": "2.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/linkit-8.x-5.0-beta13.zip",
-                "reference": "8.x-5.0-beta13",
-                "shasum": "9215fbea84166cabc9b7a2d9a04dedaffb9fc1ed"
+                "url": "https://ftp.drupal.org/files/projects/link_attributes-2.1.2.zip",
+                "reference": "2.1.2",
+                "shasum": "be747ac683568252d6d580acf5929c7ddc02c7e8"
             },
             "require": {
-                "drupal/core": "^8.7.7 || ^9"
+                "drupal/core": "^9 || ^10 || ^11",
+                "php": ">=8.0"
             },
             "require-dev": {
+                "drupal/linkit": "~6 || ~7"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.2",
+                    "datestamp": "1763068313",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "larowlan",
+                    "homepage": "https://www.drupal.org/user/395439"
+                }
+            ],
+            "description": "Provides a widget to allow settings of link attributes for menu links.",
+            "homepage": "https://www.drupal.org/project/link_attributes",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/link_attributes",
+                "issues": "https://www.drupal.org/project/issues/link_attributes"
+            }
+        },
+        {
+            "name": "drupal/linkit",
+            "version": "6.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/linkit.git",
+                "reference": "6.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/linkit-6.0.2.zip",
+                "reference": "6.0.2",
+                "shasum": "b7d965d122403c0d1cd8b891db3ea56004026804"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10.0.0"
+            },
+            "conflict": {
+                "drupal/core": ">=10.1"
+            },
+            "require-dev": {
+                "drupal/ckeditor": "*",
                 "drupal/imce": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-5.0-beta13",
-                    "datestamp": "1632946970",
+                    "version": "6.0.2",
+                    "datestamp": "1696865395",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
-                },
-                "patches_applied": {
-                    "Add Webform matcher to fix link creation autocomplete": "https://www.drupal.org/files/issues/2022-07-06/2946234-30.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5892,6 +5953,10 @@
                 {
                     "name": "johnwebdev",
                     "homepage": "https://www.drupal.org/user/3331569"
+                },
+                {
+                    "name": "mark_fullmer",
+                    "homepage": "https://www.drupal.org/user/2612816"
                 }
             ],
             "description": "Linkit - Enriched linking experience",
@@ -10620,16 +10685,16 @@
         },
         {
             "name": "judicialcouncil/courtyard-artifact",
-            "version": "0.1.437",
+            "version": "0.1.459",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact.git",
-                "reference": "bbb0cb97244ed26ca054a5cd3a3e6bd2d6dfa41f"
+                "reference": "26412aea8af6a488f90e45e852e5e61b7527ad81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/bbb0cb97244ed26ca054a5cd3a3e6bd2d6dfa41f",
-                "reference": "bbb0cb97244ed26ca054a5cd3a3e6bd2d6dfa41f",
+                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/26412aea8af6a488f90e45e852e5e61b7527ad81",
+                "reference": "26412aea8af6a488f90e45e852e5e61b7527ad81",
                 "shasum": ""
             },
             "type": "drupal-library",
@@ -10646,9 +10711,9 @@
             "description": "A build artifact of the Courtyard Pattern Lab pattern library.",
             "support": {
                 "issues": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/issues",
-                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.437"
+                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.459"
             },
-            "time": "2024-05-16T23:52:28+00:00"
+            "time": "2026-01-13T23:08:47+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -16112,7 +16177,6 @@
         "drupal/flag": 10,
         "drupal/inline_entity_form": 5,
         "drupal/insert_view_adv": 20,
-        "drupal/linkit": 10,
         "drupal/maillog": 20,
         "drupal/markup": 10,
         "drupal/maxlength": 10,
@@ -16129,5 +16193,5 @@
         "php": ">=7.4"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

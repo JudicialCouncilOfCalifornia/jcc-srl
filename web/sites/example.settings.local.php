@@ -1,19 +1,14 @@
 <?php
 
-// phpcs:ignoreFile
-
 /**
  * @file
- * Local development override configuration feature.
+ * This file provides a default starting point for settings.local.php.
  *
- * To activate this feature, copy and rename it such that its path plus
- * filename is 'sites/default/settings.local.php'. Then, go to the bottom of
- * 'sites/default/settings.php' and uncomment the commented lines that mention
- * 'settings.local.php'.
+ * We will try to add more useful default configuration options to help speed
+ * up local project setup.
  *
- * If you are using a site name in the path, such as 'sites/example.com', copy
- * this file to 'sites/example.com/settings.local.php', and uncomment the lines
- * at the bottom of 'sites/example.com/settings.php'.
+ * If you find common settings you use locally on many projects, please
+ * feel free to add them to the project and create a PR for review.
  */
 
 /**
@@ -34,12 +29,6 @@
  */
 assert_options(ASSERT_ACTIVE, TRUE);
 assert_options(ASSERT_EXCEPTION, TRUE);
-
-/**
- * Enable local development services.
- */
-$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
-
 /**
  * Show all error messages, with backtrace information.
  *
@@ -64,31 +53,9 @@ $config['system.performance']['js']['preprocess'] = FALSE;
  * This setting disables the render cache by using the Null cache back-end
  * defined by the development.services.yml file above.
  *
- * Only use this setting once the site has been installed.
+ * Do not use this setting until after the site is installed.
  */
-# $settings['cache']['bins']['render'] = 'cache.backend.null';
-
-/**
- * Disable caching for migrations.
- *
- * Uncomment the code below to only store migrations in memory and not in the
- * database. This makes it easier to develop custom migrations.
- */
-# $settings['cache']['bins']['discovery_migration'] = 'cache.backend.memory';
-
-/**
- * Disable Internal Page Cache.
- *
- * Note: you should test with Internal Page Cache enabled, to ensure the correct
- * cacheability metadata is present. However, in the early stages of
- * development, you may want to disable it.
- *
- * This setting disables the page cache by using the Null cache back-end
- * defined by the development.services.yml file above.
- *
- * Only use this setting once the site has been installed.
- */
-# $settings['cache']['bins']['page'] = 'cache.backend.null';
+$settings['cache']['bins']['render'] = 'cache.backend.null';
 
 /**
  * Disable Dynamic Page Cache.
@@ -97,7 +64,7 @@ $config['system.performance']['js']['preprocess'] = FALSE;
  * cacheability metadata is present (and hence the expected behavior). However,
  * in the early stages of development, you may want to disable it.
  */
-# $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
+$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
 
 /**
  * Allow test modules and themes to be installed.
@@ -106,8 +73,7 @@ $config['system.performance']['js']['preprocess'] = FALSE;
  * During development it can be useful to install test extensions for debugging
  * purposes.
  */
-# $settings['extension_discovery_scan_tests'] = TRUE;
-
+// $settings['extension_discovery_scan_tests'] = TRUE;
 /**
  * Enable access to rebuild.php.
  *
@@ -131,25 +97,70 @@ $settings['rebuild_access'] = TRUE;
 $settings['skip_permissions_hardening'] = TRUE;
 
 /**
- * Exclude modules from configuration synchronization.
- *
- * On config export sync, no config or dependent config of any excluded module
- * is exported. On config import sync, any config of any installed excluded
- * module is ignored. In the exported configuration, it will be as if the
- * excluded module had never been installed. When syncing configuration, if an
- * excluded module is already installed, it will not be uninstalled by the
- * configuration synchronization, and dependent configuration will remain
- * intact. This affects only configuration synchronization; single import and
- * export of configuration are not affected.
- *
- * Drupal does not validate or sanity check the list of excluded modules. For
- * instance, it is your own responsibility to never exclude required modules,
- * because it would mean that the exported configuration can not be imported
- * anymore.
- *
- * This is an advanced feature and using it means opting out of some of the
- * guarantees the configuration synchronization provides. It is not recommended
- * to use this feature with modules that affect Drupal in a major way such as
- * the language or field module.
+ * Enable local development services.
  */
-# $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy'];
+$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/services.local.yml';
+
+/**
+ * Database settings: *.
+ */
+$databases['default']['default'] = [
+  'database' => 'drupal8',
+  'username' => 'drupal8',
+  'password' => 'drupal8',
+  'prefix' => '',
+  'host' => 'database',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+];
+
+/* Temp and Private dirctories. */
+$config['system.file']['path']['temporary'] = '../data/tmp';
+$config['system.file']['path']['private'] = '../data/private/alameda';
+$settings['file_temporary_path'] = $config['system.file']['path']['temporary'];
+$settings['file_private_path'] = $config['system.file']['path']['private'];
+
+/* Performance/Cache settings */
+$config['system.performance']['cache'] = [
+  'page' => [
+    'max_age' => 0,
+    'use_internal' => FALSE,
+  ],
+];
+$config['system.performance']['fast_404'] = ['enabled' => FALSE];
+$config['system.performance']['css'] = ['preprocess' => FALSE, 'gzip' => FALSE];
+$config['system.performance']['js'] = ['preprocess' => FALSE, 'gzip' => FALSE];
+$config['system.performance']['response'] = ['gzip' => FALSE];
+
+//$config['devel.settings']['error_handlers'] = 4;
+$config['devel.settings']['devel_dumper'] = 'var_dumper';
+$config['system.logging']['error_level'] = 'verbose';
+
+/* Stage File Proxy Settings */
+$config['stage_file_proxy.settings']['origin'] = 'https://live-jcc-alameda.pantheonsite.io';
+$config['stage_file_proxy.settings']['use_imagecache_root'] = 0;
+$config['stage_file_proxy.settings']['hotlink'] = 1;
+
+/* Environment Indicator */
+$config['environment_indicator.indicator']['bg_color'] = '#045d30';
+$config['environment_indicator.indicator']['fg_color'] = '#ffffff';
+
+/* Solr */
+$config['search_api.server.pantheon']['backend_config'] = [
+  'connector' => 'standard',
+  'connector_config' => [
+    'schema' => NULL,
+    'scheme' => 'http',
+    'host' => 'solr',
+    'port' => '8983',
+    'path' => '/solr',
+    'core' => 'freedom',
+    'timeout' => 5,
+    'index_timeout' => 5,
+    'optimize_timeout' => 10,
+    'commit_within' => 1000,
+    'solr_version' => '',
+    'http_method' => 'AUTO',
+  ],
+];

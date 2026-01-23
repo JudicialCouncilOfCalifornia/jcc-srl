@@ -7,7 +7,7 @@ dependencies:
     - field.field.paragraph.links.field_title_display
     - paragraphs.paragraphs_type.links
   module:
-    - link
+    - link_attributes
     - text
 id: paragraph.links.default
 targetEntityType: paragraph
@@ -15,12 +15,22 @@ bundle: links
 mode: default
 content:
   field_links:
-    type: link_default
+    type: link_attributes
     weight: 1
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      enabled_attributes:
+        id: true
+        rel: true
+        aria-label: true
+        name: false
+        target: false
+        class: false
+        accesskey: false
+        title: false
+      widget_default_open: expandIfValuesSet
     third_party_settings: {  }
   field_title_display:
     type: text_textfield
@@ -29,6 +39,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

@@ -24,7 +24,7 @@
       }
     ] %}
   {% endif %}
-  {% set jump_nav %}
+  {% set column_content_right %}
     <div class="jcc-share__container">
       {% include '@organisms/sections/share/share.twig' with {
         share: {
@@ -36,11 +36,13 @@
         }
       } only %}
     </div>
-    {% include '@molecules/navigation/jump-nav/jump-nav.twig' with {
-      jump_nav: {
-        title: content.field_hero_nav_title|render ? content.field_hero_nav_title : ''
-      }
-    } %}
+    {% if has_jump_nav %}
+      {% include '@molecules/navigation/jump-nav/jump-nav.twig' with {
+        jump_nav: {
+          title: content.field_hero_nav_title|render ? content.field_hero_nav_title : ''
+        }
+      } %}
+    {% endif %}
   {% endset %}
 
   {% include '@molecules/blocks/hero/hero.twig' with {
@@ -54,7 +56,7 @@
       brow: node.field_brow.0.value,
       title: label,
       body: content.field_description|render ? content.field_description : '',
-      column_content_right: jump_nav,
+      column_content_right: column_content_right,
       case_type: case_index
     }
   } %}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8ffc6c0edebbecabecb863cc902bb28",
+    "content-hash": "10d773d2c43cd8fad69577e1dbd7c6d9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10620,16 +10620,16 @@
         },
         {
             "name": "judicialcouncil/courtyard-artifact",
-            "version": "0.1.437",
+            "version": "0.1.460",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact.git",
-                "reference": "bbb0cb97244ed26ca054a5cd3a3e6bd2d6dfa41f"
+                "reference": "a6739af3edd7ee8619ed6b3507689a83374970b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/bbb0cb97244ed26ca054a5cd3a3e6bd2d6dfa41f",
-                "reference": "bbb0cb97244ed26ca054a5cd3a3e6bd2d6dfa41f",
+                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/a6739af3edd7ee8619ed6b3507689a83374970b8",
+                "reference": "a6739af3edd7ee8619ed6b3507689a83374970b8",
                 "shasum": ""
             },
             "type": "drupal-library",
@@ -10646,9 +10646,9 @@
             "description": "A build artifact of the Courtyard Pattern Lab pattern library.",
             "support": {
                 "issues": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/issues",
-                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.437"
+                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.460"
             },
-            "time": "2024-05-16T23:52:28+00:00"
+            "time": "2026-01-27T17:52:42+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -16129,5 +16129,5 @@
         "php": ">=7.4"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

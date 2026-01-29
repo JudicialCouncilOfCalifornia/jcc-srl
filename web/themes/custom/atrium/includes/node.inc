@@ -5,10 +5,7 @@
  * Theme functions for the node template.
  */
 
-use Drupal\Component\Utility\Html;
-use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Url;
-use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -47,5 +44,26 @@ function atrium_preprocess_node(&$variables) {
         }
       }
 
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function atrium_preprocess_node__srl_onramp__full(&$variables) {
+  $node = $variables['node'];
+  $paragraphs = $node->get('field_paragraphs');
+  if ($paragraphs) {
+    $has_create_anchor = FALSE;
+    foreach ($paragraphs as $item) {
+      $paragraph = $item->entity;
+      if ($paragraph->getType() === 'postcard') {
+        if ($paragraph->get('field_create_anchor')->value == 1) {
+          $has_create_anchor = TRUE;
+          break;
+        }
+      }
+    }
+    $variables['has_jump_nav'] = $has_create_anchor;
   }
 }

@@ -12,6 +12,7 @@
     {% set links = links|merge([{
       title: link.title,
       url: link.url,
+      aria_label: link.options.attributes['aria-label'],
     }]) %}
   {% endfor %}
 

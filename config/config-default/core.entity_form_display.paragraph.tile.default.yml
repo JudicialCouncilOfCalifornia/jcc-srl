@@ -12,7 +12,7 @@ dependencies:
     - paragraphs.paragraphs_type.tile
   module:
     - allowed_formats
-    - link
+    - link_attributes
     - maxlength
     - text
 id: paragraph.tile.default
@@ -37,12 +37,22 @@ content:
         maxlength_js_enforce: false
         maxlength_js_truncate_html: false
   field_link:
-    type: link_default
+    type: link_attributes
     weight: 3
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      enabled_attributes:
+        id: true
+        rel: true
+        aria-label: true
+        name: false
+        target: false
+        class: false
+        accesskey: false
+        title: false
+      widget_default_open: expandIfValuesSet
     third_party_settings: {  }
   field_page:
     type: entity_reference_autocomplete

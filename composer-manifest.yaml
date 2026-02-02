@@ -167,7 +167,7 @@ packages:
     html2text/html2text: 4.3.1
     http-interop/http-factory-guzzle: 1.2.0
     joachim-n/composer-manifest: 1.1.4
-    judicialcouncil/courtyard-artifact: 0.1.437
+    judicialcouncil/courtyard-artifact: 0.1.464
     justinrainbow/json-schema: 5.2.12
     kint-php/kint: 4.2.3
     laminas/laminas-escaper: 2.13.0

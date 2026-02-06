@@ -10685,16 +10685,16 @@
         },
         {
             "name": "judicialcouncil/courtyard-artifact",
-            "version": "0.1.459",
+            "version": "0.1.465",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact.git",
-                "reference": "26412aea8af6a488f90e45e852e5e61b7527ad81"
+                "reference": "bd4933fe64c338bbcabec084e925ded120709f60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/26412aea8af6a488f90e45e852e5e61b7527ad81",
-                "reference": "26412aea8af6a488f90e45e852e5e61b7527ad81",
+                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/bd4933fe64c338bbcabec084e925ded120709f60",
+                "reference": "bd4933fe64c338bbcabec084e925ded120709f60",
                 "shasum": ""
             },
             "type": "drupal-library",

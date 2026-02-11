@@ -26,7 +26,7 @@ content:
         rel: true
         aria-label: true
         name: false
-        target: true
+        target: false
         class: false
         accesskey: false
         title: false

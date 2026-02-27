@@ -108,25 +108,6 @@
     {% endif %}
   {% endset %}
 
-  {# Prepare 'column_content_right' for hero.twig. #}
-  {% set column_content_right %}
-
-    {% if media.field_form_thumbnail.entity.uri.value %}
-      {% set form_thumbnail_url = file_url(media.field_form_thumbnail.entity.uri.value) %}
-    {% else %}
-      {% set form_thumbnail_url = '/' ~ directory ~ '/assets/images/form-generic.jpg' %}
-    {% endif %}
-
-    {% set thumbnail_alt = 'View ' ~ media.field_number.value ~ ' ' ~ media.label ~ ' form' %}
-    <div class="jcc-form--thumbnail">
-      <a href="{{ media.field_url.uri }}">
-        <img src="{{ form_thumbnail_url }}" alt="{{ thumbnail_alt }}">
-        {# For analytics visibility only ... intentional screen reader code misuse #}
-        <span class="usa-sr-only" aria-hidden="true">{{ thumbnail_alt }}</span>
-      </a>
-    </div>
-  {% endset %}
-
   {# Include hero component. #}
   {% include '@molecules/blocks/hero/hero.twig' with {
     hero: {
@@ -134,13 +115,11 @@
       title: title,
       lead: content.field_description ? content.field_description : '',
       body: body,
-      column_variant: 'has-two-columns-threequarter',
-      column_content_right: column_content_right
+      column_variant: 'has-two-columns-threequarter'
     }
   } %}
 
   {% if switchboard_tiles is not empty %}
-
     {# Include switchboard component. #}
     {% include '@organisms/sections/switchboard/switchboard.twig' with {
       switchboard: {
@@ -153,7 +132,6 @@
         },
       }
     } only %}
-
   {% endif %}
 
 </article>

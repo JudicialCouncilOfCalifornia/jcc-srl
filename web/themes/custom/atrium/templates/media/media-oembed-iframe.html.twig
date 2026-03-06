@@ -8,10 +8,17 @@
 #}
 <!DOCTYPE html>
 <html{{ html_attributes }}>
-<head>
-  <css-placeholder token="{{ placeholder_token }}">
-</head>
-<body style="margin: 0">
-{{ media|raw }}
-</body>
+  <head>
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token }}"></css-placeholder>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="sr-only">{{ title }}</h1>
+    {{ media|raw }}
+  </body>
 </html>

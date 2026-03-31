@@ -106,11 +106,7 @@ CKEDITOR.addTemplates('default', {
                         <h3>Title</h3>
                         <p>text</p>
                     </div>
-                    <div class="usa-card__media">
-                        <div class="usa-card__img jcc-image--media-icon">
-                            <img src="/themes/custom/atrium/ckeditor/placeholder.png" alt="placeholder" />
-                        </div>
-                    </div>
+                    <div class="usa-card__media"></div>
                 </div>
             </div>`
       },

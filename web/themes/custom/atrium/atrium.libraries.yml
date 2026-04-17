@@ -26,10 +26,6 @@ datefinder:
   js:
     assets/js/datefinder.js: {}
 
-howtotabs:
-  js:
-    assets/js/howtotabs.js: {}
-
 jump-nav:
   js:
     assets/js/jump-nav.js: {}

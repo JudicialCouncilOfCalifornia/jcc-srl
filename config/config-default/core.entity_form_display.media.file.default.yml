@@ -39,7 +39,7 @@ content:
     weight: 100
     region: content
     settings:
-    display_label: true
+      display_label: true
     third_party_settings: {  }
 hidden:
   created: true

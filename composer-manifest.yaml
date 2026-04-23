@@ -75,6 +75,7 @@ packages:
     drupal/field_defaults: 1.3.0
     drupal/field_group: 3.2.0
     drupal/fillpdf: 5.0.0
+    drupal/find_text: 2.0.6
     drupal/fixed_block_content: 1.1.0
     drupal/flag: 4.0.0-beta3
     drupal/focal_point: 1.5.0

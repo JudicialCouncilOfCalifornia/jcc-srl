@@ -26,8 +26,6 @@ New JavaScript files should be used when their contents should be loaded conditi
 ```diff
   mix
     .js('src/js/atrium.script.js', 'js')
--   .js('src/js/howtotabs.js', 'js');
-+   .js('src/js/howtotabs.js', 'js')
 +   .js('src/js/new-file.js', 'js');
 ```
 

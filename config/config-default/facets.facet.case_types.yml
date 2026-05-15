@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - search_api.index.index
+    - search_api.index.solr_index
     - views.view.solr_search
   module:
     - search_api

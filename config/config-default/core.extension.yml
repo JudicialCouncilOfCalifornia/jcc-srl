@@ -77,6 +77,7 @@ module:
   jcc_chatbot: 0
   jcc_datefinder: 0
   jcc_forms: 0
+  jcc_pdf_upload_validation_checker: 0
   jcc_twig: 0
   jsonapi: 0
   jsonapi_extras: 0

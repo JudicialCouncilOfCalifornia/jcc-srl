@@ -74,7 +74,6 @@ mix
   .js("src/js/chatbot-banner.js", "js")
   .js("src/js/datefinder.js", "js")
   .js("src/js/submit-scroll.js", "js")
-  .js("src/js/howToTabs.js", "js")
   .js("src/js/jump-nav.js", "js")
   .js("src/js/find-courts.js", "js")
   .js("src/js/jsBackButton.js", "js");

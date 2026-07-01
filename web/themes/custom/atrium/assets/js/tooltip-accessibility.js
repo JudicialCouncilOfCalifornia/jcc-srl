@@ -36,6 +36,16 @@
         var ariaLabel = triggerText ? triggerText + '. ' + tooltipText : tooltipText;
 
         element.setAttribute('aria-label', ariaLabel);
+
+        // Some tooltips are wrapped with nested spans or other focus targets.
+        // Mirror the same label onto likely focusable descendants so SR output
+        // remains consistent when focus lands on an inner node.
+        var nestedTargets = element.querySelectorAll('span, a, button, [tabindex], [role]');
+        Array.prototype.forEach.call(nestedTargets, function(target) {
+          if (!target.getAttribute('aria-label')) {
+            target.setAttribute('aria-label', ariaLabel);
+          }
+        });
       });
     }
   };

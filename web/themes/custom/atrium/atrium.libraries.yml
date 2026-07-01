@@ -7,6 +7,7 @@ style:
         minified: true
   js:
     assets/js/atrium.script.js: {}
+    assets/js/tooltip-accessibility.js: {}
   dependencies:
     - core/jquery
     - core/drupal

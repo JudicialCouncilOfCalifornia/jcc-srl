@@ -1,0 +1,43 @@
+(function($, Drupal) {
+  'use strict';
+
+  function getTooltipText(rawTooltip) {
+    if (!rawTooltip) {
+      return '';
+    }
+
+    try {
+      var settings = JSON.parse(rawTooltip);
+      if (!settings || !settings.content) {
+        return '';
+      }
+
+      // Tooltip content can contain markup; convert to plain text for ARIA.
+      var parser = document.createElement('div');
+      parser.innerHTML = settings.content;
+      return (parser.textContent || parser.innerText || '').trim();
+    }
+    catch (error) {
+      return '';
+    }
+  }
+
+  Drupal.behaviors.tooltipAccessibility = {
+    attach: function(context) {
+      $('[data-tooltip]', context).each(function() {
+        var element = this;
+        var tooltipText = getTooltipText(element.getAttribute('data-tooltip'));
+
+        if (!tooltipText) {
+          return;
+        }
+
+        var triggerText = (element.textContent || '').trim();
+        var ariaLabel = triggerText ? triggerText + '. ' + tooltipText : tooltipText;
+
+        element.setAttribute('aria-label', ariaLabel);
+      });
+    }
+  };
+
+})(jQuery, Drupal);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d762794b1226f1e38e01e18f23d53720",
+    "content-hash": "e6ef3479a4e97d1f5b7305e9dac7be44",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5009,6 +5009,54 @@
             "homepage": "https://www.drupal.org/project/fillpdf",
             "support": {
                 "source": "https://git.drupalcode.org/project/fillpdf"
+            }
+        },
+        {
+            "name": "drupal/find_text",
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/find_text.git",
+                "reference": "2.0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/find_text-2.0.6.zip",
+                "reference": "2.0.6",
+                "shasum": "2e8d2ab3968731dcb340e4017f5e2e38e9c524fb"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.6",
+                    "datestamp": "1731702316",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "cskeers",
+                    "homepage": "https://www.drupal.org/user/3651804"
+                },
+                {
+                    "name": "mytungsten",
+                    "homepage": "https://www.drupal.org/user/1145210"
+                }
+            ],
+            "description": "Search all text fields for a specific string.",
+            "homepage": "https://www.drupal.org/project/find_text",
+            "support": {
+                "source": "https://git.drupalcode.org/project/find_text"
             }
         },
         {
@@ -10697,16 +10745,16 @@
         },
         {
             "name": "judicialcouncil/courtyard-artifact",
-            "version": "0.1.481",
+            "version": "0.1.494",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact.git",
-                "reference": "035eaec2fa89af79a98288623a62ac072b9d92f3"
+                "reference": "0739d1595a00d65a9ef095dc318bd7aee43ad3a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/035eaec2fa89af79a98288623a62ac072b9d92f3",
-                "reference": "035eaec2fa89af79a98288623a62ac072b9d92f3",
+                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/0739d1595a00d65a9ef095dc318bd7aee43ad3a1",
+                "reference": "0739d1595a00d65a9ef095dc318bd7aee43ad3a1",
                 "shasum": ""
             },
             "type": "drupal-library",
@@ -10723,9 +10771,9 @@
             "description": "A build artifact of the Courtyard Pattern Lab pattern library.",
             "support": {
                 "issues": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/issues",
-                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.481"
+                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.494"
             },
-            "time": "2026-03-10T19:39:42+00:00"
+            "time": "2026-06-24T21:10:35+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

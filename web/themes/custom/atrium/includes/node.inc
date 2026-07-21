@@ -5,8 +5,6 @@
  * Theme functions for the node template.
  */
 
-use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Url;
 
 /**
@@ -68,29 +66,4 @@ function atrium_preprocess_node__srl_onramp__full(&$variables) {
     }
     $variables['has_jump_nav'] = $has_create_anchor;
   }
-}
-
-/**
- * Implements hook_node_field__node__body().
- */
-function atrium_preprocess_field__node__body(&$variables) {
-  if (isset($variables['items'])) {
-    foreach ($variables['items'] as &$element) {
-      if (isset($element['content']['#text'])) {
-        // Modify content dynamically on render to address ADA concerns in body content.
-        // TO-DO: Revisit if still a need with Drupal 10/11.
-        $element['content']['#text'] = __jcc_content_auditing($element['content']['#text']);
-      }
-    }
-  }
-}
-
-/**
- * Helper function for extended content auditing.
- */
-function __jcc_content_auditing($text) {
-  // Wrap unicode symbols with aria-hidden span.
-  // Address only symbols missing aria-hidden use.
-  $pattern = '/<span[^>]*\baria-hidden\s*=\s*["\']?[^>]*>(.*?)<\/span>(*SKIP)(*FAIL)|\p{So}+/um';
-  return preg_replace($pattern, '<span aria-hidden="true">$0</span>', $text);
 }

@@ -9,12 +9,14 @@
  * Implements hook_node_field__node__body().
  */
 function atrium_preprocess_field(&$variables) {
-  $entity = $variables['element']['#object'];
   $field_name = $variables['element']['#field_name'];
 
-  if ($entity && $entity->get($field_name)->format) {
-    switch ($entity->get($field_name)->format) {
-      case 'basic_html':
+  if ($field_name) {
+    switch ($field_name) {
+      case 'body':
+      case 'field_column_first':
+      case 'field_body':
+      case 'field_heading':
         if (isset($variables['items'])) {
           foreach ($variables['items'] as &$element) {
             if (isset($element['content']['#text'])) {
@@ -33,6 +35,7 @@ function atrium_preprocess_field(&$variables) {
  */
 function __jcc_content_auditing($text) {
   // ADA support for Unicode symbols (ADA-368).
+  // Requires <span aria-hidden> to be allowed text format.
   // TO-DO: Revisit if still a need with Drupal 10/11.
   // 1. Suppress symbol aria-hidden attempts before ADA-368 fix.
   $manual_spans = '/<span>(.*?\p{So}.*?)<\/span>/um';

@@ -14,9 +14,18 @@ function atrium_preprocess_field(&$variables) {
   if ($field_name) {
     switch ($field_name) {
       case 'body':
-      case 'field_column_first':
-      case 'field_body':
       case 'field_heading':
+      case 'field_column_first':
+      case 'field_column_second':
+      case 'field_column_content_right':
+      case 'field_columns':
+      case 'field_body':
+      case 'field_description':
+      case 'field_details':
+      case 'field_complete':
+      case 'field_additional':
+      case 'field_top_read_more_modal':
+      case 'field_bottom_read_more_modal':
         if (isset($variables['items'])) {
           foreach ($variables['items'] as &$element) {
             if (isset($element['content']['#text'])) {
@@ -40,10 +49,7 @@ function __jcc_content_auditing($text) {
   // 1. Suppress symbol aria-hidden attempts before ADA-368 fix.
   $manual_spans = '/<span>(.*?\p{So}.*?)<\/span>/um';
   $text = preg_replace($manual_spans, '$1', $text);
-  // 2. Suppress symbols duplicating external link icons.
-  $manual_external_icon = '/\x{2197}/um';
-  $text = preg_replace($manual_external_icon, '', $text);
-  // 3. Address symbols missing aria-hidden use.
+  // 2. Address symbols missing aria-hidden use.
   $pattern = '/<span[^>]*\baria-hidden\s*=\s*["\']?[^>]*>(.*?)<\/span>(*SKIP)(*FAIL)|\p{So}+/um';
   return preg_replace($pattern, '<span aria-hidden="true">$0</span>', $text);
 }

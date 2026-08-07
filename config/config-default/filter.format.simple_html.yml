@@ -1,9 +1,7 @@
 uuid: a076594c-ffa4-4fa6-9778-16fb6213ecb8
 langcode: en
 status: true
-dependencies:
-  module:
-    - media
+dependencies: {  }
 name: 'Simple HTML'
 format: simple_html
 weight: 0
@@ -14,7 +12,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<em> <strong>'
+      allowed_html: '<em> <strong> <span aria-hidden>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -23,12 +21,3 @@ filters:
     status: true
     weight: 10
     settings: {  }
-  media_embed:
-    id: media_embed
-    provider: media
-    status: false
-    weight: 100
-    settings:
-      default_view_mode: default
-      allowed_view_modes: {  }
-      allowed_media_types: {  }

@@ -34,6 +34,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  replace_file:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     weight: 100

@@ -254,13 +254,15 @@ final class PdfAuditRunner {
         $this->markEqualWebSummary(
           $file,
           $errors,
-          'EqualWeb audit request failed.'
+          'EqualWeb audit request failed.',
+          $reportId
         );
 
         return [
           'ok' => FALSE,
           'passed' => FALSE,
           'summary' => 'EqualWeb audit request failed.',
+          'report_id' => $reportId,
           'errors' => $errors,
           'raw' => [
             'upload' => $uploadJson,
@@ -320,13 +322,15 @@ final class PdfAuditRunner {
           $this->markEqualWebSummary(
             $file,
             $errors,
-            'EqualWeb audit failed.'
+            'EqualWeb audit failed.',
+            $reportId
           );
 
           return [
             'ok' => FALSE,
             'passed' => FALSE,
             'summary' => 'EqualWeb audit failed.',
+            'report_id' => $reportId,
             'errors' => $errors,
             'raw' => [
               'upload' => $uploadJson,
@@ -447,7 +451,8 @@ final class PdfAuditRunner {
           'audit' => $auditJson,
           'status' => $statusJson,
         ],
-        $reportCode
+        $reportCode,
+        $reportId
       );
     }
     catch (\Throwable $e) {
@@ -470,7 +475,7 @@ final class PdfAuditRunner {
   /**
    * Normalize EqualWeb report into the same structure as the existing API.
    */
-  private function normalizeEqualWebReport(FileInterface $file, array $reportJson, array $context = [], int $statusCode = 200): array {
+  private function normalizeEqualWebReport(FileInterface $file, array $reportJson, array $context = [], int $statusCode = 200, string $reportId = ''): array {
     if (!empty($reportJson['audited']) && is_array($reportJson['audited'])) {
       $reportJson = $reportJson['audited'] + ['original' => $reportJson['original'] ?? NULL];
     }
@@ -480,6 +485,9 @@ final class PdfAuditRunner {
 
     $errors = [];
     $failed = 0;
+    $blockingRuleMatches = 0;
+    $blockingErrorCount = 0;
+    $nonBlockingRuleMatches = 0;
     $manualFailed = 0;
     $needsManualCheck = 0;
     $recognizedSignal = FALSE;
@@ -512,6 +520,12 @@ final class PdfAuditRunner {
         $ruleId = (string) ($item['rule_id'] ?? '');
         $errorCount = (int) ($item['error'] ?? 0);
         $warningCount = (int) ($item['warning'] ?? 0);
+        $wcagLevel = trim((string) (
+          $item['wcag_level']
+          ?? $item['wcagLevel']
+          ?? $item['wcag']
+          ?? ''
+        ));
 
         if ($errorCount > 0) {
           $failedRuleCount++;
@@ -523,9 +537,21 @@ final class PdfAuditRunner {
           if ($description !== '') {
             $label .= ' — ' . $description;
           }
-          $label .= ' [errors: ' . $errorCount . ']';
+          $label .= ' [errors: ' . $errorCount;
+          if ($wcagLevel !== '') {
+            $label .= ', wcag_level: ' . $wcagLevel;
+          }
+          $label .= ']';
 
-          $errors[] = $label;
+          // Blocking rule: same check item must have errors and a WCAG level.
+          if ($wcagLevel !== '') {
+            $blockingRuleMatches++;
+            $blockingErrorCount += $errorCount;
+            $errors[] = $label;
+          }
+          else {
+            $nonBlockingRuleMatches++;
+          }
         }
         elseif ($warningCount > 0) {
           $warningRuleCount++;
@@ -550,38 +576,10 @@ final class PdfAuditRunner {
 
     if (!empty($reportJson['Detailed Report']) && is_array($reportJson['Detailed Report'])) {
       $recognizedSignal = TRUE;
-
-      foreach ($reportJson['Detailed Report'] as $section => $items) {
-        if (!is_array($items)) {
-          continue;
-        }
-
-        foreach ($items as $item) {
-          if (!is_array($item)) {
-            continue;
-          }
-
-          $status = strtolower((string) ($item['Status'] ?? ''));
-          if ($status !== 'failed') {
-            continue;
-          }
-
-          $label = (string) ($item['Rule'] ?? 'Unknown check');
-          $description = (string) ($item['Description'] ?? '');
-          if ($section !== '') {
-            $label = $section . ': ' . $label;
-          }
-          if ($description !== '') {
-            $label .= ' — ' . $description;
-          }
-
-          $errors[] = $label;
-        }
-      }
     }
 
-    // Warnings/manual checks do not block pass.
-    $passed = $recognizedSignal && $failed === 0 && $manualFailed === 0;
+    // Only this rule blocks validation: same item has errors and WCAG level.
+    $passed = $recognizedSignal && $blockingRuleMatches === 0;
 
     if (!$recognizedSignal) {
       $errors[] = 'EqualWeb report format was not recognized.';
@@ -590,22 +588,26 @@ final class PdfAuditRunner {
       $errors[] = 'EqualWeb reported accessibility issues.';
     }
 
-    $summaryText = $passed
-      ? ($needsManualCheck > 0
-        ? sprintf('PDF passed validation with %d warning(s) / manual review item(s).', $needsManualCheck)
-        : 'PDF passed validation.')
-      : sprintf(
-        'PDF failed validation. Failed: %d, Failed manually: %d, Needs manual check: %d.',
-        $failed,
-        $manualFailed,
-        $needsManualCheck
-      );
     if ($passed) {
-      $this->clearEqualWebSummary($file);
+      if ($nonBlockingRuleMatches > 0 || $needsManualCheck > 0) {
+        $summaryText = sprintf(
+          "PDF passed validation.\n\nSome accessibility issues are not blocking but should be corrected when possible.\n- Non-blocking issues: %d\n- Manual review items: %d\n\nRule: a check blocks validation only when it doesn't meet WCAG standards (A or AA) See the full report linked above for results of the validation check.",
+          $nonBlockingRuleMatches,
+          $needsManualCheck
+        );
+      }
+      else {
+        $summaryText = 'PDF passed validation.';
+      }
     }
     else {
-      $this->markEqualWebSummary($file, $errors, $summaryText);
+      $summaryText = sprintf(
+        "PDF did not pass validation.\n\nPlease fix the blocking accessibility issues and re-upload.\n- Blocking issues: %d\n- Error instances: %d\n\nRule: a check blocks validation only when it doesn't meet WCAG standards (A or AA) See the full report linked above for results of the validation check.",
+        $blockingRuleMatches,
+        $blockingErrorCount
+      );
     }
+    $this->markEqualWebSummary($file, $passed ? [] : $errors, $summaryText, $reportId);
 
     return [
       'ok' => TRUE,
@@ -614,19 +616,24 @@ final class PdfAuditRunner {
       'errors' => $errors,
       'raw' => $reportJson + $context,
       'status_code' => $statusCode,
+      'report_id' => $reportId,
     ];
   }
 
   /**
    * Write a readable summary to the file entity.
    */
-  private function markEqualWebSummary(FileInterface $file, array $errors = [], string $summary = ''): void {
+  private function markEqualWebSummary(FileInterface $file, array $errors = [], string $summary = '', string $reportId = ''): void {
     if (!$file->hasField('field_pdf_audit_summary')) {
       return;
     }
 
     try {
       $text = $summary ?: 'EqualWeb validation failed.';
+
+      if ($reportId !== '') {
+        $text .= "\n\nView full report: https://login.equalweb.com/reports/pdf/" . $reportId;
+      }
 
       if (!empty($errors)) {
         $text .= "\n\nIssues:\n- " . implode("\n- ", $errors);

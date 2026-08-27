@@ -77,6 +77,22 @@ final class DetailsModalController extends ControllerBase {
       ];
     }
 
+    $raw_text = (string) $entity->get($field_name)->value;
+
+    $report_link = '';
+    if (preg_match('~https?://[^\s]+~', $raw_text, $match)) {
+      $url = htmlspecialchars($match[0], ENT_QUOTES, 'UTF-8');
+      $report_link = '<p><strong>View full report:</strong> <a href="' . $url . '" target="_blank" rel="noopener noreferrer">View full report</a></p>';
+    }
+
+    // Remove URLs from the summary body and preserve line breaks.
+    $summary_text = preg_replace('~https?://[^\s]+~', '', $raw_text) ?? '';
+
+    // Drop the now-empty report label line after URL removal.
+    $summary_text = preg_replace('/^\s*View full report:\s*$/mi', '', $summary_text) ?? $summary_text;
+
+    $processed = nl2br(htmlspecialchars(trim($summary_text), ENT_QUOTES, 'UTF-8'));
+
     return [
       '#type' => 'container',
       '#attributes' => [
@@ -87,9 +103,12 @@ final class DetailsModalController extends ControllerBase {
           'jcc_pdf_upload_validation_checker/details_modal',
         ],
       ],
-      'content' => $entity->get($field_name)->view([
-        'label' => 'hidden',
-      ]),
+      'report_link' => [
+        '#markup' => $report_link,
+      ],
+      'content' => [
+        '#markup' => $processed,
+      ],
     ];
   }
 

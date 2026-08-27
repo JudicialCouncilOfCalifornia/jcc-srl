@@ -4,7 +4,7 @@ jcc_pdf_upload_validation_checker.settings_form:
     _title: 'JCC PDF upload validation checker settings'
     _form: 'Drupal\jcc_pdf_upload_validation_checker\Form\SettingsForm'
   requirements:
-    _permission: 'administer jcc_pdf_upload_validation_checker configuration'
+    _permission: 'administer site configuration'
 
 jcc_pdf_upload_validation_checker.details_modal:
   path: '/jcc-pdf-upload-validation-checker/details/{entity_type}/{entity}/{field_name}'
@@ -13,3 +13,11 @@ jcc_pdf_upload_validation_checker.details_modal:
     _title: 'Audit Summary from EqualWeb'
   requirements:
     _permission: 'access content'
+
+jcc_pdf_upload_validation_checker.bypass_audit_log:
+  path: '/admin/reports/jcc-pdf-bypass-audit-log'
+  defaults:
+    _controller: '\Drupal\jcc_pdf_upload_validation_checker\Controller\BypassAuditLogController::content'
+    _title: 'PDF Bypass Audit Log'
+  requirements:
+    _custom_access: '\Drupal\jcc_pdf_upload_validation_checker\Controller\BypassAuditLogController::access'

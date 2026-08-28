@@ -308,6 +308,11 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  replace_file:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   translation:
     weight: 12
     region: content

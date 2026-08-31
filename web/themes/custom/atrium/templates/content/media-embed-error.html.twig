@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Theme override for a missing/unavailable embedded media message.
+ *
+ * Classy (atrium's base theme) overrides this template to add
+ * "media-embed-error" / "media-embed-error--missing-source" classes meant
+ * for the CKEditor authoring preview. Atrium overrides it back to the bare
+ * markup so the message renders without that styling on the front end.
+ *
+ * Available variables
+ * - message: The message text.
+ * - attributes: HTML attributes for the containing element.
+ */
+#}
+<div{{ attributes }}>
+  {{ message }}
+</div>

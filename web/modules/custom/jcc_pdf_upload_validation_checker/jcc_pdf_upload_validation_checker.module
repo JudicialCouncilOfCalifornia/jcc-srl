@@ -7,6 +7,7 @@
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Entity\EntityInterface;
@@ -18,11 +19,82 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
+use Drupal\jcc_pdf_upload_validation_checker\Render\BlockedMediaLinkPostRender;
 use Drupal\media\MediaInterface;
 use Drupal\taxonomy\TermInterface;
 use Drupal\taxonomy\VocabularyInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Views;
+
+/**
+ * Implements hook_media_embed_alter().
+ *
+ * Entity Embed (the "Embed media" CKEditor button, used for
+ * <div data-embed-button="file" data-entity-type="media" ...> embeds) sets
+ * "#access" on the render array and, like core's media_embed filter, that
+ * makes the render system silently output nothing when the embedded media
+ * isn't accessible (e.g. unpublished, viewed while logged out). It also
+ * otherwise renders a working-looking link even when the referenced file
+ * failed PDF validation. Show a message instead of nothing/a bad link in
+ * both cases, unless the user is privileged enough to view unpublished
+ * media, in which case they still see the real (possibly PDF-validation
+ * blocked) link/content.
+ *
+ * @see \Drupal\entity_embed\EntityEmbedBuilder::buildEntityEmbed()
+ * @see \Drupal\jcc_pdf_upload_validation_checker\Render\BlockedMediaLinkPostRender
+ */
+function jcc_pdf_upload_validation_checker_media_embed_alter(array &$build, MediaInterface $media, array $context): void {
+  $access = $media->access('view', NULL, TRUE);
+  $unpublished_access = _jcc_pdf_upload_validation_checker_unpublished_media_access($media);
+
+  $blocked_by_pdf = !$unpublished_access->isAllowed() && BlockedMediaLinkPostRender::mediaHasBlockingPdf($media);
+
+  if (!$access->isAllowed() || $blocked_by_pdf) {
+    $build = [
+      '#theme' => 'media_embed_error',
+      '#message' => t('[Document unavailable]'),
+      // Carry over the view access result's cacheability (e.g. the
+      // "user.permissions" cache context) so the message only renders for
+      // users who actually can't view the media (would get a 403), and
+      // users with access to unpublished media still see the real link.
+      '#access' => AccessResult::allowed()
+        ->addCacheableDependency($access)
+        ->addCacheableDependency($unpublished_access),
+    ];
+  }
+}
+
+/**
+ * Determines if the current user could view this media if it were unpublished.
+ *
+ * Mirrors \Drupal\media\MediaAccessControlHandler::checkAccess()'s
+ * unpublished-media logic (admin permission, or owner with "view own
+ * unpublished media"), independent of the media's actual published state, so
+ * privileged users aren't shown the PDF-validation fallback message just
+ * because a referenced file failed validation.
+ *
+ * @param \Drupal\media\MediaInterface $media
+ *   The media entity.
+ *
+ * @return \Drupal\Core\Access\AccessResultInterface
+ *   The access result.
+ *
+ * @see \Drupal\media\MediaAccessControlHandler::checkAccess()
+ */
+function _jcc_pdf_upload_validation_checker_unpublished_media_access(MediaInterface $media): AccessResultInterface {
+  $account = \Drupal::currentUser();
+
+  if ($account->hasPermission('administer media')) {
+    return AccessResult::allowed()->cachePerPermissions();
+  }
+
+  $is_owner = $account->id() && $account->id() == $media->getOwnerId();
+
+  return AccessResult::allowedIf($account->hasPermission('view own unpublished media') && $is_owner)
+    ->cachePerPermissions()
+    ->cachePerUser()
+    ->addCacheableDependency($media);
+}
 
 /**
  * Implements hook_element_info_alter().
@@ -311,6 +383,20 @@ function jcc_pdf_upload_validation_checker_form_alter(array &$form, FormStateInt
     return;
   }
 
+  // Entity Browser modal forms (e.g. WYSIWYG "Select media item to embed")
+  // use nested Inline Entity Form structures. Attach our managed_file process
+  // callback recursively so manual check/pill/bypass controls render there too.
+  if ($form_id === 'entity_browser_form' || str_starts_with($form_id, 'entity_browser_')) {
+    _jcc_pdf_upload_validation_checker_alter_entity_browser_form($form, $form_state);
+
+    $bypass_enabled = (bool) \Drupal::config('jcc_pdf_upload_validation_checker.settings')->get('pdf_validation_bypass');
+    if ($bypass_enabled) {
+      _jcc_pdf_upload_validation_checker_prepend_bypass_submit($form);
+    }
+
+    return;
+  }
+
   $form_object = $form_state->getFormObject();
   if (!method_exists($form_object, 'getEntity')) {
     return;
@@ -532,6 +618,7 @@ function jcc_pdf_upload_validation_checker_preprocess_field(array &$variables): 
 function _jcc_pdf_upload_validation_checker_file_fields(): array {
   return [
     'field_media_file',
+    'field_media_file_1',
     'field_media_file_farsi',
     'field_media_file_arabic',
     'field_media_file_cambodian',
@@ -547,6 +634,300 @@ function _jcc_pdf_upload_validation_checker_file_fields(): array {
     'field_media_file_tagalog',
     'field_media_file_vietnamese',
   ];
+}
+
+/**
+ * Recursively alter entity browser forms to hook managed file widgets.
+ */
+function _jcc_pdf_upload_validation_checker_alter_entity_browser_form(array &$form, FormStateInterface $form_state): void {
+  _jcc_pdf_upload_validation_checker_attach_process_to_known_field_widgets($form);
+  _jcc_pdf_upload_validation_checker_attach_process_recursively($form);
+  _jcc_pdf_upload_validation_checker_inject_entity_browser_inline_entity_controls($form, $form_state);
+}
+
+/**
+ * Base form alter for Entity Browser forms.
+ */
+function jcc_pdf_upload_validation_checker_form_entity_browser_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  _jcc_pdf_upload_validation_checker_alter_entity_browser_form($form, $form_state);
+
+  $bypass_enabled = (bool) \Drupal::config('jcc_pdf_upload_validation_checker.settings')->get('pdf_validation_bypass');
+  if ($bypass_enabled) {
+    _jcc_pdf_upload_validation_checker_prepend_bypass_submit($form);
+  }
+}
+
+/**
+ * Form alter for the File WYSIWYG Entity Browser instance.
+ */
+function jcc_pdf_upload_validation_checker_form_entity_browser_file_wysiwyg_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  jcc_pdf_upload_validation_checker_form_entity_browser_form_alter($form, $form_state, $form_id);
+}
+
+/**
+ * Form alter for Media Entity Browser WYSIWYG instance.
+ */
+function jcc_pdf_upload_validation_checker_form_entity_browser_media_entity_browser_wysiwyg_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  jcc_pdf_upload_validation_checker_form_entity_browser_form_alter($form, $form_state, $form_id);
+}
+
+/**
+ * Inject checker UI into Entity Browser inline media forms as a fallback.
+ */
+function _jcc_pdf_upload_validation_checker_inject_entity_browser_inline_entity_controls(array &$form, FormStateInterface $form_state): void {
+  $injected = 0;
+  _jcc_pdf_upload_validation_checker_inject_controls_for_media_entities($form, 'entity-browser', $injected);
+
+  // Inline Entity Form rows are keyed by uploaded media UUID in this widget.
+  // In some rebuild phases, #entity is not yet present in the rendered tree,
+  // but media entities exist in form state. Use that as a fallback source.
+  if ($injected === 0) {
+    _jcc_pdf_upload_validation_checker_inject_controls_from_uploaded_entities($form, $form_state, $injected);
+  }
+}
+
+/**
+ * Fallback injection using uploaded entities from form state.
+ */
+function _jcc_pdf_upload_validation_checker_inject_controls_from_uploaded_entities(array &$form, FormStateInterface $form_state, int &$injected): void {
+  $uploaded_entities = $form_state->get('uploaded_entities');
+  if (!is_array($uploaded_entities) || empty($uploaded_entities)) {
+    return;
+  }
+
+  foreach ($uploaded_entities as $entity_key => $media) {
+    if (!$media instanceof MediaInterface) {
+      continue;
+    }
+
+    $pdf_data = _jcc_pdf_upload_validation_checker_get_pdf_file_field_from_media($media);
+    if (!$pdf_data) {
+      continue;
+    }
+
+    $file = $pdf_data['file'];
+    $file_field = $pdf_data['field'];
+    _jcc_pdf_upload_validation_checker_normalize_temporary_upload_status($file);
+
+    if (isset($form['widget']['entities'][$entity_key]) && is_array($form['widget']['entities'][$entity_key])) {
+      if (!empty($form['widget']['entities'][$entity_key]['form']) && is_array($form['widget']['entities'][$entity_key]['form'])) {
+        _jcc_pdf_upload_validation_checker_attach_controls_to_container(
+          $form['widget']['entities'][$entity_key]['form'],
+          $file,
+          $file_field,
+          'entity-browser-uploaded-' . $entity_key,
+          $injected
+        );
+      }
+      else {
+        _jcc_pdf_upload_validation_checker_attach_controls_to_container(
+          $form['widget']['entities'][$entity_key],
+          $file,
+          $file_field,
+          'entity-browser-uploaded-' . $entity_key,
+          $injected
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Recursively find media inline entity forms and inject checker controls.
+ */
+function _jcc_pdf_upload_validation_checker_inject_controls_for_media_entities(array &$element, string $context_prefix, int &$injected): void {
+  if (!empty($element['#entity']) && $element['#entity'] instanceof MediaInterface) {
+    _jcc_pdf_upload_validation_checker_inject_controls_for_media_inline_entity($element, $element['#entity'], $context_prefix, $injected);
+  }
+
+  foreach (Element::children($element) as $child_key) {
+    if (isset($element[$child_key]) && is_array($element[$child_key])) {
+      _jcc_pdf_upload_validation_checker_inject_controls_for_media_entities($element[$child_key], $context_prefix . '-' . $child_key, $injected);
+    }
+  }
+}
+
+/**
+ * Inject checker controls for one media inline entity form element.
+ */
+function _jcc_pdf_upload_validation_checker_inject_controls_for_media_inline_entity(array &$element, MediaInterface $media, string $context_prefix, int &$injected): void {
+  $pdf_data = _jcc_pdf_upload_validation_checker_get_pdf_file_field_from_media($media);
+  if (!$pdf_data) {
+    return;
+  }
+
+  $file = $pdf_data['file'];
+  $file_field = $pdf_data['field'];
+
+  _jcc_pdf_upload_validation_checker_normalize_temporary_upload_status($file);
+
+  if (!empty($element['form']) && is_array($element['form'])) {
+    _jcc_pdf_upload_validation_checker_attach_controls_to_container($element['form'], $file, $file_field, $context_prefix, $injected);
+  }
+  else {
+    _jcc_pdf_upload_validation_checker_attach_controls_to_container($element, $file, $file_field, $context_prefix, $injected);
+  }
+}
+
+/**
+ * Returns the first PDF file and field name found on a media entity.
+ *
+ * @return array<string, mixed>|null
+ *   ['file' => FileInterface, 'field' => string] or NULL.
+ */
+function _jcc_pdf_upload_validation_checker_get_pdf_file_field_from_media(MediaInterface $media): ?array {
+  foreach (_jcc_pdf_upload_validation_checker_file_fields() as $field_name) {
+    if (!$media->hasField($field_name) || !isset($media->get($field_name)[0])) {
+      continue;
+    }
+
+    $candidate_file = $media->get($field_name)[0]->entity;
+    if ($candidate_file instanceof FileInterface && _jcc_pdf_upload_validation_checker_is_pdf($candidate_file)) {
+      return [
+        'file' => $candidate_file,
+        'field' => $field_name,
+      ];
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Attach manual check and bypass controls onto best-matching field container.
+ */
+function _jcc_pdf_upload_validation_checker_attach_controls_to_container(array &$container, FileInterface $file, string $file_field, string $context_prefix, int &$injected): void {
+  $target =& $container;
+
+  if (!empty($container[$file_field]) && is_array($container[$file_field])) {
+    $target =& $container[$file_field];
+  }
+  elseif (!empty($container['fields'][$file_field]) && is_array($container['fields'][$file_field])) {
+    $target =& $container['fields'][$file_field];
+  }
+
+  if (!isset($target['jcc_pdf_manual_check'])) {
+    $context_id = $file_field . '-' . $context_prefix;
+    $target['jcc_pdf_manual_check'] = _jcc_pdf_upload_validation_checker_build_manual_check($file, $context_id);
+    $target['jcc_pdf_manual_check']['#weight'] = 1000;
+    $injected++;
+  }
+
+  $bypass_enabled = (bool) \Drupal::config('jcc_pdf_upload_validation_checker.settings')->get('pdf_validation_bypass');
+  if (!$bypass_enabled || !_jcc_pdf_upload_validation_checker_can_manage_bypass_flag() || !$file->hasField('field_bypass_pdf_validation')) {
+    return;
+  }
+
+  $fid = (int) $file->id();
+  if (!isset($target['jcc_pdf_bypass_validation'])) {
+    $target['jcc_pdf_bypass_validation'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Bypass PDF validation for this file'),
+      '#parents' => ['jcc_pdf_bypass_flags', $fid],
+      '#default_value' => (bool) $file->get('field_bypass_pdf_validation')->value,
+      '#weight' => 1001,
+    ];
+    $injected++;
+  }
+
+  if (!isset($target['jcc_pdf_bypass_reason'])) {
+    $bypass_reason = _jcc_pdf_upload_validation_checker_build_bypass_reason_element($file, $fid, 1002);
+    if ($bypass_reason) {
+      $target['jcc_pdf_bypass_reason'] = $bypass_reason;
+      $injected++;
+    }
+  }
+}
+
+/**
+ * Implements hook_inline_entity_form_entity_form_alter().
+ */
+function jcc_pdf_upload_validation_checker_inline_entity_form_entity_form_alter(array &$entity_form, FormStateInterface &$form_state): void {
+  $complete_form = $form_state->getCompleteForm();
+  $parent_form_id = (string) ($complete_form['#form_id'] ?? '');
+
+  if ($parent_form_id !== 'entity_browser_form' && !str_starts_with($parent_form_id, 'entity_browser_')) {
+    return;
+  }
+
+  if (($entity_form['#entity_type'] ?? '') !== 'media') {
+    return;
+  }
+
+  $media = $entity_form['#entity'] ?? NULL;
+  if (!$media instanceof MediaInterface && !empty($entity_form['#default_value']) && $entity_form['#default_value'] instanceof MediaInterface) {
+    $media = $entity_form['#default_value'];
+  }
+
+  if (!$media instanceof MediaInterface) {
+    return;
+  }
+
+  $pdf_data = _jcc_pdf_upload_validation_checker_get_pdf_file_field_from_media($media);
+  if (!$pdf_data) {
+    return;
+  }
+
+  $file = $pdf_data['file'];
+  $file_field = $pdf_data['field'];
+
+  _jcc_pdf_upload_validation_checker_normalize_temporary_upload_status($file);
+
+  $injected = 0;
+  $context_suffix = method_exists($media, 'uuid') ? (string) $media->uuid() : 'media';
+  _jcc_pdf_upload_validation_checker_attach_controls_to_container(
+    $entity_form,
+    $file,
+    $file_field,
+    'ief-' . $context_suffix,
+    $injected
+  );
+}
+
+/**
+ * Recursively attach process callback to known media file widget delta items.
+ */
+function _jcc_pdf_upload_validation_checker_attach_process_to_known_field_widgets(array &$element): void {
+  foreach (_jcc_pdf_upload_validation_checker_file_fields() as $field_name) {
+    if (!empty($element[$field_name]['widget']) && is_array($element[$field_name]['widget'])) {
+      foreach (Element::children($element[$field_name]['widget']) as $delta) {
+        if (
+          empty($element[$field_name]['widget'][$delta]['#process'])
+          || !in_array('jcc_pdf_upload_validation_checker_media_file_delta_process', $element[$field_name]['widget'][$delta]['#process'], TRUE)
+        ) {
+          $element[$field_name]['widget'][$delta]['#process'][] = 'jcc_pdf_upload_validation_checker_media_file_delta_process';
+        }
+      }
+    }
+  }
+
+  foreach (Element::children($element) as $child_key) {
+    if (isset($element[$child_key]) && is_array($element[$child_key])) {
+      _jcc_pdf_upload_validation_checker_attach_process_to_known_field_widgets($element[$child_key]);
+    }
+  }
+}
+
+/**
+ * Recursively attach our process callback to supported managed_file elements.
+ */
+function _jcc_pdf_upload_validation_checker_attach_process_recursively(array &$element): void {
+  $field_name = $element['#field_name'] ?? NULL;
+
+  if (
+    is_string($field_name)
+    && in_array($field_name, _jcc_pdf_upload_validation_checker_file_fields(), TRUE)
+  ) {
+    if (empty($element['#process']) || !in_array('jcc_pdf_upload_validation_checker_media_file_delta_process', $element['#process'], TRUE)) {
+      $element['#process'][] = 'jcc_pdf_upload_validation_checker_media_file_delta_process';
+    }
+  }
+
+  foreach (Element::children($element) as $child_key) {
+    if (isset($element[$child_key]) && is_array($element[$child_key])) {
+      _jcc_pdf_upload_validation_checker_attach_process_recursively($element[$child_key]);
+    }
+  }
 }
 
 /**
@@ -688,6 +1069,10 @@ function _jcc_pdf_upload_validation_checker_is_supported_media_form(string $form
     $form_id === 'media_directories_combined_upload_form' ||
     preg_match('/^media_.+_(add|edit)_form$/', $form_id)
   ) {
+    return TRUE;
+  }
+
+  if (str_starts_with($form_id, 'entity_browser_')) {
     return TRUE;
   }
 
@@ -1331,20 +1716,62 @@ function jcc_pdf_upload_validation_checker_validate_bypass_reason(array &$form, 
   $valid_reasons = _jcc_pdf_upload_validation_checker_get_bypass_reason_options();
 
   foreach ($bypass_flags as $fid => $bypass_value) {
-    if (!(bool) $bypass_value) {
+    if (!is_numeric($fid)) {
       continue;
     }
 
+    $fid = (int) $fid;
+    if ($fid <= 0) {
+      continue;
+    }
+
+    $file = File::load($fid);
+    if (!$file instanceof FileInterface || !$file->hasField('field_bypass_pdf_validation')) {
+      continue;
+    }
+
+    $new_bypass = (bool) $bypass_value;
     $selected_reason = isset($bypass_reasons[$fid]) && is_numeric($bypass_reasons[$fid])
       ? (int) $bypass_reasons[$fid]
       : 0;
+
+    $previous_bypass = (bool) $file->get('field_bypass_pdf_validation')->value;
+    $previous_reason = $file->hasField('field_bypass_reason')
+      ? (int) $file->get('field_bypass_reason')->target_id
+      : 0;
+
+    if (!(bool) $bypass_value) {
+      _jcc_pdf_upload_validation_checker_store_pending_bypass_update(
+        $fid,
+        [
+          'new_bypass' => FALSE,
+          'new_reason' => 0,
+          'previous_bypass' => $previous_bypass,
+          'previous_reason' => $previous_reason,
+        ]
+      );
+
+      continue;
+    }
 
     if ($selected_reason <= 0 || !isset($valid_reasons[$selected_reason])) {
       $form_state->setErrorByName(
         'jcc_pdf_bypass_reasons][' . $fid,
         t('Select a bypass reason when bypassing PDF validation.')
       );
+
+      continue;
     }
+
+    _jcc_pdf_upload_validation_checker_store_pending_bypass_update(
+      $fid,
+      [
+        'new_bypass' => $new_bypass,
+        'new_reason' => $selected_reason,
+        'previous_bypass' => $previous_bypass,
+        'previous_reason' => $previous_reason,
+      ]
+    );
   }
 }
 
@@ -1732,6 +2159,12 @@ function _jcc_pdf_upload_validation_checker_handle_file_audit_status_transition(
     return;
   }
 
+  // If bypass is active (or pending for this request), this file should not
+  // force media entities into an unpublished state.
+  if (_jcc_pdf_upload_validation_checker_is_file_bypassed_effective($file)) {
+    return;
+  }
+
   /** @var \Drupal\file\FileInterface|null $original */
   $original = \Drupal::entityTypeManager()
     ->getStorage('file')
@@ -1843,8 +2276,7 @@ function _jcc_pdf_upload_validation_checker_enforce_media_pdf_statuses(MediaInte
 
       $status = _jcc_pdf_upload_validation_checker_get_file_audit_status($file);
 
-      $bypassed = $file->hasField('field_bypass_pdf_validation')
-        && (bool) $file->get('field_bypass_pdf_validation')->value;
+      $bypassed = _jcc_pdf_upload_validation_checker_is_file_bypassed_effective($file);
 
       if ($status !== 'pass' && !$bypassed) {
         $blocking_files[] = sprintf(
@@ -1874,6 +2306,31 @@ function _jcc_pdf_upload_validation_checker_enforce_media_pdf_statuses(MediaInte
       '@details' => implode('; ', $blocking_files),
     ]
   );
+}
+
+/**
+ * Returns TRUE when bypass should be treated as enabled for a file.
+ *
+ * Includes pending tempstore updates for the current request so media save
+ * logic does not unpublish due to stale, not-yet-persisted bypass values.
+ */
+function _jcc_pdf_upload_validation_checker_is_file_bypassed_effective(FileInterface $file): bool {
+  if ($file->hasField('field_bypass_pdf_validation')
+    && (bool) $file->get('field_bypass_pdf_validation')->value
+  ) {
+    return TRUE;
+  }
+
+  $fid = (int) $file->id();
+  if ($fid <= 0) {
+    return FALSE;
+  }
+
+  $pending = \Drupal::service('tempstore.private')
+    ->get('jcc_pdf_upload_validation_checker')
+    ->get('pending_bypass_update:' . $fid);
+
+  return is_array($pending) && !empty($pending['new_bypass']);
 }
 
 /**

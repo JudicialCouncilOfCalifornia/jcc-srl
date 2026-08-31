@@ -25,6 +25,7 @@ final class PdfAuditQueueWorker extends QueueWorkerBase implements ContainerFact
 
   private const MEDIA_FILE_FIELDS = [
     'field_media_file',
+    'field_media_file_1',
     'field_media_file_farsi',
     'field_media_file_arabic',
     'field_media_file_cambodian',
@@ -121,6 +122,10 @@ final class PdfAuditQueueWorker extends QueueWorkerBase implements ContainerFact
         }
 
         if ($file->getMimeType() !== 'application/pdf') {
+          continue;
+        }
+
+        if (\_jcc_pdf_upload_validation_checker_is_file_bypassed_effective($file)) {
           continue;
         }
 

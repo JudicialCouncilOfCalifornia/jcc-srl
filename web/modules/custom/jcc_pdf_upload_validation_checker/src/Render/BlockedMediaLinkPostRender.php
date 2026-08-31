@@ -99,7 +99,7 @@ final class BlockedMediaLinkPostRender implements TrustedCallbackInterface {
    * @return bool
    *   TRUE if one referenced PDF is pending or failed.
    */
-  protected static function mediaHasBlockingPdf(MediaInterface $media): bool {
+  public static function mediaHasBlockingPdf(MediaInterface $media): bool {
     foreach (self::mediaFileFields() as $field_name) {
       if (!$media->hasField($field_name) || $media->get($field_name)->isEmpty()) {
         continue;

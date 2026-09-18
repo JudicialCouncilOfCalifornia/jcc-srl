@@ -13,6 +13,7 @@ dependencies:
     - insert_view_adv
     - linkit
     - media
+    - srl_custom
     - tooltip
 _core:
   default_config_hash: BnGlCo0vmNy0GkKYdERYcGBZQQmwaUrrTo4avO0YSpg
@@ -84,6 +85,12 @@ filters:
     weight: -50
     settings:
       title: false
+  srl_media_link_to_file:
+    id: srl_media_link_to_file
+    provider: srl_custom
+    status: true
+    weight: -51
+    settings: {  }
   filter_html_escape:
     id: filter_html_escape
     provider: filter

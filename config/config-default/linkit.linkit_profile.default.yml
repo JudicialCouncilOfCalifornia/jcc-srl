@@ -27,7 +27,7 @@ matchers:
       metadata: Media
       bundles: {  }
       group_by_bundle: true
-      substitution_type: canonical
+      substitution_type: media
     weight: 0
   23a7e9ee-8fe0-4c82-bc7f-f8d5b5386b25:
     id: 'entity:webform'

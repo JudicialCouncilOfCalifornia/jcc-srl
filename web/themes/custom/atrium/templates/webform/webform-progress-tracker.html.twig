@@ -7,7 +7,6 @@
  */
 #}
 {{ attach_library('webform/webform.progress.tracker') }}
-{{ attach_library('atrium/webform-progress') }}
  {% for index, page in progress %}
     {% set is_completed = index < current_index %}
     {% set is_active = index == current_index %}
@@ -32,7 +31,6 @@
 
         {% include '@molecules/text/header-group/header-group.twig' with {
           headergroup: {
-            tag: wizard_heading_tag|default('h2'),
             title:  page.title
           }
         } %}

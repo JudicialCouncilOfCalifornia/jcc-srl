@@ -20,13 +20,6 @@ patternlab:
   js:
     ../../../libraries/courtyard-artifact/1.x/public/js/scripts.min.js: { minified: true, preprocess: false }
 
-webform-progress:
-  css:
-    theme:
-      assets/css/webform-progress.css: {}
-  dependencies:
-    - atrium/patternlab
-
 datefinder:
   css:
     theme:

@@ -9,6 +9,22 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 
 /**
+ * Implements hook_preprocess_webform_progress_tracker().
+ */
+function atrium_preprocess_webform_progress_tracker(array &$variables) {
+  // Only the standalone route's own form supplies the page's main heading.
+  // Embedded forms keep a subordinate heading, including during AJAX rebuilds.
+  $route_match = \Drupal::routeMatch();
+  $route_webform = $route_match->getParameter('webform');
+  $variables['wizard_heading_tag'] = 'h2';
+  if ($route_match->getRouteName() === 'entity.webform.canonical'
+    && $route_webform instanceof \Drupal\webform\WebformInterface
+    && $route_webform->id() === $variables['webform']->id()) {
+    $variables['wizard_heading_tag'] = 'h1';
+  }
+}
+
+/**
  * Implements hook_preprocess_form_element().
  */
 function atrium_preprocess_form_element(array &$variables) {

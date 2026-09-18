@@ -5,6 +5,7 @@ dependencies:
   module:
     - editor
     - media
+    - srl_custom
 _core:
   default_config_hash: Ntb6R4iBtiXqdVDdJTRFIQFCPmwCTUi9hbphjDkjZWA
 name: 'Full HTML (Developers Only)'
@@ -60,3 +61,9 @@ filters:
     weight: -11
     settings:
       title: false
+  srl_media_link_to_file:
+    id: srl_media_link_to_file
+    provider: srl_custom
+    status: true
+    weight: -12
+    settings: {  }

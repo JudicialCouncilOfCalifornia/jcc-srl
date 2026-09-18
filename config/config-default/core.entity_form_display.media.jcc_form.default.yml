@@ -204,6 +204,11 @@ content:
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
+  replace_file:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_new_form:
     type: boolean_checkbox
     weight: 31

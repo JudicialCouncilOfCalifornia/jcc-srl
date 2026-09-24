@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b174c65fa21e212ee19636e3730e1d22",
+    "content-hash": "b8d8a05e75ad9df24b12a90906781c2a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10745,16 +10745,16 @@
         },
         {
             "name": "judicialcouncil/courtyard-artifact",
-            "version": "0.1.500",
+            "version": "0.1.511",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact.git",
-                "reference": "be33498ea1bfa01fa152038d75d74b318c7dcfdc"
+                "reference": "26706c18adac1e9124764638b26cd706d1901e45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/be33498ea1bfa01fa152038d75d74b318c7dcfdc",
-                "reference": "be33498ea1bfa01fa152038d75d74b318c7dcfdc",
+                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/26706c18adac1e9124764638b26cd706d1901e45",
+                "reference": "26706c18adac1e9124764638b26cd706d1901e45",
                 "shasum": ""
             },
             "type": "drupal-library",
@@ -10771,9 +10771,9 @@
             "description": "A build artifact of the Courtyard Pattern Lab pattern library.",
             "support": {
                 "issues": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/issues",
-                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.500"
+                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.511"
             },
-            "time": "2026-08-07T18:01:30+00:00"
+            "time": "2026-09-17T21:09:53+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

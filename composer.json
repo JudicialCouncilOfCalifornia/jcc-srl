@@ -293,7 +293,8 @@
                 "Media library edit": "https://www.drupal.org/files/issues/2021-01-04/3168868-9.patch",
                 "Invalid render array key": "https://www.drupal.org/files/issues/2022-08-31/3275683-6.patch",
                 "Fix deprecated mb_strtolower": "https://www.drupal.org/files/issues/2023-11-21/3199.patch",
-                "Fix deprecated dirname()": "https://www.drupal.org/files/issues/2023-08-23/core-dirname-3268634-0.patch"
+                "Fix deprecated dirname()": "https://www.drupal.org/files/issues/2023-08-23/core-dirname-3268634-0.patch",
+                "SA-CORE-2026-014 unofficial D9 backport (CVE-2026-108097)": "patches/drupal-core-9.x-SA-CORE-2026-014-backport.patch"
             },
             "drupal/webform": {
                 "By default, do not save submissions.": "patches/disable-results-by-default.patch"

@@ -7,12 +7,7 @@ dependencies:
     - paragraphs.paragraphs_type.cascading_menu
     - paragraphs.paragraphs_type.cascading_menu_item
   module:
-    - datalayer
     - entity_reference_revisions
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_items
 id: paragraph.cascading_menu.field_items
 field_name: field_items
 entity_type: paragraph

@@ -6,12 +6,8 @@ dependencies:
     - field.storage.paragraph.field_label
     - paragraphs.paragraphs_type.menu_links
   module:
-    - datalayer
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_label
   tmgmt_content:
     excluded: false
 id: paragraph.menu_links.field_label

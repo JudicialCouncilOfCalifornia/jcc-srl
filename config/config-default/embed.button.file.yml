@@ -21,7 +21,5 @@ type_settings:
   entity_browser: file_wysiwyg
   entity_browser_settings:
     display_review: false
-icon:
-  uri: 'public://embed_buttons/file.png'
-  data: ''
+icon: {  }
 icon_uuid: null

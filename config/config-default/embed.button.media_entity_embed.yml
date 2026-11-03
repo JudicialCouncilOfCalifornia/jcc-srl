@@ -19,7 +19,5 @@ type_settings:
   entity_browser: media_entity_browser_wysiwyg
   entity_browser_settings:
     display_review: true
-icon:
-  uri: 'public://embed_buttons/media.png'
-  data: ''
+icon: {  }
 icon_uuid: null

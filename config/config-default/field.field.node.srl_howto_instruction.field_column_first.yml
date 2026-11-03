@@ -4,18 +4,15 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_column_first
+    - filter.format.basic_html
     - node.type.srl_howto_instruction
   module:
-    - allowed_formats
     - datalayer
     - text
 third_party_settings:
   datalayer:
     expose: 1
     label: field_column_first
-  allowed_formats:
-    allowed_formats:
-      - basic_html
 id: node.srl_howto_instruction.field_column_first
 field_name: field_column_first
 entity_type: node
@@ -29,4 +26,6 @@ default_value_callback: ''
 settings:
   display_summary: false
   required_summary: false
+  allowed_formats:
+    - basic_html
 field_type: text_with_summary

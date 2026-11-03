@@ -17,7 +17,5 @@ type_settings:
   entity_browser: ''
   entity_browser_settings:
     display_review: false
-icon:
-  uri: 'public://embed_buttons/note.png'
-  data: ''
+icon: {  }
 icon_uuid: null

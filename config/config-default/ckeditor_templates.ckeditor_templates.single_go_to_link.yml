@@ -1,0 +1,30 @@
+uuid: 07978ea0-2f03-423e-a33d-ae2b2b0724b8
+langcode: en
+status: true
+dependencies: {  }
+id: single_go_to_link
+label: 'Single "Go to" Link'
+description: 'Use to easily link to another page.'
+thumb: {  }
+code:
+  value: |-
+    <p>Text Before</p>
+            <div class="jcc-tiles-section jcc-tiles-section--has-two-columns">
+              <ul class="jcc-tiles">
+                <li class="jcc-tiles__item">
+                  <div class="jcc-tile jcc-tile--hover">
+                    <p class="jcc-tile__brow">Go to</p>
+                    <h3 class="jcc-tile__title">
+                      <a href="#">The title of the link tile</a>
+                    </h3>
+                    <div class="jcc-tile__icon-link"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <p>Text After</p>
+  format: basic_html
+formats:
+  basic_html: basic_html
+weight: 13
+thumb_alternative: /themes/custom/atrium/ckeditor/explainer-one.png

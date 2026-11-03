@@ -27,6 +27,7 @@ dependencies:
     - editoria11y
     - field_ui
     - file
+    - help
     - language
     - media
     - menu_link_content
@@ -34,7 +35,6 @@ dependencies:
     - paragraphs
     - rebuild_cache_access
     - search
-    - search_api_exclude_entity
     - system
     - taxonomy
     - tmgmt
@@ -52,6 +52,7 @@ permissions:
   - 'access administration pages'
   - 'access content overview'
   - 'access files overview'
+  - 'access help pages'
   - 'access site reports'
   - 'access toolbar'
   - 'access webform overview'
@@ -65,13 +66,13 @@ permissions:
   - 'administer paragraph fields'
   - 'administer paragraphs settings'
   - 'administer paragraphs types'
-  - 'administer search api exclude entity'
   - 'administer site configuration'
   - 'administer taxonomy_term fields'
   - 'administer tmgmt'
   - 'administer user fields'
   - 'administer views'
   - 'administer webform'
+  - 'administer webform overview'
   - 'create content translations'
   - 'create translation jobs'
   - 'delete all revisions'
@@ -85,6 +86,7 @@ permissions:
   - 'delete content translations'
   - 'delete handbook revisions'
   - 'delete own basic content'
+  - 'delete own files'
   - 'delete own handbook content'
   - 'delete own srl_howto content'
   - 'delete own srl_howto_instruction content'

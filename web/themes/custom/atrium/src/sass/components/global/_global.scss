@@ -1,0 +1,7 @@
+/* Suppressing Drupal external link icon from specific elements/components */
+.jcc-global__menu a svg.ext,
+.jcc-header-base a svg.ext,
+.jcc-tiles a svg.ext {
+  position: absolute;
+  left: -999em;
+}

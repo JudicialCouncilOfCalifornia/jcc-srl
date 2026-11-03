@@ -13,40 +13,13 @@ dependencies:
     - insert_view_adv
     - linkit
     - media
-    - tooltip
+    - srl_custom
 _core:
   default_config_hash: BnGlCo0vmNy0GkKYdERYcGBZQQmwaUrrTo4avO0YSpg
 name: 'Basic HTML'
 format: basic_html
 weight: 0
 filters:
-  filter_html:
-    id: filter_html
-    provider: filter
-    status: true
-    weight: -49
-    settings:
-      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ol type start> <li class="jcc-*"> <dl> <dt> <dd> <h2 id class="usa-* jcc-*"> <h3 id class="usa-* jcc-*"> <h4 id class="usa-* jcc-*"> <h5 id class="usa-* jcc-*"> <h6 id class="usa-* jcc-*"> <br> <span role data-a11y-toggle class=""> <img src alt data-entity-type data-entity-uuid data-entity-substitution data-align data-caption width height> <drupal-entity data-entity-type data-entity-uuid data-entity-substitution data-entity-embed-display data-entity-embed-display-settings data-align data-caption data-embed-button data-langcode alt title> <ul type class="jcc-*"> <div id class="jcc-* usa-* active"> <button data-a11y-toggle class="jcc-read-more__trigger usa-button usa-button--unstyled"> <svg role title class="icon icon-expand_more"> <use href> <drupal-media data-entity-type data-entity-uuid data-entity-substitution data-view-mode data-align data-caption alt title> <p class=" jcc-lead"> <hr> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <h1> <pre> <drupal-view data-arguments data-display-id data-view-id> <a href hreflang !href accesskey id rel aria-label target data-entity-type data-entity-uuid data-entity-substitution href name class="usa-button usa-button--primary usa-button--secondary usa-button--accent-warm usa-button--external external-button webform-dialo* js-back-button"> <span data-tooltip>'
-      filter_html_help: false
-      filter_html_nofollow: false
-  filter_align:
-    id: filter_align
-    provider: filter
-    status: true
-    weight: -48
-    settings: {  }
-  filter_caption:
-    id: filter_caption
-    provider: filter
-    status: false
-    weight: -39
-    settings: {  }
-  filter_html_image_secure:
-    id: filter_html_image_secure
-    provider: filter
-    status: true
-    weight: -47
-    settings: {  }
   editor_file_reference:
     id: editor_file_reference
     provider: editor
@@ -59,36 +32,11 @@ filters:
     status: true
     weight: -45
     settings: {  }
-  media_embed:
-    id: media_embed
-    provider: media
-    status: true
-    weight: -44
-    settings:
-      default_view_mode: embed
-      allowed_view_modes:
-        default: default
-        embed: embed
-        icon: icon
-        original: original
-        wysiwyg: wysiwyg
-      allowed_media_types:
-        image: image
-        remote_video: remote_video
-        snippet: snippet
-        svg: svg
-  linkit:
-    id: linkit
-    provider: linkit
-    status: true
-    weight: -50
-    settings:
-      title: false
-  filter_html_escape:
-    id: filter_html_escape
+  filter_align:
+    id: filter_align
     provider: filter
-    status: false
-    weight: -42
+    status: true
+    weight: -48
     settings: {  }
   filter_autop:
     id: filter_autop
@@ -96,11 +44,44 @@ filters:
     status: false
     weight: -41
     settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: false
+    weight: -39
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -49
+    settings:
+      allowed_html: '<a id name class="usa-button usa-button--secondary usa-button--accent-warm usa-button--external external-button js-back-button" hreflang accesskey href aria-label rel target="_blank" data-entity-type data-entity-uuid data-entity-substitution> <br> <p class="jcc-lead text-align-left text-align-center text-align-right text-align-justify"> <h1 class="text-align-left text-align-center text-align-right text-align-justify"> <h2 id class="usa-* jcc-* text-align-left text-align-center text-align-right text-align-justify"> <h3 id class="usa-* jcc-* text-align-left text-align-center text-align-right text-align-justify"> <h4 id class="usa-* jcc-* text-align-left text-align-center text-align-right text-align-justify"> <h5 id class="usa-* jcc-* text-align-left text-align-center text-align-right text-align-justify"> <h6 id class="usa-* jcc-* text-align-left text-align-center text-align-right text-align-justify"> <li class="jcc-options__item jcc-explainers__item jcc-option__content jcc-explainer__content jcc-callout__content jcc-tiles__item jcc-optionsitem jcc-stepitem jcc-alert__close"> <ul class="jcc-list-group jcc-explainers jcc-options jcc-action-list jcc-tiles" type> <cite> <dl> <dt> <dd> <span role data-a11y-toggle data-tooltip class aria-hidden="true"> <img src alt data-entity-type data-entity-uuid data-entity-substitution data-align data-caption width height> <div id class="jcc-* usa-* active text-align-left text-align-center text-align-right text-align-justify"> <button data-a11y-toggle class="jcc-read-more__trigger usa-button usa-button--unstyled"> <svg role title class="icon icon-expand_more"> <use href> <blockquote cite> <ol type start> <drupal-media data-entity-substitution data-caption title data-entity-type data-entity-uuid alt data-view-mode data-align> <strong> <em> <hr> <table> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption> <drupal-view data-view-id data-display-id data-arguments> <drupal-entity alt title data-align data-caption data-entity-embed-display data-entity-embed-display-settings data-view-mode data-entity-uuid data-langcode data-embed-button="file media_entity_embed node" data-entity-type="media node">'
+      filter_html_help: false
+      filter_html_nofollow: false
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: -42
+    settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: true
+    weight: -47
+    settings: {  }
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
     status: false
     weight: -38
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: -45
     settings: {  }
   filter_url:
     id: filter_url
@@ -119,9 +100,41 @@ filters:
         find_courts=traffic_block: find_courts=traffic_block
       render_as_empty: 0
       hide_argument_input: true
-  tooltip:
-    id: tooltip
-    provider: tooltip
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: -50
+    settings:
+      title: false
+      media_substitution: metadata
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: -44
+    settings:
+      default_view_mode: embed
+      allowed_view_modes:
+        default: default
+        embed: embed
+        icon: icon
+        original: original
+        wysiwyg: wysiwyg
+      allowed_media_types:
+        image: image
+        remote_video: remote_video
+        snippet: snippet
+        svg: svg
+  srl_media_link_to_file:
+    id: srl_media_link_to_file
+    provider: srl_custom
+    status: true
+    weight: -51
+    settings: {  }
+  srl_tooltip:
+    id: srl_tooltip
+    provider: srl_custom
     status: true
     weight: 0
     settings: {  }

@@ -1,0 +1,24 @@
+uuid: 2b15d8f0-8208-4daf-aed1-e45ba0e07fbb
+langcode: en
+status: true
+dependencies: {  }
+id: go_to_link_tile
+label: '"Go to" Link Tile'
+description: 'Tile component for the multiple "Go to" links section.'
+thumb: {  }
+code:
+  value: |-
+    <li class="jcc-tiles__item">
+              <div class="jcc-tile jcc-tile--hover">
+                <p class="jcc-tile__brow">Go to</p>
+                <h3 class="jcc-tile__title">
+                  <a href="#">The title of the link tile</a>
+                </h3>
+                <div class="jcc-tile__icon-link"></div>
+              </div>
+            </li>
+  format: basic_html
+formats:
+  basic_html: basic_html
+weight: 15
+thumb_alternative: /themes/custom/atrium/ckeditor/explainer-one.png

@@ -29,7 +29,7 @@ third_party_settings:
 name: 'JCC SRL Website Handbook'
 type: handbook
 description: 'Pages with end user input define paths of MULPs.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: true

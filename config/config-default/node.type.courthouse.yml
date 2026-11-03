@@ -28,7 +28,7 @@ third_party_settings:
 name: Courthouse
 type: courthouse
 description: 'An individual courthouse within a county-based <em>court</em> system.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

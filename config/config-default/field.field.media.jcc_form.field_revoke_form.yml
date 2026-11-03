@@ -6,12 +6,8 @@ dependencies:
     - field.storage.media.field_revoke_form
     - media.type.jcc_form
   module:
-    - datalayer
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_revoke_form
   tmgmt_content:
     excluded: false
 id: media.jcc_form.field_revoke_form

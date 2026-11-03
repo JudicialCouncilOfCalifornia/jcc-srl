@@ -6,12 +6,7 @@ dependencies:
     - field.storage.media.field_media_image
     - media.type.svg
   module:
-    - datalayer
     - image
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_media_image
 id: media.svg.field_media_image
 field_name: field_media_image
 entity_type: media

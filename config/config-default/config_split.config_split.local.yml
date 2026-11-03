@@ -8,14 +8,15 @@ id: local
 label: Local
 description: 'Local development environments.'
 weight: 0
+stackable: false
+no_patching: false
+storage: folder
 folder: ../config/config-local
 module:
   devel: 0
 theme: {  }
-blacklist: {  }
-graylist:
+complete_list: {  }
+partial_list:
   - system.file
   - 'xmlsitemap.xmlsitemap.*'
   - 'webform.webform.*'
-graylist_dependents: false
-graylist_skip_equal: true

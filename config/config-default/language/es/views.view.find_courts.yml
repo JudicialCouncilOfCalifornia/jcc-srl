@@ -2,9 +2,6 @@ display:
   default:
     display_options:
       filters:
-        nid:
-          group_info:
-            description: ''
         combine:
           expose:
             label: 'Ingrese la ciudad, el condado o el código postal'

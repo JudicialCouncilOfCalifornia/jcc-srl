@@ -1,22 +1,18 @@
 name: JCC Mega
 type: profile
 description: ''
-core: 8.x
+core_version_requirement: ^9.5 || ^10 || ^11
 
 install:
 - admin_toolbar
-- adminimal_admin_toolbar
 - automated_cron
 - big_pipe
 - block
 - breakpoint
 - chosen
 - chosen_lib
-- ckeditor
-- color
 - components
 - config
-- config_filter
 - config_split
 - contact
 - contextual
@@ -36,8 +32,6 @@ install:
 - file
 - filter
 - focal_point
-- google_analytics
-- hal
 - help
 - history
 - honeypot
@@ -56,11 +50,9 @@ install:
 - page_cache
 - path
 - pathauto
-- quickedit
 - r4032login
 - rabbit_hole
 - redirect
-- rdf
 - search
 - serialization
 - shortcut
@@ -69,7 +61,6 @@ install:
 - taxonomy
 - text
 - toolbar
-- tour
 - update
 - user
 - views_ui
@@ -82,5 +73,5 @@ dependencies:
 - views
 
 themes:
-- adminimal_theme
-- seven
+- claro
+- atrium

@@ -6,12 +6,8 @@ dependencies:
     - field.storage.node.field_hide_title
     - node.type.basic
   module:
-    - datalayer
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_hide_title
   tmgmt_content:
     excluded: false
 id: node.basic.field_hide_title

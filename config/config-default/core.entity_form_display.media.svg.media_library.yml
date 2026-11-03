@@ -8,7 +8,7 @@ dependencies:
     - image.style.thumbnail
     - media.type.svg
   module:
-    - image
+    - svg_image
 id: media.svg.media_library
 targetEntityType: media
 bundle: svg
@@ -27,5 +27,10 @@ hidden:
   langcode: true
   name: true
   path: true
+  publish_on: true
+  publish_state: true
+  scheduler_settings: true
   status: true
   uid: true
+  unpublish_on: true
+  unpublish_state: true

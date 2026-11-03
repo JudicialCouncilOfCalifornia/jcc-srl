@@ -4,18 +4,15 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_lead
+    - filter.format.simple_html
     - node.type.timeline
   module:
-    - allowed_formats
     - datalayer
     - text
 third_party_settings:
   datalayer:
     expose: 1
     label: field_lead
-  allowed_formats:
-    allowed_formats:
-      - simple_html
 id: node.timeline.field_lead
 field_name: field_lead
 entity_type: node
@@ -26,5 +23,7 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - simple_html
 field_type: text

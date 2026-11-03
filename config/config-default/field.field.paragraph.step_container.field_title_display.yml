@@ -4,18 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_title_display
+    - filter.format.simple_html
     - paragraphs.paragraphs_type.step_container
   module:
-    - allowed_formats
-    - datalayer
     - text
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_title_display
-  allowed_formats:
-    allowed_formats:
-      - simple_html
 id: paragraph.step_container.field_title_display
 field_name: field_title_display
 entity_type: paragraph
@@ -26,5 +18,7 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - simple_html
 field_type: text

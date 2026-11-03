@@ -18,12 +18,18 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  min: !!float 0
+  min: 0.0
   max: null
+  field:
+    prefix: ''
+    suffix: ''
   from:
     prefix: ''
     suffix: ''
   to:
+    prefix: ''
+    suffix: ''
+  combined:
     prefix: ''
     suffix: ''
 field_type: range_float

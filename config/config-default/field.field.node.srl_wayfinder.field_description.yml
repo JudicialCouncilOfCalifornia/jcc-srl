@@ -4,18 +4,15 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_description
+    - filter.format.basic_html
     - node.type.srl_wayfinder
   module:
-    - allowed_formats
     - datalayer
     - text
 third_party_settings:
   datalayer:
     expose: 1
     label: field_description
-  allowed_formats:
-    allowed_formats:
-      - basic_html
 id: node.srl_wayfinder.field_description
 field_name: field_description
 entity_type: node
@@ -26,5 +23,7 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - basic_html
 field_type: text_long

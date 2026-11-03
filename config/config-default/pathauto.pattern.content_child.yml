@@ -2,6 +2,8 @@ uuid: c77a73b3-a443-4d80-9775-acae5b9db6d2
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.srl_howto_instruction
   module:
     - node
 _core:
@@ -9,12 +11,11 @@ _core:
 id: content_child
 label: 'Content Child'
 type: 'canonical_entities:node'
-pattern: '[node:field_parent:entity:title]/[node:title]'
+pattern: '/[node:field_parent:entity:title]/[node:title]'
 selection_criteria:
   b4cfbed8-2434-4e2d-88f4-6538d7a67dd6:
     id: 'entity_bundle:node'
     negate: false
-    uuid: b4cfbed8-2434-4e2d-88f4-6538d7a67dd6
     context_mapping:
       node: node
     bundles:

@@ -1,0 +1,16 @@
+/* Preserve Courtyard SRL's responsive h2 sizing for the standalone wizard h1. */
+.webform-progress h1.jcc-header-group__title {
+  font-size: 1.99rem;
+}
+
+@media all and (min-width: 64em) {
+  .webform-progress h1.jcc-header-group__title {
+    font-size: 2.24rem;
+  }
+}
+
+@media print {
+  .webform-progress h1.jcc-header-group__title {
+    font-size: 1.74rem;
+  }
+}

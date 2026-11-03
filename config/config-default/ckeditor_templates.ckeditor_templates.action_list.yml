@@ -1,0 +1,15 @@
+uuid: a141c6c4-9c1e-41b4-b22f-ee6a39883d23
+langcode: en
+status: true
+dependencies: {  }
+id: action_list
+label: 'Action List'
+description: 'The "Action list" component from Courtyard. Each item contains a title and brief description, followed by a button link.'
+thumb: {  }
+code:
+  value: '<ul class="jcc-action-list"><li><div class="jcc-action-list__content"><p><strong>First brief sentence describing the action</strong></p><p>One to two sentences providing addition details about the action link.</p></div><div class="jcc-action-list__action"><a class="usa-button usa-button--secondary" href="#">Button text</a></div></li><li><div class="jcc-action-list__content"><p><strong>Second brief sentence describing the action</strong></p><p>One to two sentences providing addition details about the action link.</p></div><div class="jcc-action-list__action"><a class="usa-button usa-button--secondary" href="#">Button text longer</a></div></li><li><div class="jcc-action-list__content"><p><strong>Third brief sentence describing the action</strong></p><p>One to two sentences providing addition details about the action link.</p></div><div class="jcc-action-list__action"><a class="usa-button usa-button--secondary" href="#">Button text</a></div></li><li><div class="jcc-action-list__content"><p><strong>Third brief sentence describing the action</strong></p><p>One to two sentences providing addition details about the action link.</p></div><div class="jcc-action-list__action"><a class="usa-button usa-button--secondary" href="#">Button text</a></div></li><li><div class="jcc-action-list__content"><p><strong>Third brief sentence describing the action</strong></p><p>One to two sentences providing addition details about the action link.</p></div><div class="jcc-action-list__action"><a class="usa-button usa-button--secondary" href="#">Button text</a></div></li></ul>'
+  format: basic_html
+formats:
+  basic_html: basic_html
+weight: 12
+thumb_alternative: /themes/custom/atrium/ckeditor/action-list.png

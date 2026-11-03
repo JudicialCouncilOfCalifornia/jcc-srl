@@ -1,0 +1,15 @@
+uuid: b0678a40-67ca-4d59-a482-196bed75852a
+langcode: en
+status: true
+dependencies: {  }
+id: list_group
+label: 'List Group'
+description: 'The "List group" component from Courtyard. Each item contains a title and paragraph.'
+thumb: {  }
+code:
+  value: '<ul class="jcc-list-group"><li><p><strong>List item 1</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></li><li><p><strong>List item 2</strong></p><p>Pellentesque non nunc quis sem malesuada bibendum.</p></li><li><p><strong>List item 3</strong></p><p>Etiam a est in est mollis fringilla tristique gravida leo.</p></li><li><p><strong>List item 4</strong></p><p>Fusce tempor nunc vel tellus suscipit scelerisque sed sit amet neque.</p></li><li><p><strong>List item 5</strong></p><p>Integer commodo ex nec lorem ullamcorper, a tristique neque efficitur.</p></li></ul>'
+  format: basic_html
+formats:
+  basic_html: basic_html
+weight: 11
+thumb_alternative: /themes/custom/atrium/ckeditor/list-group.png

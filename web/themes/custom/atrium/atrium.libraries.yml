@@ -7,6 +7,7 @@ style:
         minified: true
   js:
     assets/js/atrium.script.js: {}
+    assets/js/tooltip-accessibility.js: {}
   dependencies:
     - core/jquery
     - core/drupal
@@ -19,6 +20,13 @@ patternlab:
   js:
     ../../../libraries/courtyard-artifact/1.x/public/js/scripts.min.js: { minified: true, preprocess: false }
 
+webform-progress:
+  css:
+    theme:
+      assets/css/webform-progress.css: {}
+  dependencies:
+    - atrium/patternlab
+
 datefinder:
   css:
     theme:
@@ -29,6 +37,10 @@ datefinder:
 jump-nav:
   js:
     assets/js/jump-nav.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
 
 submit-scroll:
   js:

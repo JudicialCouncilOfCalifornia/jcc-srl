@@ -5,12 +5,6 @@ dependencies:
   config:
     - field.storage.paragraph.field_top_modal_label
     - paragraphs.paragraphs_type.timeline_dual_item
-  module:
-    - datalayer
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_top_modal_label
 id: paragraph.timeline_dual_item.field_top_modal_label
 field_name: field_top_modal_label
 entity_type: paragraph

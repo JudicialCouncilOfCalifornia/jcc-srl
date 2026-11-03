@@ -4,13 +4,20 @@ status: true
 dependencies:
   module:
     - editor
-    - media
+    - linkit
+    - srl_custom
 _core:
   default_config_hash: Ntb6R4iBtiXqdVDdJTRFIQFCPmwCTUi9hbphjDkjZWA
 name: 'Full HTML (Developers Only)'
 format: full_html
 weight: 1
 filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 11
+    settings: {  }
   filter_align:
     id: filter_align
     provider: filter
@@ -23,18 +30,6 @@ filters:
     status: true
     weight: 9
     settings: {  }
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: true
-    weight: 10
-    settings: {  }
-  editor_file_reference:
-    id: editor_file_reference
-    provider: editor
-    status: true
-    weight: 11
-    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
@@ -44,15 +39,18 @@ filters:
       allowed_html: '<a href hreflang data-entity-type data-entity-uuid data-entity-substitution> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <s> <sup> <sub> <img src alt data-entity-type data-entity-uuid data-entity-substitution data-align data-caption> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <hr> <p> <h1> <pre>'
       filter_html_help: true
       filter_html_nofollow: false
-  media_embed:
-    id: media_embed
-    provider: media
-    status: false
-    weight: 100
-    settings:
-      default_view_mode: default
-      allowed_view_modes: {  }
-      allowed_media_types: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: 12
+    settings: {  }
   linkit:
     id: linkit
     provider: linkit
@@ -60,3 +58,10 @@ filters:
     weight: -11
     settings:
       title: false
+      media_substitution: metadata
+  srl_media_link_to_file:
+    id: srl_media_link_to_file
+    provider: srl_custom
+    status: true
+    weight: -12
+    settings: {  }

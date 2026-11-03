@@ -28,7 +28,7 @@
   not element['#multiple'] ? 'jcc-dropdown',
 ] %}
 
-{% spaceless %}
+{% apply spaceless %}
   <select{{ attributes.addClass(classes) }}>
     {% for option in options %}
       {% if option.type == 'optgroup' %}
@@ -43,4 +43,4 @@
     {% endfor %}
     <optgroup></optgroup> {# Hack to force show all option text in iOS#}
   </select>
-{% endspaceless %}
+{% endapply %}

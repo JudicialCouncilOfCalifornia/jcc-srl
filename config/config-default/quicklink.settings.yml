@@ -3,11 +3,16 @@ ignore_ajax_links: true
 ignore_hashes: true
 ignore_file_ext: true
 url_patterns_to_ignore: ''
+ignore_selectors: ''
 selector: ''
 allowed_domains: ''
 prefetch_only_paths: ''
 no_load_when_authenticated: true
 no_load_when_session: false
 no_load_content_types: {  }
-load_polyfill: false
+total_request_limit: 0
+concurrency_throttle_limit: 0
+viewport_delay: 0
+idle_wait_timeout: 2000
 enable_debug_mode: false
+load_polyfill: false

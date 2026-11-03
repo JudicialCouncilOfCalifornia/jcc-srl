@@ -3,11 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - search_api.server.deafult
     - core.entity_view_mode.node.full
+    - search_api.server.deafult
   module:
     - node
-    - search_api
     - search_api_solr
 id: default
 name: Default
@@ -54,7 +53,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    boost: !!float 13
+    boost: 13.0
     dependencies:
       module:
         - node
@@ -131,7 +130,7 @@ processor_settings:
     fields:
       - rendered_item
       - title
-    ignorable: '[''¿¡!?,.:;]'
+    ignorable: "['¿¡!?,.:;]"
     ignorable_classes:
       - Pc
       - Pd

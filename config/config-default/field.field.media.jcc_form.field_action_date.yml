@@ -6,13 +6,9 @@ dependencies:
     - field.storage.media.field_action_date
     - media.type.jcc_form
   module:
-    - datalayer
     - datetime
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_action_date
   tmgmt_content:
     excluded: false
 id: media.jcc_form.field_action_date

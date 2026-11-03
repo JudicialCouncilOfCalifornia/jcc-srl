@@ -1,0 +1,35 @@
+uuid: 9b34c761-d14c-4497-93d4-ed96c01b3614
+langcode: en
+status: true
+dependencies: {  }
+id: option_list_one_column
+label: 'Option List - One Column'
+description: 'Show two equally likely outcomes/actions in an "if then" format.'
+thumb: {  }
+code:
+  value: |-
+    <p>Text Before</p>
+              <div class="jcc-options-list jcc-options-list--has-one-column">
+                <div class="jcc-options__container">
+                  <ul class="jcc-options">
+                    <li class="jcc-options__item">
+                      <div class="jcc-option">
+                        <h3>If you're suing a person (or people)</h3>
+                        <div class="jcc-option__content">Serve each person you are suing.</div>
+                      </div>
+                    </li>
+                    <li class="jcc-options__item">
+                      <div class="jcc-option">
+                        <h3>If you're suing a business or government</h3>
+                        <div class="jcc-option__content">Business or agencies have a specific person you must serve, not just any employee. Follow these guidelines to make sure you are serving the right person.</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <p>Text After</p>
+  format: basic_html
+formats:
+  basic_html: basic_html
+weight: 9
+thumb_alternative: /themes/custom/atrium/ckeditor/option-one.png

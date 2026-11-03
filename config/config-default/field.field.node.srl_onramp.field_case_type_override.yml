@@ -6,13 +6,9 @@ dependencies:
     - field.storage.node.field_case_type_override
     - node.type.srl_onramp
   module:
-    - datalayer
     - link
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_case_type_override
   tmgmt_content:
     excluded: false
 id: node.srl_onramp.field_case_type_override

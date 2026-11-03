@@ -1,0 +1,24 @@
+# Tooltip behavior ported from the contrib tooltip module (1.1.2), which
+# requires the CKEditor 4 module and has no CKEditor 5 or Drupal 11 path.
+tooltip:
+  version: 1.1.2
+  js:
+    js/tooltip.js: {}
+  css:
+    component:
+      css/tooltip.css: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+    - srl_custom/popperjs
+
+popperjs:
+  remote: https://popper.js.org
+  version: 2.11.8
+  license:
+    name: MIT
+    url: https://github.com/popperjs/popper-core/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    https://unpkg.com/@popperjs/core@2.11.8/dist/umd/popper.min.js: { type: external, minified: true }

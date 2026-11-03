@@ -6,16 +6,9 @@ dependencies:
     - field.storage.node.field_translation_update_notes
     - node.type.courthouse
   module:
-    - allowed_formats
-    - datalayer
     - text
     - tmgmt_content
 third_party_settings:
-  allowed_formats:
-    allowed_formats: {  }
-  datalayer:
-    expose: 0
-    label: field_translation_update_notes
   tmgmt_content:
     excluded: false
 id: node.courthouse.field_translation_update_notes
@@ -26,7 +19,10 @@ label: 'Translation update notes'
 description: ''
 required: false
 translatable: true
-default_value: [{value: uptodate}]
+default_value:
+  -
+    value: uptodate
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

@@ -3,6 +3,8 @@ langcode: en
 status: false
 dependencies:
   config:
+    - field.storage.media.field_description
+    - field.storage.media.field_number
     - field.storage.node.body
     - field.storage.node.field_actions
     - field.storage.node.field_blocks
@@ -13,25 +15,22 @@ dependencies:
     - field.storage.node.field_column_first
     - field.storage.node.field_column_second
     - field.storage.node.field_description
-    - field.storage.media.field_description
     - field.storage.node.field_forms
     - field.storage.node.field_header
     - field.storage.node.field_howto_tabs
     - field.storage.node.field_howto_tabs_title
     - field.storage.node.field_lead
-    - field.storage.media.field_number
     - field.storage.node.field_paragraphs
     - field.storage.node.field_switchboard_subtitle
     - field.storage.node.field_switchboard_title
     - field.storage.node.field_watchers
     - search_api.server.solr
   module:
-    - search_api_solr
+    - file
     - media
     - node
-    - search_api
     - search_api_exclude_entity
-    - file
+    - search_api_solr
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -220,7 +219,7 @@ field_settings:
     datasource_id: 'entity:media'
     property_path: field_number
     type: text
-    boost: !!float 2
+    boost: 2.0
     dependencies:
       config:
         - field.storage.media.field_number

@@ -325,4 +325,8 @@ content:
     third_party_settings: {  }
 hidden:
   field_revision_date: true
+  publish_on: true
+  publish_state: true
   status: true
+  unpublish_on: true
+  unpublish_state: true

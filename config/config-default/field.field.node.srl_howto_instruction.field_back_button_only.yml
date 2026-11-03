@@ -6,12 +6,8 @@ dependencies:
     - field.storage.node.field_back_button_only
     - node.type.srl_howto_instruction
   module:
-    - datalayer
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_back_button_only
   tmgmt_content:
     excluded: false
 id: node.srl_howto_instruction.field_back_button_only

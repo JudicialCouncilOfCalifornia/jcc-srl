@@ -6,12 +6,7 @@ dependencies:
     - field.storage.paragraph.field_links
     - paragraphs.paragraphs_type.cascading_menu_item
   module:
-    - datalayer
     - link
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_links
 id: paragraph.cascading_menu_item.field_links
 field_name: field_links
 entity_type: paragraph

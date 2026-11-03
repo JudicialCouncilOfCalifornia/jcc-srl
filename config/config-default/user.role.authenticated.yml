@@ -11,6 +11,7 @@ dependencies:
   module:
     - access_unpublished
     - cc
+    - file
     - fillpdf
     - filter
     - media
@@ -36,6 +37,7 @@ permissions:
   - 'access_unpublished node srl_onramp'
   - 'access_unpublished node srl_wayfinder'
   - 'access_unpublished node timeline'
+  - 'delete own files'
   - 'publish all pdfs'
   - 'restful get webform_rest_complete_submission'
   - 'restful get webform_rest_submission'

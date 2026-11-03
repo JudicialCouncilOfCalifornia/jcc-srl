@@ -6,3 +6,4 @@ name: Code
 vid: code
 description: 'A legal code, i.e: Family Code, Code of Civil Procedure, Government Code, etc.'
 weight: 0
+new_revision: false

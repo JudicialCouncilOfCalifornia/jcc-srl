@@ -1,0 +1,29 @@
+uuid: 59bfe1c4-b006-435c-bf8e-8eb74c0bdb80
+langcode: en
+status: true
+dependencies: {  }
+id: example_explainer_one_column
+label: 'Example (Explainer) - One Column'
+description: 'Use to highlight real-world examples of concepts.'
+thumb: {  }
+code:
+  value: |-
+    <p>Text Before</p><div class="jcc-explainers-section--has-one-column jcc-explainers-section">
+              <div class="jcc-explainers__container">
+                <ul class="jcc-explainers">
+                  <li class="jcc-explainers__item">
+                    <div class="jcc-explainer">
+                      <div class="jcc-explainer__brow">Wage Garnishment</div>
+                      <p class="jcc-explainer__content">
+                        Someone took money from my paycheck</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <p>Text After</p>
+  format: basic_html
+formats:
+  basic_html: basic_html
+weight: 2
+thumb_alternative: /themes/custom/atrium/ckeditor/explainer-one.png

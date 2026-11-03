@@ -1,0 +1,22 @@
+uuid: 7e5b0ea2-c5ad-44ea-9472-532c1ad919ec
+langcode: en
+status: true
+dependencies: {  }
+id: callout_block
+label: 'Callout Block'
+description: 'Highlight or repeat important info (appears in right rail).'
+thumb: {  }
+code:
+  value: |-
+    <p>Text Before</p>
+              <div class="jcc-callout  jcc-callout__block">
+                <div class="jcc-callout__content">
+                  In general, after a divorce, you keep your separate property and divide your community property.
+                </div>
+              </div>
+              <p>Text After</p>
+  format: basic_html
+formats:
+  basic_html: basic_html
+weight: 5
+thumb_alternative: /themes/custom/atrium/ckeditor/callout.png

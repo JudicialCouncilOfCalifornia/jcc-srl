@@ -3,7 +3,7 @@
 namespace Drupal\xlsx\Event;
 
 use Drupal\Core\Entity\EntityInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Drupal\Component\EventDispatcher\Event;
 
 /**
  * Class XlsxEntityEvent.

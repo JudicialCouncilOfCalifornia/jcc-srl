@@ -1,4 +1,4 @@
-(function ($, Drupal) {
+(function ($, Drupal, once) {
   'use strict';
 
   Drupal.behaviors.jumpNav = {
@@ -14,7 +14,7 @@
         // Add the proper column variant class to the hero.
         $jumpList.parents('.jcc-hero').addClass('jcc-hero--has-two-columns-threequarter');
 
-        $jumpItems.once('jump-nav').each(function(index, item) {
+        $(once('jump-nav', $jumpItems.get())).each(function(index, item) {
           // Find the title, which could be an h2 or h3, and is formatted text.
           let itemTitle = $(item).find('.jcc-header-group__title').html();
 
@@ -34,4 +34,4 @@
     }
   };
 
-})(jQuery, Drupal);
+})(jQuery, Drupal, once);

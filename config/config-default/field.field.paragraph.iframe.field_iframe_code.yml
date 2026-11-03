@@ -4,21 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_iframe_code
+    - filter.format.iframe_only
     - paragraphs.paragraphs_type.iframe
   module:
-    - allowed_formats
-    - datalayer
     - text
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_iframe_code
   tmgmt_content:
     excluded: false
-  allowed_formats:
-    allowed_formats:
-      - iframe_only
 id: paragraph.iframe.field_iframe_code
 field_name: field_iframe_code
 entity_type: paragraph
@@ -29,5 +22,7 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - iframe_only
 field_type: text_long

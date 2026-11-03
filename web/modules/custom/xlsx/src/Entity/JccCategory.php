@@ -220,7 +220,7 @@ class JccCategory extends ContentEntityBase implements JccCategoryInterface {
    */
   public function preSave(EntityStorageInterface $storage) {
     $term_name = $this->getCategoryLabel();
-    if ($terms = taxonomy_term_load_multiple_by_name($term_name, 'jcc_form_category')) {
+    if ($terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $term_name, 'vid' => 'jcc_form_category'])) {
       $term = reset($terms);
       $this->setTermId($term->id());
       if ($url = $this->getInfoUrl()) {

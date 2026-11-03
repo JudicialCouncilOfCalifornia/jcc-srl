@@ -31,7 +31,7 @@ _core:
 name: 'Basic Page'
 type: basic
 description: 'Simple pages such as About or 404.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

@@ -18,4 +18,3 @@ source_configuration:
   source_field: field_media_text
 field_map:
   name: name
-  text: field_media_text

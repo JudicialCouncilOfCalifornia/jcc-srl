@@ -1,8 +1,6 @@
 services:
   jcc_twig.twig_extension:
-    arguments: ['@renderer']
+    arguments: ['@language_manager', '@date.formatter']
     class: Drupal\jcc_twig\Twig\TwigExtension
-    calls:
-      - [setContainer, ['@service_container']]
     tags:
     - { name: twig.extension }

@@ -3,4 +3,4 @@ type: module
 description: 'Text media source plugin that allows you to create non-file Media Source.'
 dependencies:
   - drupal:media
-core_version_requirement: ^8.8.0 || ^9.0
+core_version_requirement: ^9.5 || ^10 || ^11

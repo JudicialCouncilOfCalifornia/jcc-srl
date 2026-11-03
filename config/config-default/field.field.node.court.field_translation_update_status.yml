@@ -6,13 +6,9 @@ dependencies:
     - field.storage.node.field_translation_update_status
     - node.type.court
   module:
-    - datalayer
     - options
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_translation_update_status
   tmgmt_content:
     excluded: false
 id: node.court.field_translation_update_status
@@ -23,7 +19,9 @@ label: 'Translation update status'
 description: ''
 required: false
 translatable: true
-default_value: [{value: uptodate}]
+default_value:
+  -
+    value: uptodate
 default_value_callback: ''
 settings: {  }
 field_type: list_string

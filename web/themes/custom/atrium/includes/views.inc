@@ -28,7 +28,7 @@ function atrium_preprocess_views_view(&$variables) {
     $vid = 'search_categories';
     $search_arg = trim($variables['view']->exposed_data['search_api_fulltext']);
     //Checking if bew argument exists as a taxonomy term name
-    $term_lookup = taxonomy_term_load_multiple_by_name($search_arg, $vid);
+    $term_lookup = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $search_arg, 'vid' => $vid]);
     if (!empty($term_lookup)){
       $variables['featured_view'] = array_key_first($term_lookup);
     }

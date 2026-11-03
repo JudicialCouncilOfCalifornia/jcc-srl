@@ -2,20 +2,20 @@ uuid: 8851c3e7-8d5a-453c-ba31-4fccfdfc4eb9
 langcode: en
 status: true
 dependencies:
+  config:
+    - media.type.jcc_form
   module:
-    - ctools
     - media
 _core:
   default_config_hash: mNSGp0i5Aso2uWWosiY6bCH923cthu_Yla3s8ZSkEjI
 id: media_jcc_form
 label: 'Media Default'
 type: 'canonical_entities:media'
-pattern: 'jcc-form/[media:field_number]'
+pattern: '/jcc-form/[media:field_number]'
 selection_criteria:
   c219209f-63d9-4bef-8ef7-d91463d44a5c:
     id: 'entity_bundle:media'
     negate: false
-    uuid: c219209f-63d9-4bef-8ef7-d91463d44a5c
     context_mapping:
       media: media
     bundles:

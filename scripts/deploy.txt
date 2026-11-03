@@ -4,7 +4,6 @@
 config
 web
 drush
-scripts/composer
 vendor
 composer.json
 composer.lock

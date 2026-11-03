@@ -127,7 +127,7 @@ class XlsxBatchOps {
         ->getStorage('jcc_form_thumbnail')
         ->loadByProperties(['name' => $filename]);
       if (!$thumbnail = reset($thumbnails)) {
-        if ($fileObj = file_save_data($contents, $path . '/' . $filename)) {
+        if ($fileObj = \Drupal::service('file.repository')->writeData($contents, $path . '/' . $filename)) {
           $thumbnail = FormThumbnail::create([
             'name' => $filename,
             'file_id' => [

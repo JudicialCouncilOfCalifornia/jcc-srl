@@ -6,12 +6,7 @@ dependencies:
     - field.storage.paragraph.field_bottom_num
     - paragraphs.paragraphs_type.timeline_dual_item
   module:
-    - datalayer
     - options
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_bottom_num
 id: paragraph.timeline_dual_item.field_bottom_num
 field_name: field_bottom_num
 entity_type: paragraph

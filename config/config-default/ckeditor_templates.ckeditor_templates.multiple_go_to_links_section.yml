@@ -1,0 +1,24 @@
+uuid: 3b66e91b-798e-4275-b4ee-d85132d1c23a
+langcode: en
+status: true
+dependencies: {  }
+id: multiple_go_to_links_section
+label: 'Multiple "Go to" Links Section'
+description: 'A section to add two to three "go to" links to other pages. Requires tile template that follows.'
+thumb: {  }
+code:
+  value: |-
+    <p>Text Before</p>
+            <div class="jcc-tiles-section jcc-tiles-section--has-two-columns">
+              <ul class="jcc-tiles">
+                <li>Insert tile here</li>
+                <li>Insert tile here</li>
+                <li>Insert tile here</li>
+              </ul>
+            </div>
+            <p>Text After</p>
+  format: basic_html
+formats:
+  basic_html: basic_html
+weight: 14
+thumb_alternative: /themes/custom/atrium/ckeditor/explainer-two.png

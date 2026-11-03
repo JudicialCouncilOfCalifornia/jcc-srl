@@ -6,13 +6,9 @@ dependencies:
     - field.storage.media.field_chinese_url
     - media.type.jcc_form
   module:
-    - datalayer
     - link
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_chinese_url
   tmgmt_content:
     excluded: false
 id: media.jcc_form.field_chinese_url

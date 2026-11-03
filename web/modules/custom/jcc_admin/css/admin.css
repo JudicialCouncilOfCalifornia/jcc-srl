@@ -27,3 +27,13 @@ fieldset:not(.fieldgroup).no-title > legend {
   margin-top: 16px;
   border-top: 1px solid #bfbfbf;
 }
+
+/* field_group marks required groups on the <legend>; Claro only styles the
+   required marker on .fieldset__label, so mirror its asterisk here. */
+.field-group-fieldset > legend.form-required > .fieldset__label::after {
+  display: inline-block;
+  margin-inline: 0.15em;
+  content: "*";
+  color: var(--color-maximumred);
+  font-size: 0.875rem;
+}

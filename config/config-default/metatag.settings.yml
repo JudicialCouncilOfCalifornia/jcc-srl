@@ -19,3 +19,4 @@ entity_type_groups:
     srl_wayfinder:
       basic: basic
       advanced: advanced
+tag_trim_end: '|.,-:;/+&([{"'''

@@ -10,8 +10,6 @@ display:
           label: 'Nombre de usuario'
         status:
           label: Estado
-        roles_target_id:
-          label: Roles
         operations:
           label: Operaciones
       filters:

@@ -4,18 +4,15 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_column_second
+    - filter.format.basic_html
     - node.type.srl_howto
   module:
-    - allowed_formats
     - datalayer
     - text
 third_party_settings:
   datalayer:
     expose: 1
     label: field_column_second
-  allowed_formats:
-    allowed_formats:
-      - basic_html
 id: node.srl_howto.field_column_second
 field_name: field_column_second
 entity_type: node
@@ -26,5 +23,7 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - basic_html
 field_type: text_long

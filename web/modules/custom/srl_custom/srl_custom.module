@@ -1,6 +1,9 @@
 <?php
 
-use Drupal\core\Database\Database;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\srl_custom\ReadMoreIds;
 
 /**
  * @file
@@ -73,5 +76,29 @@ function srl_custom_form_alter(&$form, $form_state, $form_id) {
         }
       }
       break;
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Gives read-more components inserted from editor templates unique ids.
+ */
+function srl_custom_entity_presave(EntityInterface $entity) {
+  if (!$entity instanceof FieldableEntityInterface) {
+    return;
+  }
+  foreach ($entity->getFieldDefinitions() as $name => $definition) {
+    if (!in_array($definition->getType(), ['text', 'text_long', 'text_with_summary'], TRUE)) {
+      continue;
+    }
+    foreach ($entity->get($name) as $item) {
+      foreach (['value', 'summary'] as $property) {
+        $text = $item->{$property} ?? NULL;
+        if (is_string($text) && str_contains($text, ReadMoreIds::PLACEHOLDER)) {
+          $item->{$property} = ReadMoreIds::uniquify($text);
+        }
+      }
+    }
   }
 }

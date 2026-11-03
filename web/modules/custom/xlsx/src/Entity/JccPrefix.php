@@ -145,7 +145,7 @@ class JccPrefix extends ContentEntityBase implements JccPrefixInterface {
    */
   public function preSave(EntityStorageInterface $storage) {
     $term_name = $this->getName();
-    if ($terms = taxonomy_term_load_multiple_by_name($term_name, 'jcc_form_prefix')) {
+    if ($terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $term_name, 'vid' => 'jcc_form_prefix'])) {
       $term = reset($terms);
       $this->setTermId($term->id());
       $term->set('field_form_prefix_label', $this->getPrefixLabel());

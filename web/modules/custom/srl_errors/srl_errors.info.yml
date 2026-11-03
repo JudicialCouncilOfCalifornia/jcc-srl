@@ -1,7 +1,7 @@
 name: 'SRL Errors'
 type: module
 description: 'Custom Error handling for SRL'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9.5 || ^10 || ^11
 package: 'JCC-SRL'
 dependencies:
   - inline_form_errors

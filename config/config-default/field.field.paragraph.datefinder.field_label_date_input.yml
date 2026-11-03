@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_label_date_input
+    - filter.format.simple_html
     - paragraphs.paragraphs_type.datefinder
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - simple_html
 id: paragraph.datefinder.field_label_date_input
 field_name: field_label_date_input
 entity_type: paragraph
@@ -25,5 +21,7 @@ default_value:
     value: 'Enter Your Filing Date'
     format: simple_html
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - simple_html
 field_type: text

@@ -6,5 +6,6 @@ dependencies:
     - media
 id: media.postcard_background
 label: 'Postcard Background'
+description: ''
 targetEntityType: media
 cache: true

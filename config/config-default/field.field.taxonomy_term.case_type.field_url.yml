@@ -6,13 +6,9 @@ dependencies:
     - field.storage.taxonomy_term.field_url
     - taxonomy.vocabulary.case_type
   module:
-    - datalayer
     - link
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_url
   tmgmt_content:
     excluded: false
 id: taxonomy_term.case_type.field_url

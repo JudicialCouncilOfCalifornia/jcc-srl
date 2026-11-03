@@ -1,18 +1,18 @@
-diff --git a/src/Controller/HandlePdfController.php b/src/Controller/HandlePdfController.php
-index 44ffc59..682a3f4 100644
+Delete fillpdf-category webform submissions after the PDF is rendered.
+
 --- a/src/Controller/HandlePdfController.php
 +++ b/src/Controller/HandlePdfController.php
-@@ -264,6 +264,17 @@ class HandlePdfController extends ControllerBase {
+@@ -324,6 +324,17 @@
          ->execute();
      }
  
 +    // Protect data submitted by user in a webform.
-+    // Delete the submission after the pdf is rendered.
-+    if (isset($context['entity_ids']['webform_submission'])) {
++    // Delete the submission after the pdf is rendered when the webform is in
++    // the "fillpdf" category (Webform 6.x stores categories as an array).
++    if (!empty($context['entity_ids']['webform_submission'])) {
 +      $webform_submission_id = array_pop($context['entity_ids']['webform_submission']);
 +      $webform_submission = \Drupal\webform\Entity\WebformSubmission::load($webform_submission_id);
-+      $webform = $webform_submission->getWebform()->toArray();
-+      if (isset($webform['category']) && $webform['category'] == 'fillpdf') {
++      if ($webform_submission && in_array('fillpdf', $webform_submission->getWebform()->get('categories') ?? [], TRUE)) {
 +        $webform_submission->delete();
 +      }
 +    }

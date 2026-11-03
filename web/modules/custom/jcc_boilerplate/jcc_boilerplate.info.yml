@@ -1,5 +1,5 @@
 name: 'JCC Boilerplate'
 type: module
 description: 'Boilerplate content for JCC Paragraphs.'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9.5 || ^10 || ^11
 package: 'JCC-SRL'

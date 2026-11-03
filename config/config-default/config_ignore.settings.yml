@@ -1,9 +1,10 @@
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
+mode: simple
 ignored_config_entities:
   - 'key.key.*'
-  - 'webform.webform.*'
-  - tmgmt.settings
   - recaptcha.settings
+  - tmgmt.settings
   - 'tmgmt.translator.*'
   - tmgmt_memsource.settings
+  - 'webform.webform.*'

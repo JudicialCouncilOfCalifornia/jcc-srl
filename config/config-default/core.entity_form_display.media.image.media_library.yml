@@ -8,7 +8,7 @@ dependencies:
     - image.style.thumbnail
     - media.type.image
   module:
-    - image
+    - svg_image
 _core:
   default_config_hash: BMLrK4zKp8-FFnMseBdT_6h6YipUsKRfbDf_3WUB5HA
 id: media.image.media_library
@@ -35,5 +35,10 @@ hidden:
   created: true
   name: true
   path: true
+  publish_on: true
+  publish_state: true
+  scheduler_settings: true
   status: true
   uid: true
+  unpublish_on: true
+  unpublish_state: true

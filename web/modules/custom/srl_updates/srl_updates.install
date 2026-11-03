@@ -184,12 +184,29 @@ function srl_updates_update_8005() {
     $entity_type = $definition_update_manager->getEntityType('node');
 
     // Get fields definition from the scheduler module.
-    module_load_include('module', 'scheduler');
+    \Drupal::moduleHandler()->loadInclude('scheduler', 'module');
     $fields = scheduler_entity_base_field_info($entity_type);
 
     foreach ($fields as $field_name => $field_definition) {
       $definition_update_manager->installFieldStorageDefinition($field_name, $entity_type->id(),
         $entity_type->id(), $field_definition);
     }
+  }
+}
+
+/**
+ * Drop the stale menu_item_extras class from the menu_link_content definition.
+ *
+ * Menu Item Extras was uninstalled long ago, but the installed entity type
+ * definition still points to its class and "menu" bundle entity type. No
+ * schema or data change is involved: every row already uses the
+ * "menu_link_content" bundle.
+ */
+function srl_updates_update_10001() {
+  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  $installed = $definition_update_manager->getEntityType('menu_link_content');
+  if ($installed && $installed->getClass() !== \Drupal\menu_link_content\Entity\MenuLinkContent::class) {
+    $definition_update_manager->updateEntityType(\Drupal::entityTypeManager()->getDefinition('menu_link_content'));
+    return t('Updated the menu_link_content entity type definition.');
   }
 }

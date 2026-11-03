@@ -1,6 +1,6 @@
 name: Atrium
 description: A custom theme for JCC.
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9.5 || ^10 || ^11
 type: theme
 base theme: classy
 logo: images/logo/jcc-logo--selfhelp__white.png
@@ -57,37 +57,48 @@ libraries-override:
   system/admin:
     css:
       theme:
-        /core/themes/stable/css/system/system.admin.css: false
+        /themes/contrib/stable/css/system/system.admin.css: false
+  # Drupal 10 moved these files from system/base into dedicated core libraries.
+  core/drupal.progress:
+    css:
+      component:
+        /themes/contrib/stable/css/core/components/progress.module.css: false
+  core/drupal.tableheader:
+    css:
+      component:
+        /themes/contrib/stable/css/core/components/sticky-header.module.css: false
+  core/drupal.tabledrag:
+    css:
+      component:
+        /themes/contrib/stable/css/core/components/tabledrag.module.css: false
+        /themes/contrib/stable/css/core/components/tree-child.module.css: false
   system/base:
     css:
       component:
-        /core/themes/stable/css/system/components/details.module.css: false
-        /core/themes/stable/css/system/components/fieldgroup.module.css: false
-        /core/themes/stable/css/system/components/item-list.module.css: false
-        /core/themes/stable/css/system/components/nowrap.module.css: false
-        /core/themes/stable/css/system/components/progress.module.css: false
-        /core/themes/stable/css/system/components/reset-appearance.module.css: false
-        /core/themes/stable/css/system/components/sticky-header.module.css: false
-        /core/themes/stable/css/system/components/system-status-counter.css: false
-        /core/themes/stable/css/system/components/system-status-report-counters.css: false
-        /core/themes/stable/css/system/components/system-status-report-general-info.css: false
-        /core/themes/stable/css/system/components/tabledrag.module.css: false
-        /core/themes/stable/css/system/components/tree-child.module.css: false
+        /themes/contrib/stable/css/system/components/details.module.css: false
+        /themes/contrib/stable/css/system/components/fieldgroup.module.css: false
+        /themes/contrib/stable/css/system/components/item-list.module.css: false
+        /themes/contrib/stable/css/system/components/nowrap.module.css: false
+        /themes/contrib/stable/css/system/components/reset-appearance.module.css: false
+        /themes/contrib/stable/css/system/components/system-status-counter.css: false
+        /themes/contrib/stable/css/system/components/system-status-report-counters.css: false
+        /themes/contrib/stable/css/system/components/system-status-report-general-info.css: false
         # The files listed below are those we have chosen to keep.
-        # /core/themes/stable/css/system/components/align.module.css: false
-        # /core/themes/stable/css/system/components/ajax-progress.module.css: false
-        # /core/themes/stable/css/system/components/autocomplete-loading.module.css: false
-        # /core/themes/stable/css/system/components/clearfix.module.css: false
-        # /core/themes/stable/css/system/components/container-inline.module.css: false
-        # /core/themes/stable/css/system/components/hidden.module.css: false
-        # /core/themes/stable/css/system/components/js.module.css: false
-        # /core/themes/stable/css/system/components/position-container.module.css: false
-        # /core/themes/stable/css/system/components/resize.module.css: false
-        # /core/themes/stable/css/system/components/tablesort.module.css: false
+        # /themes/contrib/stable/css/system/components/align.module.css: false
+        # /themes/contrib/stable/css/system/components/ajax-progress.module.css: false
+        # /themes/contrib/stable/css/system/components/autocomplete-loading.module.css: false
+        # /themes/contrib/stable/css/system/components/clearfix.module.css: false
+        # /themes/contrib/stable/css/system/components/container-inline.module.css: false
+        # /themes/contrib/stable/css/system/components/hidden.module.css: false
+        # /themes/contrib/stable/css/system/components/js.module.css: false
+        # /themes/contrib/stable/css/system/components/position-container.module.css: false
+        # /themes/contrib/stable/css/system/components/resize.module.css: false
+        # /themes/contrib/stable/css/system/components/tablesort.module.css: false
 
-ckeditor_stylesheets:
-  - assets/css/atrium.style.css
-  - ../../../libraries/courtyard-artifact/1.x/public/css/styles-srl.min.css
+# No ckeditor5-stylesheets: CKEditor 5 has no iframe, so these front-end
+# stylesheets would load unscoped on every admin form and break Claro
+# (hidden checkboxes, misplaced required markers). Re-add only a version
+# scoped to .ck-content.
 
 components:
   namespaces:

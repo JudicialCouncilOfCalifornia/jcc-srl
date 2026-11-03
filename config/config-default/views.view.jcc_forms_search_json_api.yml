@@ -620,7 +620,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '{{ url(''<front>'')|render|trim(''/'', ''right'') ~ path(''entity.media.canonical'', {''media'': mid}) }}'
+            text: "{{ url('<front>')|render|trim('/', 'right') ~ path('entity.media.canonical', {'media': mid}) }}"
             make_link: false
             path: ''
             absolute: false
@@ -1836,6 +1836,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:
@@ -1850,7 +1851,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: none
+        type: search_api_none
         options: {  }
       empty: {  }
       sorts:
@@ -2061,8 +2062,9 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+          pagination_heading_level: h4
       cache:
-        type: none
+        type: search_api_none
         options: {  }
       style:
         type: default

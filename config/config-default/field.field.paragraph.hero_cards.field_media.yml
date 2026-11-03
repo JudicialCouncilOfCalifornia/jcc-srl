@@ -6,12 +6,6 @@ dependencies:
     - field.storage.paragraph.field_media
     - media.type.image
     - paragraphs.paragraphs_type.hero_cards
-  module:
-    - datalayer
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_media
 id: paragraph.hero_cards.field_media
 field_name: field_media
 entity_type: paragraph

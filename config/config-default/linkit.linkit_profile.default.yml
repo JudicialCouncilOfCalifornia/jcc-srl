@@ -18,6 +18,7 @@ matchers:
       bundles: {  }
       group_by_bundle: true
       substitution_type: canonical
+      limit: 100
       include_unpublished: false
     weight: 0
   995df179-f232-4231-99f6-60e9f58539e7:
@@ -28,6 +29,7 @@ matchers:
       bundles: {  }
       group_by_bundle: true
       substitution_type: media
+      limit: 100
     weight: 0
   23a7e9ee-8fe0-4c82-bc7f-f8d5b5386b25:
     id: 'entity:webform'
@@ -37,4 +39,5 @@ matchers:
       bundles: null
       group_by_bundle: null
       substitution_type: canonical
+      limit: 100
     weight: 0

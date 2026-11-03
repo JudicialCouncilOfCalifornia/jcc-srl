@@ -5,6 +5,8 @@ dependencies: {  }
 _core:
   default_config_hash: WM1uE9LkoPPgfefkkjMO1v95bviE8mf1k5bM9CpF0N0
 id: default
+entity_type_id: null
+entity_id: null
 action: display_page
 allow_override: 1
 redirect: ''

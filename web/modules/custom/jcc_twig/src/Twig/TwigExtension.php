@@ -3,27 +3,58 @@
 namespace Drupal\jcc_twig\Twig;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Language\LanguageInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Template\TwigEnvironment;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\CoreExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Additional twig extensions.
  */
-class TwigExtension extends \Twig_Extension {
-  use ContainerAwareTrait;
+class TwigExtension extends AbstractExtension {
+
+  /**
+   * The language manager.
+   *
+   * @var \Drupal\Core\Language\LanguageManagerInterface
+   */
+  protected $languageManager;
+
+  /**
+   * The date formatter.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   */
+  protected $dateFormatter;
+
+  /**
+   * Constructs the Twig extension.
+   *
+   * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
+   *   The language manager.
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
+   *   The date formatter.
+   */
+  public function __construct(LanguageManagerInterface $language_manager, DateFormatterInterface $date_formatter) {
+    $this->languageManager = $language_manager;
+    $this->dateFormatter = $date_formatter;
+  }
 
   /**
    * {@inheritdoc}
    */
   public function getFilters() {
     return [
-      new \Twig_SimpleFilter('remove_empty', [$this, 'removeEmpty']),
-      new \Twig_SimpleFilter('clean_unique_id', [$this, 'uniqueId']),
-      new \Twig_SimpleFilter('i18n_format_date', [$this, 'formatDate'], ['needs_environment' => TRUE]),
-      new \Twig_SimpleFilter('remove_html_comments', [$this, 'removeHtmlComments']),
-      new \Twig_SimpleFilter('unescape', [$this, 'unescape']),
-      new \Twig_SimpleFilter('auto_convert_urls', [$this, 'autoConvertUrls']),
+      new TwigFilter('remove_empty', [$this, 'removeEmpty']),
+      new TwigFilter('clean_unique_id', [$this, 'uniqueId']),
+      new TwigFilter('i18n_format_date', [$this, 'formatDate'], ['needs_environment' => TRUE]),
+      new TwigFilter('remove_html_comments', [$this, 'removeHtmlComments']),
+      new TwigFilter('unescape', [$this, 'unescape']),
+      new TwigFilter('auto_convert_urls', [$this, 'autoConvertUrls']),
     ];
   }
 
@@ -32,7 +63,7 @@ class TwigExtension extends \Twig_Extension {
    */
   public function getFunctions() {
     return [
-      new \Twig_SimpleFunction('term_field_from_id', [$this, 'termFieldFromId'], ['is_safe' => ['html']]),
+      new TwigFunction('term_field_from_id', [$this, 'termFieldFromId'], ['is_safe' => ['html']]),
     ];
   }
 
@@ -63,7 +94,7 @@ class TwigExtension extends \Twig_Extension {
    * using the current language for texts.
    *
    * @param \Drupal\Core\Template\TwigEnvironment $env
-   *   A Twig_Environment instance.
+   *   A Twig environment instance.
    * @param int|string|DateTime $date
    *   A string, integer timestamp or DateTime object to convert.
    * @param string $type
@@ -96,7 +127,10 @@ class TwigExtension extends \Twig_Extension {
     $account = \Drupal::currentUser();
     $timezone = $account->getTimeZone() ?? 'America/Los_Angeles';
 
-    $date = twig_date_converter($env, $date);
+    // Twig 3.9+ exposes the converter on CoreExtension; Twig 2 only has the
+    // global function.
+    $core = $env->getExtension(CoreExtension::class);
+    $date = method_exists($core, 'convertDate') ? $core->convertDate($date) : twig_date_converter($env, $date);
     if (empty($langcode)) {
       $langcode = $this->getLanguageManager()
         ->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)
@@ -191,14 +225,14 @@ class TwigExtension extends \Twig_Extension {
    * Returns the language manager service.
    */
   protected function getLanguageManager() {
-    return $this->container->get('language_manager');
+    return $this->languageManager;
   }
 
   /**
    * Provides a service to handle various date related functionality.
    */
   protected function getDateFormatter() {
-    return $this->container->get('date.formatter');
+    return $this->dateFormatter;
   }
 
 }

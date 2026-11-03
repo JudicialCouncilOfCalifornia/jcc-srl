@@ -37,6 +37,10 @@ datefinder:
 jump-nav:
   js:
     assets/js/jump-nav.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
 
 submit-scroll:
   js:

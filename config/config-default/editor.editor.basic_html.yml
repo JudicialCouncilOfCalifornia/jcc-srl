@@ -5,78 +5,162 @@ dependencies:
   config:
     - filter.format.basic_html
   module:
-    - ckeditor
+    - ckeditor5
 _core:
   default_config_hash: kkdI_XAGhiSqJaCidNRy8-rNEs7xYVQWwReS2g7-djY
 format: basic_html
-editor: ckeditor
+editor: ckeditor5
 settings:
   toolbar:
-    rows:
-      -
-        -
-          name: Formatting
-          items:
-            - Bold
-            - Italic
-            - JustifyLeft
-            - JustifyCenter
-            - JustifyRight
-            - JustifyBlock
-            - Outdent
-            - Indent
-            - RemoveFormat
-            - Format
-            - Styles
-        -
-          name: Links
-          items:
-            - DrupalLink
-            - DrupalUnlink
-            - Anchor
-            - tooltip
-        -
-          name: Lists
-          items:
-            - BulletedList
-            - NumberedList
-        -
-          name: Embed
-          items:
-            - Blockquote
-            - Table
-            - HorizontalRule
-            - file
-            - DrupalMediaLibrary
-            - Templates
-            - ShowBlocks
-            - insert_view_adv
-        -
-          name: Tools
-          items:
-            - PasteFromWord
-            - Source
-            - Maximize
+    items:
+      - bold
+      - italic
+      - alignment
+      - outdent
+      - indent
+      - removeFormat
+      - heading
+      - style
+      - '|'
+      - link
+      - anchor
+      - '|'
+      - bulletedList
+      - numberedList
+      - '|'
+      - blockQuote
+      - insertTable
+      - horizontalLine
+      - drupalMedia
+      - file
+      - ckeditorTemplates
+      - showBlocks
+      - '|'
+      - sourceEditing
+      - '|'
+      - insertViewAdv
   plugins:
-    drupallink:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
+    ckeditor5_heading:
+      enabled_headings:
+        - heading1
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_list:
+      properties:
+        reversed: false
+        startIndex: true
+      multiBlock: true
+    ckeditor5_sourceEditing:
+      allowed_tags:
+        - '<cite>'
+        - '<dl>'
+        - '<dt>'
+        - '<dd>'
+        - '<span role data-a11y-toggle data-tooltip class aria-hidden="true">'
+        - '<img src alt data-entity-type data-entity-uuid data-entity-substitution data-align data-caption width height>'
+        - '<div id class="jcc-* usa-* active">'
+        - '<button data-a11y-toggle class="jcc-read-more__trigger usa-button usa-button--unstyled">'
+        - '<svg role title class="icon icon-expand_more">'
+        - '<use href>'
+        - '<blockquote cite>'
+        - '<ol type>'
+        - '<h2 id class="usa-* jcc-*">'
+        - '<h3 id class="usa-* jcc-*">'
+        - '<h4 id class="usa-* jcc-*">'
+        - '<h5 id class="usa-* jcc-*">'
+        - '<h6 id class="usa-* jcc-*">'
+        - '<ul type>'
+        - '<drupal-media data-entity-substitution data-caption title>'
+        - '<a hreflang accesskey>'
+    ckeditor5_style:
+      styles:
+        -
+          label: 'Lead paragraph'
+          element: '<p class="jcc-lead">'
+        -
+          label: 'Button: Primary'
+          element: '<a class="usa-button">'
+        -
+          label: 'Button: Secondary'
+          element: '<a class="usa-button usa-button--secondary">'
+        -
+          label: 'Button: Accent Warm'
+          element: '<a class="usa-button usa-button--accent-warm">'
+        -
+          label: 'Button: External'
+          element: '<a class="usa-button usa-button--external external-button">'
+        -
+          label: 'Button: Back Secondary'
+          element: '<a class="usa-button usa-button--secondary js-back-button">'
+        -
+          label: 'List item (jcc-options__item)'
+          element: '<li class="jcc-options__item">'
+        -
+          label: 'List item (jcc-explainers__item)'
+          element: '<li class="jcc-explainers__item">'
+        -
+          label: 'List item (jcc-option__content)'
+          element: '<li class="jcc-option__content">'
+        -
+          label: 'List item (jcc-explainer__content)'
+          element: '<li class="jcc-explainer__content">'
+        -
+          label: 'List item (jcc-callout__content)'
+          element: '<li class="jcc-callout__content">'
+        -
+          label: 'List item (jcc-tiles__item)'
+          element: '<li class="jcc-tiles__item">'
+        -
+          label: 'List item (jcc-optionsitem)'
+          element: '<li class="jcc-optionsitem">'
+        -
+          label: 'List item (jcc-stepitem)'
+          element: '<li class="jcc-stepitem">'
+        -
+          label: 'List item (jcc-alert__close)'
+          element: '<li class="jcc-alert__close">'
+        -
+          label: 'List (jcc-list-group)'
+          element: '<ul class="jcc-list-group">'
+        -
+          label: 'List (jcc-explainers)'
+          element: '<ul class="jcc-explainers">'
+        -
+          label: 'List (jcc-options)'
+          element: '<ul class="jcc-options">'
+        -
+          label: 'List (jcc-action-list)'
+          element: '<ul class="jcc-action-list">'
+        -
+          label: 'List (jcc-tiles)'
+          element: '<ul class="jcc-tiles">'
+    ckeditor_templates_plugin:
+      replace_content: false
+    editor_advanced_link_link:
+      enabled_attributes:
+        - aria-label
+        - id
+        - rel
+        - target
+    linkit_extension:
       linkit_enabled: true
       linkit_profile: default
-    stylescombo:
-      styles: "p.jcc-lead|Lead paragraph\r\na.usa-button|Button: Primary\r\na.usa-button.usa-button--secondary|Button: Secondary\r\na.usa-button.usa-button--accent-warm|Button: Accent Warm\r\na.usa-button.usa-button--external.external-button|Button: External\r\na.usa-button.usa-button--secondary.js-back-button|Button: Back Secondary\r\n"
-    templates:
-      template_path: /themes/custom/atrium/ckeditor/ckeditor_templates.js
-      replace_content: 0
-    insert_view_adv:
-      enable_live_preview: true
-    tooltip:
-      text: 'Tooltip text'
-      placement: top
-      arrow: 1
+    media_media:
+      allow_view_mode_override: true
 image_upload:
   status: true
   scheme: public
   directory: inline-images
-  max_size: ''
+  max_size: null
   max_dimensions:
     width: null
     height: null

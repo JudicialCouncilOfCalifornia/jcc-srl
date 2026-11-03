@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the srl_custom module.
+ */
+
+use Drupal\filter\Entity\FilterFormat;
+
+/**
+ * Replace the contrib "tooltip" filter with "srl_tooltip" in text formats.
+ *
+ * Runs before config import so the contrib tooltip module (which depends on
+ * CKEditor 4) can be uninstalled by the import.
+ */
+function srl_custom_update_10001() {
+  $updated = [];
+  foreach (FilterFormat::loadMultiple() as $format) {
+    if (!$format->filters()->has('tooltip')) {
+      continue;
+    }
+    $old = $format->filters('tooltip')->getConfiguration();
+    $format->setFilterConfig('srl_tooltip', [
+      'id' => 'srl_tooltip',
+      'provider' => 'srl_custom',
+      'status' => $old['status'],
+      'weight' => $old['weight'],
+      'settings' => [],
+    ]);
+    $format->removeFilter('tooltip');
+    $format->save();
+    $updated[] = $format->id();
+  }
+  return $updated ? t('Switched to srl_tooltip in: @formats.', ['@formats' => implode(', ', $updated)]) : t('No text format used the tooltip filter.');
+}

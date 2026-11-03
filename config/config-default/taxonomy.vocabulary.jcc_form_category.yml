@@ -6,3 +6,4 @@ name: 'JCC Form Category'
 vid: jcc_form_category
 description: 'Categories used to tag JCC Forms for search.'
 weight: 0
+new_revision: false

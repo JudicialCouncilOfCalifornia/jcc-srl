@@ -1,5 +1,6 @@
 _core:
   default_config_hash: b4fBdLwGlKs_2ifIOxyh8wBTZZQ7W6dVJ1wUA6xuQQ8
+langcode: en
 minimum_single: 3
 minimum_multiple: 0
 disable_search_threshold: 0
@@ -11,10 +12,8 @@ search_contains: true
 disable_search: false
 allow_single_deselect: false
 disabled_themes:
-  bartik: '0'
-  seven: '0'
-  adminimal_theme: '0'
   atrium: '0'
+  claro: '0'
 chosen_include: 0
 placeholder_text_multiple: 'Choose some options'
 placeholder_text_single: 'Choose an option'

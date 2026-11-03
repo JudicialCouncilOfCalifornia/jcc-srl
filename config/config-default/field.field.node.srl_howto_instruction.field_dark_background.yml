@@ -5,12 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_dark_background
     - node.type.srl_howto_instruction
-  module:
-    - datalayer
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_dark_background
 id: node.srl_howto_instruction.field_dark_background
 field_name: field_dark_background
 entity_type: node

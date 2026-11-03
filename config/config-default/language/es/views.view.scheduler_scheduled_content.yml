@@ -22,3 +22,5 @@ display:
         langcode:
           expose:
             label: Idioma
+  user_page:
+    display_title: Usuario

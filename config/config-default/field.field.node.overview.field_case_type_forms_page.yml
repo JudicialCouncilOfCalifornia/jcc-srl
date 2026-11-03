@@ -6,13 +6,9 @@ dependencies:
     - field.storage.node.field_case_type_forms_page
     - node.type.overview
   module:
-    - datalayer
     - link
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_case_type_forms_page
   tmgmt_content:
     excluded: false
 id: node.overview.field_case_type_forms_page

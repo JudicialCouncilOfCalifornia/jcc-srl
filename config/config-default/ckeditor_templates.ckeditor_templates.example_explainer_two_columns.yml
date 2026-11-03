@@ -1,0 +1,36 @@
+uuid: 04e40dc0-33bc-4084-af03-b42434df53dc
+langcode: en
+status: true
+dependencies: {  }
+id: example_explainer_two_columns
+label: 'Example (Explainer) - Two Columns'
+description: 'Use to highlight real-world examples of concepts.'
+thumb: {  }
+code:
+  value: |-
+    <p>Text Before</p><div class="jcc-explainers-section--has-two-columns jcc-explainers-section">
+              <div class="jcc-explainers__container">
+                <ul class="jcc-explainers">
+                  <li class="jcc-explainers__item">
+                    <div class="jcc-explainer">
+                      <div class="jcc-explainer__brow">Wage Garnishment</div>
+                      <p class="jcc-explainer__content">
+                        Someone took money from my paycheck</p>
+                    </div>
+                  </li>
+                  <li class="jcc-explainers__item">
+                    <div class="jcc-explainer">
+                      <div class="jcc-explainer__brow">Wage Garnishment</div>
+                      <p class="jcc-explainer__content">
+                        If you bought a car with money that only you earned...</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <p>Text After</p>
+  format: basic_html
+formats:
+  basic_html: basic_html
+weight: 3
+thumb_alternative: /themes/custom/atrium/ckeditor/explainer-two.png

@@ -1,9 +1,6 @@
 display:
   default:
     display_options:
-      exposed_form:
-        options:
-          reset_button_label: Reset
       fields:
         state:
           label: Estado
@@ -23,6 +20,9 @@ display:
           label: Modificado
         operations:
           label: Operaciones
+      exposed_form:
+        options:
+          reset_button_label: Reset
       filters:
         state:
           expose:

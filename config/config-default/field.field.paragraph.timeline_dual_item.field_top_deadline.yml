@@ -5,12 +5,6 @@ dependencies:
   config:
     - field.storage.paragraph.field_top_deadline
     - paragraphs.paragraphs_type.timeline_dual_item
-  module:
-    - datalayer
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_top_deadline
 id: paragraph.timeline_dual_item.field_top_deadline
 field_name: field_top_deadline
 entity_type: paragraph

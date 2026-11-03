@@ -29,7 +29,7 @@ third_party_settings:
 name: 'SRL HowTo'
 type: srl_howto
 description: 'Parent of a collection of pages.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

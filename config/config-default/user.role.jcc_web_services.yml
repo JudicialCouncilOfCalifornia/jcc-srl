@@ -3,6 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.file_wysiwyg
+    - entity_browser.browser.meb
+    - entity_browser.browser.meb_forms
+    - entity_browser.browser.media_entity_browser_modal
+    - entity_browser.browser.media_entity_browser_wysiwyg
     - media.type.audio
     - media.type.file
     - media.type.image
@@ -23,6 +28,7 @@ dependencies:
     - workflows.workflow.editorial_workflow
   module:
     - block
+    - block_content
     - cc
     - content_moderation
     - content_translation
@@ -32,7 +38,9 @@ dependencies:
     - entity_browser
     - entity_clone
     - environment_indicator
+    - file
     - fillpdf
+    - help
     - language
     - locale
     - media
@@ -46,7 +54,6 @@ dependencies:
     - role_delegation
     - scheduler
     - search
-    - search_api_exclude_entity
     - shortcut
     - srl_court_finder
     - system
@@ -64,10 +71,12 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
+  - 'access block library'
   - 'access content overview'
   - 'access contextual links'
   - 'access environment indicator'
   - 'access file_wysiwyg entity browser pages'
+  - 'access help pages'
   - 'access meb entity browser pages'
   - 'access meb_forms entity browser pages'
   - 'access media overview'
@@ -82,6 +91,8 @@ permissions:
   - 'access webform submission user'
   - 'access workbench'
   - 'add user input entities'
+  - 'administer block content'
+  - 'administer block types'
   - 'administer blocks'
   - 'administer content translation'
   - 'administer court finder'
@@ -95,12 +106,12 @@ permissions:
   - 'administer redirect settings'
   - 'administer redirects'
   - 'administer scheduler'
-  - 'administer search api exclude entity'
   - 'administer shortcuts'
   - 'administer url aliases'
   - 'administer users'
   - 'administer webform'
   - 'administer webform element access'
+  - 'administer webform overview'
   - 'administer webform submission'
   - 'administer workflows'
   - 'administer xlsx mapping'
@@ -155,6 +166,7 @@ permissions:
   - 'delete own audio media'
   - 'delete own basic content'
   - 'delete own file media'
+  - 'delete own files'
   - 'delete own handbook content'
   - 'delete own image media'
   - 'delete own jcc_form media'

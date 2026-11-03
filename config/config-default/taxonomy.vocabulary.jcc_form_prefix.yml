@@ -6,3 +6,4 @@ name: 'JCC Form Prefix'
 vid: jcc_form_prefix
 description: 'Used to define form categories based on the form number prefix, e.g. FL, DV, GC, etc.'
 weight: 0
+new_revision: false

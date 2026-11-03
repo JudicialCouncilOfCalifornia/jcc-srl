@@ -6,12 +6,7 @@ dependencies:
     - field.storage.paragraph.field_switchboard_background
     - paragraphs.paragraphs_type.switchboard
   module:
-    - datalayer
     - options
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_switchboard_background
 id: paragraph.switchboard.field_switchboard_background
 field_name: field_switchboard_background
 entity_type: paragraph

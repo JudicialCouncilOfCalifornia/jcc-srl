@@ -29,7 +29,7 @@ third_party_settings:
 name: 'SRL Onramp'
 type: srl_onramp
 description: 'Onranp provides information about a specific form or process.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

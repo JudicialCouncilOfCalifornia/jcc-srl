@@ -5,17 +5,15 @@ dependencies:
   config:
     - field.storage.media.field_arabic_url
     - field.storage.media.field_cambodian_url
-    - field.storage.media.field_chinese_url
     - field.storage.media.field_chinese_traditional_url
+    - field.storage.media.field_chinese_url
     - field.storage.media.field_description
     - field.storage.media.field_farsi_url
-    - field.storage.media.field_number
     - field.storage.media.field_form_category
-    - field.storage.taxonomy_term.field_synonyms
     - field.storage.media.field_form_prefix
-    - field.storage.taxonomy_term.field_form_prefix_label
     - field.storage.media.field_hmong_url
     - field.storage.media.field_korean_url
+    - field.storage.media.field_number
     - field.storage.media.field_punjabi_url
     - field.storage.media.field_revoke_form
     - field.storage.media.field_russian_url
@@ -23,12 +21,13 @@ dependencies:
     - field.storage.media.field_tagalog_url
     - field.storage.media.field_vietnamese_url
     - field.storage.media.field_weight
+    - field.storage.taxonomy_term.field_form_prefix_label
+    - field.storage.taxonomy_term.field_synonyms
     - search_api.server.deafult
   module:
-    - taxonomy
     - media
-    - search_api
     - search_api_solr
+    - taxonomy
 id: jcc_forms_index
 name: 'JCC Forms Index'
 description: 'Index for the forms lookup API'
@@ -172,7 +171,7 @@ field_settings:
     datasource_id: 'entity:media'
     property_path: field_description
     type: text
-    boost: !!float 0
+    boost: 0.0
     dependencies:
       config:
         - field.storage.media.field_description
@@ -181,7 +180,7 @@ field_settings:
     datasource_id: 'entity:media'
     property_path: name
     type: text
-    boost: !!float 0
+    boost: 0.0
     dependencies:
       module:
         - media
@@ -190,7 +189,7 @@ field_settings:
     datasource_id: 'entity:media'
     property_path: field_number
     type: text
-    boost: !!float 2
+    boost: 2.0
     dependencies:
       config:
         - field.storage.media.field_number
@@ -199,7 +198,7 @@ field_settings:
     datasource_id: 'entity:media'
     property_path: 'field_form_prefix:entity:name'
     type: text
-    boost: !!float 3
+    boost: 3.0
     dependencies:
       config:
         - field.storage.media.field_form_prefix

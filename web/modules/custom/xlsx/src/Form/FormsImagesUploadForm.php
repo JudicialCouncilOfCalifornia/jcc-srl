@@ -78,19 +78,17 @@ class FormsImagesUploadForm extends ConfigFormBase {
         'operations' => [],
       ];
 
-      $zip = zip_open($file_path);
-      if (is_resource($zip)) {
-        while ($zip_entry = zip_read($zip)) {
-          $filename = zip_entry_name($zip_entry);
-          if (zip_entry_open($zip, $zip_entry))  {
-            $size = zip_entry_filesize ($zip_entry);
-            $contents = zip_entry_read($zip_entry, $size);
+      $zip = new \ZipArchive();
+      if ($zip->open($file_path) === TRUE) {
+        for ($i = 0; $i < $zip->numFiles; $i++) {
+          $filename = $zip->getNameIndex($i);
+          $contents = $zip->getFromIndex($i);
+          if ($filename !== FALSE && $contents !== FALSE) {
             $batch['operations'][] = ['\Drupal\xlsx\XlsxBatchOps::uploadThumbnail', [$filename, $this->path, $contents]];
-            zip_entry_close($zip_entry);
           }
         }
+        $zip->close();
       }
-      zip_close($zip);
 
       batch_set($batch);
 

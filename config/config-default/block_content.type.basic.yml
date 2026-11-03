@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: basic
 label: 'Basic Editable Block'
-revision: 0
-description: 'Basic block for content that shouldn''t be stored in config.'
+revision: false
+description: "Basic block for content that shouldn't be stored in config."

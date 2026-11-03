@@ -22,7 +22,7 @@ settings:
       label: 'Tiles Right'
     -
       value: next
-      label: 'Deprecated (duplicate of ''Case Overview - Landscape'')'
+      label: "Deprecated (duplicate of 'Case Overview - Landscape')"
   allowed_values_function: ''
 module: options
 locked: false

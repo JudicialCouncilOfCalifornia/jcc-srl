@@ -6,12 +6,8 @@ dependencies:
     - field.storage.paragraph.field_dropdown_menu_default_opti
     - paragraphs.paragraphs_type.card_form
   module:
-    - datalayer
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_dropdown_menu_default_opti
   tmgmt_content:
     excluded: false
 id: paragraph.card_form.field_dropdown_menu_default_opti

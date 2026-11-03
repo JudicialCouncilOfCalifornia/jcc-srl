@@ -29,7 +29,7 @@ third_party_settings:
 name: 'SRL Wayfinder'
 type: srl_wayfinder
 description: 'Pages with end-user input widgets that define paths.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

@@ -3,6 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.file_wysiwyg
+    - entity_browser.browser.meb
+    - entity_browser.browser.meb_forms
+    - entity_browser.browser.media_entity_browser_modal
+    - entity_browser.browser.media_entity_browser_wysiwyg
     - media.type.audio
     - media.type.file
     - media.type.image
@@ -20,6 +25,7 @@ dependencies:
     - entity_browser
     - entity_clone
     - environment_indicator
+    - file
     - fillpdf
     - locale
     - media
@@ -50,7 +56,6 @@ permissions:
   - 'administer media'
   - 'administer meta tags'
   - 'administer pdfs'
-  - 'administer search api exclude entity'
   - 'administer url aliases'
   - 'change own username'
   - 'clone node entity'
@@ -74,6 +79,7 @@ permissions:
   - 'delete any video media'
   - 'delete own audio media'
   - 'delete own file media'
+  - 'delete own files'
   - 'delete own image media'
   - 'delete own jcc_form media'
   - 'delete own remote_video media'
@@ -94,6 +100,7 @@ permissions:
   - 'edit own remote_video media'
   - 'edit own snippet media'
   - 'edit own video media'
+  - 'edit search api exclude entity'
   - 'link to any page'
   - 'manage editoria11y results'
   - 'mark as ok in editoria11y'

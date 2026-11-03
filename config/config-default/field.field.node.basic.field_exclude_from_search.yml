@@ -6,13 +6,9 @@ dependencies:
     - field.storage.node.field_exclude_from_search
     - node.type.basic
   module:
-    - datalayer
     - search_api_exclude_entity
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_exclude_from_search
   tmgmt_content:
     excluded: false
 id: node.basic.field_exclude_from_search

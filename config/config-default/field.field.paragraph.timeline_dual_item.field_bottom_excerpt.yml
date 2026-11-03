@@ -4,18 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_bottom_excerpt
+    - filter.format.simple_html
     - paragraphs.paragraphs_type.timeline_dual_item
   module:
-    - allowed_formats
-    - datalayer
     - text
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_bottom_excerpt
-  allowed_formats:
-    allowed_formats:
-      - simple_html
 id: paragraph.timeline_dual_item.field_bottom_excerpt
 field_name: field_bottom_excerpt
 entity_type: paragraph
@@ -26,5 +18,7 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - simple_html
 field_type: text_long

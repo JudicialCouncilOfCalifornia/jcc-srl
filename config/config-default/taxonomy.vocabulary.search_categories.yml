@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Search categories'
 vid: search_categories
-description: ''
+description: null
 weight: 0
+new_revision: false

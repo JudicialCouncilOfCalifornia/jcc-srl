@@ -135,11 +135,12 @@ function _atrium_get_menutree($menu_name) {
             $child_url_obj = $link->getUrlObject();
             $child_url = $child_url_obj->toString();
             // If translation variant is "unpublished/not ready", use English.
-            if (!$child_url_obj->isExternal()) {
+            // Only node links carry a node route parameter; unrouted
+            // (base:) and other routes would throw or load nothing.
+            if ($child_url_obj->isRouted() && $child_url_obj->getRouteName() === 'entity.node.canonical') {
               $route_params = $child_url_obj->getRouteParameters();
-              $child_nid = $route_params['node'];
-              $child_node = Node::load($child_nid);
-              if ($child_node->getTranslationStatus($langcode) == NULL) {
+              $child_node = Node::load($route_params['node']);
+              if ($child_node && $child_node->getTranslationStatus($langcode) == NULL) {
                 $child_url = $child_node->toUrl()->toString();
               }
             }

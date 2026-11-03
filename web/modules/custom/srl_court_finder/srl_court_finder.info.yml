@@ -1,6 +1,6 @@
 name: 'SRL Court Finder'
 type: module
 description: 'Misc enhancements for the "find courts" feature.'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9.5 || ^10 || ^11
 package: 'JCC-SRL'
 configure: srl_court_finder.court_finder_settings_form

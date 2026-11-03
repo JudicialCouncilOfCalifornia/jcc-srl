@@ -6,12 +6,7 @@ dependencies:
     - field.storage.paragraph.field_top_num
     - paragraphs.paragraphs_type.timeline_dual_item
   module:
-    - datalayer
     - options
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_top_num
 id: paragraph.timeline_dual_item.field_top_num
 field_name: field_top_num
 entity_type: paragraph

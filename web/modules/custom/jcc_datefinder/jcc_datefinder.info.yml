@@ -1,7 +1,7 @@
 name: 'JCC DateFinder'
 type: module
 description: 'Creates form for the Datefinder Paragraph type.'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9.5 || ^10 || ^11
 package: 'JCC-SRL'
 dependencies:
   - paragraphs

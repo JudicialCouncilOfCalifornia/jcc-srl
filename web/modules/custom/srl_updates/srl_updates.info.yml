@@ -1,5 +1,5 @@
 name: 'SRL Updates'
 type: module
 description: 'General update hook implementations.'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9.5 || ^10 || ^11
 package: 'JCC-SRL'

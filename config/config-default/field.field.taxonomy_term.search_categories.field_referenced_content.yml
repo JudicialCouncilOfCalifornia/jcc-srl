@@ -16,12 +16,8 @@ dependencies:
     - node.type.timeline
     - taxonomy.vocabulary.search_categories
   module:
-    - datalayer
     - tmgmt_content
 third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_referenced_content
   tmgmt_content:
     excluded: false
 id: taxonomy_term.search_categories.field_referenced_content

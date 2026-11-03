@@ -4,18 +4,15 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
+    - filter.format.basic_html
     - node.type.basic
   module:
-    - allowed_formats
     - datalayer
     - text
 third_party_settings:
   datalayer:
     expose: 1
     label: body
-  allowed_formats:
-    allowed_formats:
-      - basic_html
 _core:
   default_config_hash: 3CV8O7axlnzMXG79wJtpA5ZNv_y0bJyjJ8k0v3J_ix4
 id: node.basic.body
@@ -31,4 +28,6 @@ default_value_callback: ''
 settings:
   display_summary: false
   required_summary: false
+  allowed_formats:
+    - basic_html
 field_type: text_with_summary

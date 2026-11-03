@@ -6,15 +6,10 @@ dependencies:
     - field.storage.media.field_media_image
     - media.type.image
   module:
-    - datalayer
     - image
   enforced:
     module:
       - media
-third_party_settings:
-  datalayer:
-    expose: 0
-    label: field_media_image
 _core:
   default_config_hash: pzPA-2JwyxlJ3qMb4L9viAnhNhbEhl2couH8A3FO020
 id: media.image.field_media_image

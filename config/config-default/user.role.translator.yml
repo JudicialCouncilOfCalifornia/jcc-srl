@@ -35,6 +35,7 @@ dependencies:
     - paragraphs
     - rebuild_cache_access
     - search
+    - search_api_exclude_entity
     - system
     - taxonomy
     - tmgmt
@@ -109,6 +110,7 @@ permissions:
   - 'edit own srl_howto_instruction content'
   - 'edit own srl_onramp content'
   - 'edit own srl_wayfinder content'
+  - 'edit search api exclude entity'
   - 'mark as ok in editoria11y'
   - 'rebuild cache access'
   - 'revert all revisions'

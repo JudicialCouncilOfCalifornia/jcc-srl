@@ -54,6 +54,7 @@ dependencies:
     - role_delegation
     - scheduler
     - search
+    - search_api_exclude_entity
     - shortcut
     - srl_court_finder
     - system
@@ -219,6 +220,7 @@ permissions:
   - 'edit own video media'
   - 'edit own webform'
   - 'edit own webform submission'
+  - 'edit search api exclude entity'
   - 'edit terms in action'
   - 'edit terms in case_type'
   - 'edit terms in code'

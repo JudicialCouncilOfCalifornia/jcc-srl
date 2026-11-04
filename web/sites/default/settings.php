@@ -60,6 +60,14 @@ $settings['entity_update_batch_size'] = 50;
  */
 $settings['entity_update_backup'] = TRUE;
 
+/**
+ * State caching.
+ *
+ * Cache State API values in the default cache bin. Recommended since Drupal
+ * 10.3 and the default in Drupal 11.
+ */
+$settings['state_cache'] = TRUE;
+
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   $pantheon_settings = $app_root . '/' . $site_path .  '/settings.pantheon.php';
   if (file_exists($pantheon_settings)) {

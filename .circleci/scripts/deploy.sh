@@ -107,6 +107,13 @@ for name in "$@" ; do
   # Give pantheon a chance for code to sync first.
   # May need to adjust this value.
 
+  # Use the site-local Drush from the artifact (same version Pantheon runs)
+  # instead of the image's global Drush, which floods the log with PHP 8.2+
+  # deprecation call stacks. XDEBUG_MODE=off stops Xdebug printing them.
+  export XDEBUG_MODE=off
+  DRUSH="$PWD/vendor/bin/drush"
+  [ -x "$DRUSH" ] || DRUSH=drush
+
   WAIT=90
   echo
   echo "Waiting $WAIT seconds for code to sync on host."
@@ -114,14 +121,14 @@ for name in "$@" ; do
 
   echo
   echo Running Database Updates for $PANTHEON_ENV
-  drush @${SITE_CODE}.${PANTHEON_ENV} updb -y
+  $DRUSH @${SITE_CODE}.${PANTHEON_ENV} updb -y
 
   echo
   echo Importing Config for $PANTHEON_ENV
-  drush @${SITE_CODE}.${PANTHEON_ENV} cim -y
+  $DRUSH @${SITE_CODE}.${PANTHEON_ENV} cim -y
 
   echo
   echo Clearing Cache for $PANTHEON_ENV
-  drush @${SITE_CODE}.${PANTHEON_ENV} cr
+  $DRUSH @${SITE_CODE}.${PANTHEON_ENV} cr
 
 done

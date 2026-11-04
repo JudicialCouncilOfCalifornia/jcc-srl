@@ -99,6 +99,7 @@ display:
         type: mini
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 25
           total_pages: null
           id: 0
@@ -113,7 +114,6 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:
@@ -173,11 +173,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              editor: '0'
-              translator: '0'
-              jcc_web_services: '0'
-              administrator: '0'
             expose_fields: false
             placeholder: 'Search for keywords'
             searched_fields_id: ''
@@ -342,6 +337,7 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:search_api.index.index'
+        - 'search_api_list:index'
   page_1:
     id: page_1
     display_title: Page
@@ -364,11 +360,15 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
+        - 'facets_filter:f'
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
         - 'user.node_grants:view'
       tags:
+        - 'config:facets.facet.actions'
+        - 'config:facets.facet.case_types'
         - 'config:field.storage.node.body'
         - 'config:search_api.index.index'
+        - 'search_api_list:index'

@@ -6,6 +6,8 @@ display:
           label: Estado
         label:
           label: Etiqueta
+        type:
+          label: Tipo
         target_language:
           label: Para
         progress:

@@ -6,6 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.extras
 label: Extras
-description: ''
+description: null
 targetEntityType: paragraph
 cache: true

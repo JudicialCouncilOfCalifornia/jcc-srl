@@ -8,7 +8,13 @@ display:
       fields:
         nothing:
           admin_label: Icono
+        type:
+          label: Tipo
         name:
           label: Usuario
         link:
           label: Operaciones
+      filters:
+        type:
+          expose:
+            label: Tipo

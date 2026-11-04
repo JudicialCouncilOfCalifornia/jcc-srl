@@ -53,7 +53,8 @@
  *
  */
 #}
-{{ attach_library('seven/drupal.nav-tabs') }}
+{# Seven was removed in D10; its nav-tabs behavior now lives in atrium. #}
+{{ attach_library('atrium/nav-tabs') }}
 
 {% if primary or secondary %}
   <div class="nav-tabs__wrapper">

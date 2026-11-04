@@ -65,3 +65,12 @@ iframe-resizer-client:
 chatbot-banner:
   js:
     assets/js/chatbot-banner.js: {}
+
+nav-tabs:
+  js:
+    js/nav-tabs.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+    - core/drupal.debounce

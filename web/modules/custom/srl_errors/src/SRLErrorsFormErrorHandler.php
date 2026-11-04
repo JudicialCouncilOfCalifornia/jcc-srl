@@ -68,7 +68,7 @@ class SRLErrorsFormErrorHandler extends FormErrorHandler {
           '#markup' => $this->formatPlural(count($error_links), '1 error has been found. ', '@count errors have been found.'),
         ]
       ];
-      $message = $this->renderer->renderPlain($render_array);
+      $message = $this->renderer->renderInIsolation($render_array);
       $this->messenger->addError($message);
     }
   }

@@ -58,6 +58,7 @@ settings:
       properties:
         reversed: false
         startIndex: true
+        styles: true
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags:
@@ -72,13 +73,11 @@ settings:
         - '<svg role title class="icon icon-expand_more">'
         - '<use href>'
         - '<blockquote cite>'
-        - '<ol type>'
         - '<h2 id class="usa-* jcc-*">'
         - '<h3 id class="usa-* jcc-*">'
         - '<h4 id class="usa-* jcc-*">'
         - '<h5 id class="usa-* jcc-*">'
         - '<h6 id class="usa-* jcc-*">'
-        - '<ul type>'
         - '<drupal-media data-entity-substitution data-caption title>'
         - '<a hreflang accesskey>'
     ckeditor5_style:

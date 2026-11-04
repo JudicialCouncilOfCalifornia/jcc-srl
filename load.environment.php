@@ -5,16 +5,11 @@
  * https://getcomposer.org/doc/04-schema.md#files
  */
 
-use Dotenv\Dotenv;
-use Dotenv\Exception\InvalidPathException;
-
 /**
  * Load any .env file. See /.env.example.
+ *
+ * createUnsafeImmutable() keeps the v2 behavior: it never overwrites existing
+ * variables and fills getenv(), $_ENV and $_SERVER. safeLoad() does nothing
+ * when there is no .env file (production).
  */
-$dotenv = new Dotenv(__DIR__);
-try {
-  $dotenv->load();
-}
-catch (InvalidPathException $e) {
-  // Do nothing. Production environments rarely use .env files.
-}
+Dotenv\Dotenv::createUnsafeImmutable(__DIR__)->safeLoad();

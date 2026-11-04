@@ -8,11 +8,16 @@ display:
       fields:
         media_bulk_form:
           action_title: Acción
+        bundle:
+          label: Tipo
         status:
           label: Estado
         operations:
           label: Operaciones
       filters:
+        bundle:
+          expose:
+            label: Tipo
         langcode:
           expose:
             label: Idioma

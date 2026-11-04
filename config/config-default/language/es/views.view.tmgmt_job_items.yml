@@ -9,6 +9,8 @@ display:
           label: Estado
         label:
           label: Etiqueta
+        type:
+          label: Tipo
         progress:
           label: Progreso
         word_count:
@@ -25,6 +27,8 @@ display:
       fields:
         label:
           label: Etiqueta
+        type:
+          label: Tipo
         word_count:
           label: Palabras
         changed:

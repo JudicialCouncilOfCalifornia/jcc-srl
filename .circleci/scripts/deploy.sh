@@ -58,7 +58,10 @@ for name in "$@" ; do
   cp -n scripts/_artifact.gitignore data/artifact/.gitignore
   cd data/artifact
   git add .
-  git commit -am "Built assets. $TIMESTAMP"
+  # --allow-empty: re-running a deploy with unchanged code (e.g. after
+  # restoring a database) must still push and run updb/cim instead of
+  # failing on "nothing to commit".
+  git commit --allow-empty -am "Built assets. $TIMESTAMP"
 
   # Tag for master.
   if [[ $CIRCLE_BRANCH == "master" && $LIVE == "true" ]] ; then

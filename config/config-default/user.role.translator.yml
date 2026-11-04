@@ -113,6 +113,7 @@ permissions:
   - 'edit search api exclude entity'
   - 'mark as ok in editoria11y'
   - 'rebuild cache access'
+  - 'rebuild node access permissions'
   - 'revert all revisions'
   - 'revert basic revisions'
   - 'revert handbook revisions'

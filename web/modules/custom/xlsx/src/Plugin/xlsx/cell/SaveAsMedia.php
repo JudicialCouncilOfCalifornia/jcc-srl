@@ -2,6 +2,7 @@
 
 namespace Drupal\xlsx\Plugin\xlsx\cell;
 
+use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
@@ -41,7 +42,16 @@ class SaveAsMedia extends XlsxCellBase {
       }
       else {
         \Drupal::service('file_system')->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY);
-        if ($file = system_retrieve_file($url, $destination, TRUE)) {
+        // system_retrieve_file() was removed in Drupal 11; same behavior.
+        try {
+          $data = (string) \Drupal::httpClient()->get($url)->getBody();
+          $file = \Drupal::service('file.repository')->writeData($data, $destination, FileExists::Rename);
+        }
+        catch (\Exception $e) {
+          \Drupal::logger('xlsx')->error('Failed to fetch @url: @message', ['@url' => $url, '@message' => $e->getMessage()]);
+          $file = NULL;
+        }
+        if ($file) {
           $media = Media::create([
             'bundle' => 'image',
             'uid' => \Drupal::currentUser()->id(),

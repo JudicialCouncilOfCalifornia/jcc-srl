@@ -603,7 +603,7 @@ display:
           set_precision: false
           precision: 0
           decimal: .
-          format_plural: 0
+          format_plural: false
           format_plural_string: !!binary MQNAY291bnQ=
           prefix: ''
           suffix: ''
@@ -611,6 +611,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 50
           total_pages: null
           id: 0
@@ -628,7 +629,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
-          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:
@@ -706,8 +706,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -749,10 +747,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              editor: '0'
-              jcc_web_services: '0'
-              administrator: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -792,10 +786,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              editor: '0'
-              jcc_web_services: '0'
-              administrator: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -835,10 +825,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              editor: '0'
-              jcc_web_services: '0'
-              administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -926,10 +912,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              jcc_web_services: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -975,10 +957,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              editor: '0'
-              jcc_web_services: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1026,8 +1004,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1124,6 +1100,7 @@ display:
           empty_table: true
           caption: ''
           description: ''
+          class: ''
       row:
         type: fields
         options:
@@ -1177,7 +1154,6 @@ display:
         - 'config:field.storage.media.field_code'
         - 'config:field.storage.media.field_date_effective'
         - 'config:field.storage.media.field_number'
-        - extensions
   page_1:
     id: page_1
     display_title: Page
@@ -1208,4 +1184,3 @@ display:
         - 'config:field.storage.media.field_code'
         - 'config:field.storage.media.field_date_effective'
         - 'config:field.storage.media.field_number'
-        - extensions

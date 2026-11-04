@@ -410,10 +410,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              editor: '0'
-              jcc_web_services: '0'
-              administrator: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -458,11 +454,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              editor: '0'
-              translator: '0'
-              jcc_web_services: '0'
-              administrator: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -645,10 +636,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              editor: '0'
-              jcc_web_services: '0'
-              administrator: '0'
             placeholder: 'Enter city or zipcode'
           is_grouped: false
           group_info:
@@ -697,10 +684,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              editor: '0'
-              jcc_web_services: '0'
-              administrator: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''

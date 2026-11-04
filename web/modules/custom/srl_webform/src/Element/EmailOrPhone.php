@@ -3,7 +3,7 @@
 namespace Drupal\srl_webform\Element;
 
 use Drupal\Core\Render\Element;
-use Drupal\Core\Render\Element\FormElement;
+use Drupal\Core\Render\Element\FormElementBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -11,12 +11,12 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @FormElement("emailorphone")
  *
- * @see \Drupal\Core\Render\Element\FormElement
+ * @see \Drupal\Core\Render\Element\FormElementBase
  * @see https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Element%21FormElement.php/class/FormElement
  * @see \Drupal\Core\Render\Element\RenderElement
  * @see https://api.drupal.org/api/drupal/namespace/Drupal%21Core%21Render%21Element
  */
-class EmailOrPhone extends FormElement {
+class EmailOrPhone extends FormElementBase {
 
   /**
    * {@inheritdoc}

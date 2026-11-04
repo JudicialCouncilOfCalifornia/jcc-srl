@@ -4,3 +4,10 @@ display:
       exposed_form:
         options:
           reset_button_label: Reset
+      fields:
+        type:
+          label: Tipo
+      filters:
+        type:
+          expose:
+            label: Tipo

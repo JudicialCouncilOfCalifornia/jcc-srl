@@ -315,6 +315,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 30
           total_pages: null
           id: 0
@@ -332,7 +333,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
-          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:
@@ -394,10 +394,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              editor: '0'
-              jcc_web_services: '0'
-              administrator: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -462,8 +458,11 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
         - user.roles
-      tags: {  }
+      tags:
+        - 'config:search_api.index.default'
+        - 'search_api_list:default'
   page_1:
     id: page_1
     display_title: Page
@@ -489,5 +488,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
         - user.roles
-      tags: {  }
+      tags:
+        - 'config:search_api.index.default'
+        - 'search_api_list:default'

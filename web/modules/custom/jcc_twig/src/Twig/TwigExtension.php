@@ -127,10 +127,7 @@ class TwigExtension extends AbstractExtension {
     $account = \Drupal::currentUser();
     $timezone = $account->getTimeZone() ?? 'America/Los_Angeles';
 
-    // Twig 3.9+ exposes the converter on CoreExtension; Twig 2 only has the
-    // global function.
-    $core = $env->getExtension(CoreExtension::class);
-    $date = method_exists($core, 'convertDate') ? $core->convertDate($date) : twig_date_converter($env, $date);
+    $date = $env->getExtension(CoreExtension::class)->convertDate($date);
     if (empty($langcode)) {
       $langcode = $this->getLanguageManager()
         ->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)

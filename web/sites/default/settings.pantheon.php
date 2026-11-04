@@ -1,5 +1,7 @@
 <?php
 
+// phpcs:ignoreFile
+
 /**
  * @file
  * Pantheon configuration file.
@@ -15,17 +17,10 @@
 /**
  * Version of Pantheon files.
  *
- * This is a monotonically-increasing sequence number that is
- * incremented whenever a change is made to any Pantheon file.
- * Not changed if Drupal core is updated without any change to
- * any Pantheon file.
- *
- * The Pantheon version is included in the git tag only if a
- * release is made that includes changes to Pantheon files, but
- * not to any Drupal files.
+ * This is a monotonically-increasing sequence number.
  */
 if (!defined("PANTHEON_VERSION")) {
-  define("PANTHEON_VERSION", "3");
+  define("PANTHEON_VERSION", "4");
 }
 
 /**
@@ -70,6 +65,14 @@ $is_installer_url = (strpos($_SERVER['SCRIPT_NAME'], '/core/install.php') === 0)
  * at https://www.drupal.org/node/2431247
  *
  */
+if (empty($settings['config_sync_directory'])) {
+  if ($is_installer_url) {
+    $settings['config_sync_directory'] = 'sites/default/files';
+  } else {
+    $settings['config_sync_directory'] = getenv('DOCROOT') ? '../config' : 'sites/default/config';
+  }
+}
+
 
 /**
  * Allow Drupal 8 to Cleanly Redirect to Install.php For New Sites.
@@ -84,7 +87,9 @@ if (
   !$is_installer_url &&
   (isset($_SERVER['PANTHEON_DATABASE_STATE']) && ($_SERVER['PANTHEON_DATABASE_STATE'] == 'empty')) &&
   (empty($GLOBALS['install_state'])) &&
-  (php_sapi_name() != "cli")
+  (php_sapi_name() != "cli") &&
+  ($_ENV['PANTHEON_ENVIRONMENT'] !== "test") &&
+  ($_ENV['PANTHEON_ENVIRONMENT'] !== "live")
 ) {
   include_once __DIR__ . '/../../core/includes/install.core.inc';
   include_once __DIR__ . '/../../core/includes/install.inc';
@@ -117,7 +122,7 @@ if (isset($_SERVER['PRESSFLOW_SETTINGS'])) {
       $databases = array_replace_recursive($databases, $value);
     }
     else {
-      $key = $value;
+      $$key = $value;
     }
   }
 }
@@ -125,7 +130,10 @@ if (isset($_SERVER['PRESSFLOW_SETTINGS'])) {
 /**
  * Handle Hash Salt Value from Drupal
  *
- * Issue: https://github.com/pantheon-systems/drops-8/issues/10
+ * Changing these will invalidate all one-time login links.
+ * Pantheon sets this values for you. If you want to shuffle it you could
+ * use terminus env:rotate-random-seed command:
+ * https://docs.pantheon.io/terminus/commands/env-rotate-random-seed
  *
  */
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
@@ -139,7 +147,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
  *
  */
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  $config['system.file']['path']['temporary'] = $_SERVER['HOME'] .'/tmp';
+  $settings["file_temp_path"] = sys_get_temp_dir();
 }
 
 /**
@@ -162,12 +170,13 @@ if (isset($_ENV['PANTHEON_ROLLING_TMP']) && isset($_ENV['PANTHEON_DEPLOYMENT_IDE
 
 /**
  * Install the Pantheon Service Provider to hook Pantheon services into
- * Drupal 8. This service provider handles operations such as clearing the
+ * Drupal 11. This service provider handles operations such as clearing the
  * Pantheon edge cache whenever the Drupal cache is rebuilt.
  */
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  $GLOBALS['conf']['container_service_providers']['PantheonServiceProvider'] = '\Pantheon\Internal\PantheonServiceProvider';
+  $GLOBALS['conf']['container_service_providers']['PantheonServiceProvider'] = '\Pantheon\Internal\PantheonServiceProvider11';
 }
+
 /**
  * "Trusted host settings" are not necessary on Pantheon; traffic will only
  * be routed to your site if the host settings match a domain configured for

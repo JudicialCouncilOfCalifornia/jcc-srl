@@ -89,28 +89,39 @@ function _srl_webform_set_wizard_attribute(array &$element) {
 }
 
 /**
+ * Implements hook_webform_submission_form_alter().
+ */
+function srl_webform_webform_submission_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if (isset($form['actions'])) {
+    $submission = $form_state->getFormObject()->getEntity();
+    $webform = $submission->getWebform();
+    $source = $submission->getSourceEntity();
+    if ($source) {
+      $source = \Drupal\webform\Plugin\WebformSourceEntityManager::getMainSourceEntity($source);
+    }
+    // Embedded form IDs contain the source entity ID; do not parse them.
+    $form['actions']['#srl_webform_url'] = $source && $source->hasLinkTemplate('canonical')
+      ? $source->toUrl()
+      : $webform->toUrl();
+  }
+}
+
+/**
  * Implements hook_preprocess_HOOK().
  */
 function srl_webform_preprocess_webform_actions(&$variables) {
+  if (!in_array($variables['element']['#type'] ?? NULL, ['actions', 'webform_actions'], TRUE)) {
+    return;
+  }
 
-  // Apply to webform wizard pager.
-  if ($variables['element']['#type'] == 'actions') {
-    $webform_id_part = str_replace('_add_form', '', $variables['element']['#form_id']);
-    $webform_id = str_replace('webform_submission_', '', $webform_id_part);
+  // Keep a wizard's Start Over link on its containing page when embedded.
+  if (isset($variables['element']['#srl_webform_url'])) {
+    $variables['webform_url'] = $variables['element']['#srl_webform_url'];
+  }
 
-    /** @var Drupal\webform\WebformEntityStorage $entity_manager */
-    $entity_manager = \Drupal::entityTypeManager()->getStorage('webform');
-
-    /** @var Drupal\webform\Entity\Webform $webform */
-    $webform = $entity_manager->load($webform_id);
-
-    // Send root url to template.
-    $variables['webform_url'] = $webform->toUrl();
-
-    // Change label to "Start" on first page.
-    if(!isset($variables['element']['wizard_prev'])) {
-      $variables['element']['wizard_next']['#value'] = t("Start");
-    }
-
+  // Only label an existing wizard button, never add one to ordinary forms.
+  if (($variables['element']['#type'] ?? NULL) === 'actions'
+    && isset($variables['element']['wizard_next']) && !isset($variables['element']['wizard_prev'])) {
+    $variables['element']['wizard_next']['#value'] = t('Start');
   }
 }

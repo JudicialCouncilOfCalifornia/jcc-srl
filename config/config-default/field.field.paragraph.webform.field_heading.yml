@@ -1,0 +1,30 @@
+uuid: 5ced9f5e-d2f8-4c14-a9c0-407c232bb9cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.webform
+  module:
+    - allowed_formats
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_heading
+  allowed_formats:
+    allowed_formats:
+      - simple_html
+id: paragraph.webform.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: webform
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

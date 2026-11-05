@@ -1,0 +1,13 @@
+{# Render the native Webform formatter so access, validation, and attachments are preserved. #}
+{% include '@organisms/sections/text-section/text-section.twig' with {
+  text_section: {
+    id: 'p' ~ paragraph.id(),
+    headergroup: {
+      title: content.field_heading
+    },
+    column_content_left: {
+      introduction: content.field_body,
+      webform: content.field_webform_embed
+    }
+  }
+} only %}

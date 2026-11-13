@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "475a551eebcb11e761f378ab5a5a9797",
+    "content-hash": "8a204565a83abc40fa1d0eea6e0f7476",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10745,16 +10745,16 @@
         },
         {
             "name": "judicialcouncil/courtyard-artifact",
-            "version": "0.1.511",
+            "version": "0.1.516",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact.git",
-                "reference": "26706c18adac1e9124764638b26cd706d1901e45"
+                "reference": "36c3a75f3ace3dcc4a60fb4cd26a74c99ad0c8ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/26706c18adac1e9124764638b26cd706d1901e45",
-                "reference": "26706c18adac1e9124764638b26cd706d1901e45",
+                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/36c3a75f3ace3dcc4a60fb4cd26a74c99ad0c8ae",
+                "reference": "36c3a75f3ace3dcc4a60fb4cd26a74c99ad0c8ae",
                 "shasum": ""
             },
             "type": "drupal-library",
@@ -10771,9 +10771,10 @@
             "description": "A build artifact of the Courtyard Pattern Lab pattern library.",
             "support": {
                 "issues": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/issues",
-                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.511"
+                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.516"
             },
-            "time": "2026-09-17T21:09:53+00:00"
+            "time": "2026-11-05T18:24:53+00:00",
+            "published-time": "2026-11-05T18:27:35+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -16253,5 +16254,5 @@
         "php": ">=7.4"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }

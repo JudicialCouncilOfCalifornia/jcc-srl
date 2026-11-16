@@ -35,11 +35,12 @@ third_party_settings:
       region: content
       parent_name: group_websites
       weight: 3
-      format_type: accordion
+      format_type: details
       format_settings:
         classes: ''
+        show_empty_fields: false
         id: ''
-        effect: none
+        open: true
         description: ''
         required_fields: false
     group_websites:
@@ -68,11 +69,12 @@ third_party_settings:
       region: content
       parent_name: group_location
       weight: 4
-      format_type: accordion
+      format_type: details
       format_settings:
         classes: jcc-tag-set
+        show_empty_fields: false
         id: ''
-        effect: none
+        open: true
         description: ''
         required_fields: true
     group_translation_update_status:

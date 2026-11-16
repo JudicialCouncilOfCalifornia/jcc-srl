@@ -19,11 +19,12 @@ description: ''
 category: ''
 elements: |-
   was_this_information_helpful_:
-    '#type': webform_buttons
+    '#type': radios
     '#title': 'Was this helpful?'
     '#description': 'did this information help you with your case?'
     '#description_display': tooltip
     '#options': yes_no
+    '#options_display': buttons_horizontal
     '#format_items': comma
     '#format_items_html': ''
     '#format_items_text': ''

@@ -50,7 +50,6 @@ module:
   facets: 0
   field: 0
   field_group: 0
-  field_group_accordion: 0
   field_ui: 0
   file: 0
   fillpdf: 0
@@ -60,7 +59,6 @@ module:
   google_tag: 0
   hal: 0
   help: 0
-  history: 0
   honeypot: 0
   image: 0
   inline_entity_form: 0
@@ -181,7 +179,6 @@ module:
   views_data_export: 0
   views_ui: 0
   webform: 0
-  webform_jqueryui_buttons: 0
   webform_rest: 0
   webform_translation_permissions: 0
   webform_ui: 0

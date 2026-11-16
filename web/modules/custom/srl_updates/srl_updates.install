@@ -210,3 +210,42 @@ function srl_updates_update_10001() {
     return t('Updated the menu_link_content entity type definition.');
   }
 }
+
+/**
+ * Replace deprecated jQueryUI "webform_buttons" elements with radios.
+ *
+ * The webform_jqueryui_buttons module is deprecated and gets uninstalled by
+ * config import. Webforms are excluded from config sync (config_ignore), so
+ * the active webforms must be converted here, before the module is removed.
+ * The radios keep the button look through webform's CSS-only buttons display.
+ */
+function srl_updates_update_10002() {
+  $map = [
+    'webform_buttons' => 'radios',
+    'webform_buttons_other' => 'webform_radios_other',
+  ];
+  $converted = [];
+
+  /** @var \Drupal\webform\WebformInterface $webform */
+  foreach (\Drupal::entityTypeManager()->getStorage('webform')->loadMultiple() as $webform) {
+    $changed = FALSE;
+    foreach ($webform->getElementsDecodedAndFlattened() as $key => $element) {
+      $type = $element['#type'] ?? NULL;
+      if (!isset($map[$type])) {
+        continue;
+      }
+      $element['#type'] = $map[$type];
+      $element['#options_display'] = 'buttons_horizontal';
+      $webform->setElementProperties($key, $element);
+      $converted[] = $webform->id() . ':' . $key;
+      $changed = TRUE;
+    }
+    if ($changed) {
+      $webform->save();
+    }
+  }
+
+  return $converted
+    ? t('Converted webform_buttons elements: @list', ['@list' => implode(', ', $converted)])
+    : t('No webform_buttons elements found.');
+}

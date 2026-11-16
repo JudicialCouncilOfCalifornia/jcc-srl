@@ -256,6 +256,17 @@ if (defined(
 }
 
 /**
+ * Disable client-side HTML5 form validation.
+ *
+ * Lets Form API / Webform validation run server-side so errors are rendered by
+ * Drupal (inline, translated and accessible) instead of the browser. This is
+ * the Drupal 12 default and the only behavior in Drupal 13.
+ *
+ * @see https://www.drupal.org/node/3537128
+ */
+$settings['enable_html5_validation'] = FALSE;
+
+/**
  * Load local development override configuration, if available.
  *
  * Use settings.local.php to override variables on secondary (staging,

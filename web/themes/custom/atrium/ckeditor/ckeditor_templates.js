@@ -137,7 +137,10 @@ CKEDITOR.addTemplates('default', {
         return `<p>Text Before</p>
           <div class="jcc-alert usa-alert usa-alert--warning usa-alert--no-icon active" id="alert-bar">
             <div class="usa-alert__body jcc-alert__body  ">
-              <h4 class="usa-alert__heading jcc-alert__heading">Think about safety when serving papers,</h4>
+              <h4 class="usa-alert__heading jcc-alert__heading">
+                <span class="usa-sr-only">Warning alert:</span>
+                Think about safety when serving papers,
+              </h4>
               <div class="usa-alert__text jcc-alert__text">For some people, getting served papers can trigger emotional responses. If you’re using someone who is not a professional server, tell them to keep the interaction brief and not to engage in any conversation about the case. They should remain outside and not enter a private home.</div>
             </div>
           </div>
@@ -152,7 +155,10 @@ CKEDITOR.addTemplates('default', {
         return `<p>Text Before</p>
           <div class="jcc-alert usa-alert usa-alert--error usa-alert--no-icon active" id="alert-bar">
             <div class="usa-alert__body jcc-alert__body  ">
-              <h4 class="usa-alert__heading jcc-alert__heading">Think about safety when serving papers,</h4>
+              <h4 class="usa-alert__heading jcc-alert__heading">
+                <span class="usa-sr-only">Error alert:</span>
+                Think about safety when serving papers,
+              </h4>
               <div class="usa-alert__text jcc-alert__text">For some people, getting served papers can trigger emotional responses. If you’re using someone who is not a professional server, tell them to keep the interaction brief and not to engage in any conversation about the case. They should remain outside and not enter a private home.</div>
             </div>
           </div>
@@ -167,7 +173,10 @@ CKEDITOR.addTemplates('default', {
         return `<p>Text Before</p>
           <div class="jcc-alert usa-alert usa-alert--success usa-alert--no-icon active" id="alert-bar">
             <div class="usa-alert__body jcc-alert__body  ">
-              <h4 class="usa-alert__heading jcc-alert__heading">Think about safety when serving papers,</h4>
+              <h4 class="usa-alert__heading jcc-alert__heading">
+                <span class="usa-sr-only">Success alert:</span>
+                Think about safety when serving papers,
+              </h4>
               <div class="usa-alert__text jcc-alert__text">For some people, getting served papers can trigger emotional responses. If you’re using someone who is not a professional server, tell them to keep the interaction brief and not to engage in any conversation about the case. They should remain outside and not enter a private home.</div>
             </div>
           </div>

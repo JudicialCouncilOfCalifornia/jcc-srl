@@ -71,6 +71,12 @@ function srl_webform_webform_element_checkboxes_alter(array &$element, FormState
 }
 
 function _srl_webform_set_wizard_attribute(array &$element) {
+  // Options rendered as buttons (e.g. the "Was this helpful?" feedback form,
+  // formerly a jQuery UI webform_buttons element) keep their own styling.
+  if (str_starts_with($element['#options_display'] ?? '', 'buttons')) {
+    return;
+  }
+
   if(isset($element['#webform'])) {
     $webform_id = $element['#webform'];
 

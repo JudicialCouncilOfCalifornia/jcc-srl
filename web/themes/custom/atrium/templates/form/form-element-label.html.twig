@@ -24,6 +24,9 @@
 {% if element['#form_element_type'] == 'checkbox' %}
   {% set classes = classes|merge(['usa-checkbox__label']) %}
 
+{% elseif element['#form_element_type'] == 'radio' and attributes.hasClass('webform-options-display-buttons-label') %}
+  {# Webform "buttons" options display: styled in components/form/_options-buttons.scss. #}
+
 {% elseif element['#form_element_type'] == 'radio' %}
   {% set classes = classes|merge(['usa-radio__label usa-button usa-button--secondary usa-button--big--desktop usa-button--round usa-button--outline']) %}
 

@@ -1,0 +1,60 @@
+// Webform "buttons" options display inside the feedback dialog.
+//
+// Radios with '#options_display: buttons_horizontal' replaced the deprecated
+// jQuery UI "webform_buttons" element. These rules reproduce the look the
+// Courtyard feedback pattern gave to the old ".js-webform-webform-buttons
+// .ui-button" markup.
+// -----------------------------------------------------------------------------
+
+.jcc-feedback .webform-options-display-buttons {
+  display: block;
+  margin: 0;
+
+  .webform-options-display-buttons-wrapper {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .form-item {
+    display: block;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  label.webform-options-display-buttons-label {
+    display: inline-block;
+    min-width: units(10);
+    margin: 0 units(1) units(2) 0;
+    padding: units(2) units(3);
+    border: 0;
+    border-radius: 2rem;
+    box-shadow: none;
+    background-color: color("blue-cool-10v");
+    color: color("primary");
+    font-family: inherit;
+    font-size: size("sans", "sm");
+    font-weight: font-weight("normal");
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  label.webform-options-display-buttons-label:hover,
+  input:hover + label.webform-options-display-buttons-label,
+  input:focus + label.webform-options-display-buttons-label,
+  input:checked + label.webform-options-display-buttons-label {
+    border: 0;
+    box-shadow: none;
+    background-color: color("white");
+    color: color("primary");
+  }
+
+  input:focus-visible + label.webform-options-display-buttons-label {
+    outline: units(0.5) solid color("yellow-20v");
+    outline-offset: units(0.5);
+  }
+}

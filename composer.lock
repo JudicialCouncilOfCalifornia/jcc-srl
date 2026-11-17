@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a204565a83abc40fa1d0eea6e0f7476",
+    "content-hash": "e8020405079829f299d38993c71465c2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10745,16 +10745,16 @@
         },
         {
             "name": "judicialcouncil/courtyard-artifact",
-            "version": "0.1.516",
+            "version": "0.1.520",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact.git",
-                "reference": "36c3a75f3ace3dcc4a60fb4cd26a74c99ad0c8ae"
+                "reference": "19b1be3a8470b43cbdd2eabc64dbded2c8574aca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/36c3a75f3ace3dcc4a60fb4cd26a74c99ad0c8ae",
-                "reference": "36c3a75f3ace3dcc4a60fb4cd26a74c99ad0c8ae",
+                "url": "https://api.github.com/repos/JudicialCouncilOfCalifornia/courtyard-artifact/zipball/19b1be3a8470b43cbdd2eabc64dbded2c8574aca",
+                "reference": "19b1be3a8470b43cbdd2eabc64dbded2c8574aca",
                 "shasum": ""
             },
             "type": "drupal-library",
@@ -10771,10 +10771,10 @@
             "description": "A build artifact of the Courtyard Pattern Lab pattern library.",
             "support": {
                 "issues": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/issues",
-                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.516"
+                "source": "https://github.com/JudicialCouncilOfCalifornia/courtyard-artifact/tree/0.1.520"
             },
-            "time": "2026-11-05T18:24:53+00:00",
-            "published-time": "2026-11-05T18:27:35+00:00"
+            "time": "2026-11-17T00:50:00+00:00",
+            "published-time": "2026-11-17T00:54:45+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

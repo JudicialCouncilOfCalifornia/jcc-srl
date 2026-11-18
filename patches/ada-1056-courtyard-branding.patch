@@ -1,0 +1,30 @@
+diff --git a/1.x/source/_patterns/02-molecules/navigation/global-bar/global-bar.twig b/1.x/source/_patterns/02-molecules/navigation/global-bar/global-bar.twig
+index 1a31d929..3c6928d5 100644
+--- a/1.x/source/_patterns/02-molecules/navigation/global-bar/global-bar.twig
++++ b/1.x/source/_patterns/02-molecules/navigation/global-bar/global-bar.twig
+@@ -8,7 +8,7 @@
+ <div class="jcc-global-bar" role="region" aria-label="{{ global_bar.aria_label|default(aria__banner_label) }}">
+   <div class="jcc-global-bar__container">
+     <div class="jcc-global-bar-logo">
+-      <a href="{{ global_bar.logo_text.url }}" title="{{ global_bar.logo_text.title }}" aria-label="{{ global_bar.logo_text.aria_label|default(aria__logo_label) }}">
++      <a href="{{ global_bar.logo_text.url }}"{% if global_bar.logo %} title="{{ global_bar.logo_text.title }}" aria-label="{{ global_bar.logo_text.aria_label|default(aria__logo_label) }}"{% endif %}>
+         {% if global_bar.logo %}<span class="jcc-global-bar-logo__graphic"><img src="{{ global_bar.logo }}" alt="{{ global_bar.logo_text.title }} branding {{ is_footer ? ' for footer' : '' }}" /></span>{% endif %}
+         <em class="jcc-global-bar-logo__text{% if global_bar.logo %} usa-sr-only{% endif %}">{{ global_bar.logo_text.title }}</em>
+       </a>
+diff --git a/1.x/source/_patterns/03-organisms/global/header-base/header-base.twig b/1.x/source/_patterns/03-organisms/global/header-base/header-base.twig
+index fe59fbd2..111c6431 100644
+--- a/1.x/source/_patterns/03-organisms/global/header-base/header-base.twig
++++ b/1.x/source/_patterns/03-organisms/global/header-base/header-base.twig
+@@ -21,9 +21,9 @@
+     <div class="usa-navbar">
+       
+       <div class="usa-logo" id="basic-logo">
+-        <a href="{{ header_base.home_url }}" title="Home" aria-label="Home">
+-          {% if header_base.logo.mobile %}<span class="usa-logo__graphic--mobile"><img src="{{ header_base.logo.mobile }}" alt="{{ header_base.title }}" /></span>{% endif %}
+-          {% if header_base.logo.desktop %}<span class="usa-logo__graphic--desktop"><img src="{{ header_base.logo.desktop }}" alt="{{ header_base.title }}" /></span>{% endif %}
++        <a href="{{ header_base.home_url }}"{% if not header_base.use_branding_text %} title="Home" aria-label="Home"{% endif %}>
++          {% if header_base.logo.mobile %}<span class="usa-logo__graphic--mobile"><img src="{{ header_base.logo.mobile }}" alt="{{ header_base.use_branding_text ? '' : header_base.title }}" /></span>{% endif %}
++          {% if header_base.logo.desktop %}<span class="usa-logo__graphic--desktop"><img src="{{ header_base.logo.desktop }}" alt="{{ header_base.use_branding_text ? '' : header_base.title }}" /></span>{% endif %}
+           <em class="usa-logo__text{% if header_base.logo %} usa-sr-only{% endif %}">{{ header_base.title }}</em>
+         </a>
+       </div>

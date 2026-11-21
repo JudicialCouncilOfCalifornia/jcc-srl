@@ -100,7 +100,7 @@ display:
         options:
           offset: 0
           items_per_page: 25
-          total_pages: 24
+          total_pages: 26
           id: 0
           tags:
             next: ››
